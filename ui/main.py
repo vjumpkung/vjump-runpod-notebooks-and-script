@@ -243,10 +243,11 @@ def select_download_model_list():
                         ) as sp:
                             for line in sp.stdout:
                                 print(line.strip())
-
+                output.clear_output()
                 completed_message()
 
             except KeyboardInterrupt:
+                output.clear_output()
                 print("\n\n--Download Model interrupted--")
 
     download_button.on_click(on_press)
@@ -299,10 +300,11 @@ def download_models():
                         url_model.value,
                         model_type.value,
                     )
-
+                output.clear_output()
                 completed_message()
 
             except KeyboardInterrupt:
+                output.clear_output()
                 print("\n\n--Download Model interrupted--")
 
     download_button.on_click(on_press)
