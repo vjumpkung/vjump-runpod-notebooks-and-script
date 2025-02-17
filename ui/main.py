@@ -3,7 +3,6 @@ from IPython.display import display
 import subprocess
 import os
 import shlex
-import zipfile
 import requests
 import torch
 
@@ -51,19 +50,28 @@ def setup():
         headers = widgets.HBox([warn])
         display(headers)
 
+    if len(envs.CIVITAI_TOKEN) > 0:
+        civitapikey = "Imported From Environment Variable"
+    else:
+        civitapikey = ""
+    if len(envs.HUGGINGFACE_TOKEN) > 0:
+        huggingfacekey = "Imported From Environment Variable"
+    else:
+        huggingfacekey = ""
+
     settings = []
     input_list = [
         (
             "CIVITAI_TOKEN",
             "CivitAI API Key",
             "Paste your API key here",
-            envs.CIVITAI_TOKEN,
+            civitapikey,
         ),
         (
             "HUGGINGFACE_TOKEN",
             "Huggingface API Key",
             "Paste your API key here",
-            envs.HUGGINGFACE_TOKEN,
+            huggingfacekey,
         ),
     ]
 
@@ -87,9 +95,17 @@ def setup():
         with output:
             for key, textInput in settings:
                 if key == "CIVITAI_TOKEN":
-                    envs.CIVITAI_TOKEN = textInput.value
+                    if (
+                        textInput.value != "Imported From Environment Variable"
+                        or textInput.value != ""
+                    ):
+                        envs.CIVITAI_TOKEN = textInput.value
                 elif key == "HUGGINGFACE_TOKEN":
-                    envs.HUGGINGFACE_TOKEN = textInput.value
+                    if (
+                        textInput.value != "Imported From Environment Variable"
+                        or textInput.value != ""
+                    ):
+                        envs.HUGGINGFACE_TOKEN = textInput.value
             print("\nSaved ✔")
 
     save_button.on_click(on_save)
@@ -257,7 +273,7 @@ def select_download_model_list():
 
 def download_models():
     models_header = widgets.HTML(
-        '<h4 style="width: auto;">Download Model จาก Google Drive, CivitAI หรือ Huggingface</h4>'
+        '<h3 style="width: auto;">Download Model จาก Google Drive, CivitAI หรือ Huggingface</h3>'
     )
     display(models_header)
 
@@ -321,18 +337,18 @@ def completed_message():
 
 
 def launch_comfyui():
-
+    os.makedirs("/notebooks/output_images/", exist_ok=True)
     models_header = widgets.HTML(
         '<h3 style="width: 250px;">เริ่มโปรแกรม ComfyUI ตรงนี้</h3>'
     )
     display(models_header)
     output = widgets.Output()
 
-    def run_gui(button):
+    def run_comfyui(button):
 
         os.chdir("/notebooks/")
 
-        command = "python -u main.py --listen 0.0.0.0 --disable-auto-launch"
+        command = "python -u main.py --listen 0.0.0.0 --disable-auto-launch --output-directory /notebooks/output_images/"
 
         if platform_id == "RUNPOD":
             proxy_url = f'URL : https://{os.environ.get("RUNPOD_POD_ID")}-{8188}.proxy.runpod.net'
@@ -371,6 +387,6 @@ def launch_comfyui():
 
     start_button = widgets.Button(description="START ComfyUI", button_style="primary")
 
-    start_button.on_click(run_gui)
+    start_button.on_click(run_comfyui)
 
     display(start_button, output)
