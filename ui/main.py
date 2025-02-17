@@ -14,7 +14,7 @@ if "RUNPOD_POD_ID" in os.environ.keys():
 elif "PAPERSPACE_FQDN" in os.environ.keys():
     platform_id = "PAPERSPACE"
 
-model_list_url = "https://gist.githubusercontent.com/vjumpkung/ee3d0c197d80f51bc3918626d0cfc827/raw/12ee2836ad2ceb765709480c90f5fc74707e8b7c/model_list_for_comfy.json"
+model_list_url = "https://gist.githubusercontent.com/vjumpkung/ee3d0c197d80f51bc3918626d0cfc827/raw/58824c39389bf4662e22c45cc00f5da21901b785/model_list_for_comfy.json"
 
 
 class Envs:
