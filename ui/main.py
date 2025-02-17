@@ -24,9 +24,9 @@ class Envs:
         self.HUGGINGFACE_TOKEN = ""
 
     def get_enviroment_variable(self):
-        if "CIVITAI_TOKEN" in os.environ.keys():
+        if "CIVITAI_TOKEN" in os.environ.keys() and self.CIVITAI_TOKEN == "":
             self.CIVITAI_TOKEN = os.environ["CIVITAI_TOKEN"]
-        if "HUGGINGFACE_TOKEN" in os.environ.keys():
+        if "HUGGINGFACE_TOKEN" in os.environ.keys() and self.HUGGINGFACE_TOKEN == "":
             self.HUGGINGFACE_TOKEN = os.environ["HUGGINGFACE_TOKEN"]
 
 
@@ -138,6 +138,9 @@ check_types = [
 
 def download(name: str, url: str, type: str):
 
+    envs = Envs()
+    envs.get_enviroment_variable()
+
     if type not in check_types:
         print("Invalid Model Type")
         return
@@ -152,7 +155,7 @@ def download(name: str, url: str, type: str):
 
     print(f"Starting download: {name}\n")
 
-    if envs.CIVITAI_TOKEN != "":
+    if "civitai" in url and envs.CIVITAI_TOKEN != "":
         if "?" in url:
             url += f"&token={envs.CIVITAI_TOKEN}"
         else:
@@ -160,7 +163,7 @@ def download(name: str, url: str, type: str):
 
     command = f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M {url} --dir={destination} --download-result=hide"
 
-    if envs.HUGGINGFACE_TOKEN != "":
+    if "huggingface" in url and envs.HUGGINGFACE_TOKEN != "":
         command += f' --header="Authorization: Bearer {envs.HUGGINGFACE_TOKEN}"'
 
     if "huggingface" in url:
