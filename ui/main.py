@@ -3,6 +3,8 @@ from IPython.display import display
 import subprocess
 import os
 import shlex
+import zipfile
+import requests
 import torch
 
 
@@ -124,9 +126,12 @@ def download(name: str, url: str, type: str):
     destination = ""
     filename = ""
 
+    if type == "checkpoints":
+        type = "ckpts"
+
     destination = f"./my-runpod-volume/models/{type}/"
 
-    print(f"Starting download: {name}")
+    print(f"Starting download: {name}\n")
 
     if envs.CIVITAI_TOKEN != "":
         if "?" in url:
