@@ -138,8 +138,10 @@ check_types = [
 
 def download(name: str, url: str, type: str):
 
-    envs = Envs()
-    envs.get_enviroment_variable()
+    if "envs" not in globals():
+        global envs
+        envs = Envs()
+        envs.get_enviroment_variable()
 
     if type not in check_types:
         print("Invalid Model Type")
