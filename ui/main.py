@@ -23,8 +23,15 @@ class Envs:
         self.CIVITAI_TOKEN = ""
         self.HUGGINGFACE_TOKEN = ""
 
+    def get_enviroment_variable(self):
+        if "CIVITAI_TOKEN" in os.environ.keys():
+            self.CIVITAI_TOKEN = os.environ["CIVITAI_TOKEN"]
+        if "HUGGINGFACE_TOKEN" in os.environ.keys():
+            self.HUGGINGFACE_TOKEN = os.environ["HUGGINGFACE_TOKEN"]
+
 
 envs = Envs()
+envs.get_enviroment_variable()
 
 
 def test():
@@ -46,8 +53,18 @@ def setup():
 
     settings = []
     input_list = [
-        ("CIVITAI_TOKEN", "CivitAI API Key", "Paste your API key here", ""),
-        ("HUGGINGFACE_TOKEN", "Huggingface API Key", "Paste your API key here", ""),
+        (
+            "CIVITAI_TOKEN",
+            "CivitAI API Key",
+            "Paste your API key here",
+            envs.CIVITAI_TOKEN,
+        ),
+        (
+            "HUGGINGFACE_TOKEN",
+            "Huggingface API Key",
+            "Paste your API key here",
+            envs.HUGGINGFACE_TOKEN,
+        ),
     ]
 
     save_button = widgets.Button(description="Save", button_style="primary")
@@ -220,7 +237,7 @@ def select_download_model_list():
                             bufsize=1,
                         ) as sp:
                             for line in sp.stdout:
-                                print(line.strip(), end="", flush=True)
+                                print(line.strip())
 
                 completed_message()
 
