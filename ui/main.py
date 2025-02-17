@@ -15,6 +15,8 @@ if "RUNPOD_POD_ID" in os.environ.keys():
 elif "PAPERSPACE_FQDN" in os.environ.keys():
     platform_id = "PAPERSPACE"
 
+model_list_url = "https://gist.githubusercontent.com/vjumpkung/ee3d0c197d80f51bc3918626d0cfc827/raw/12ee2836ad2ceb765709480c90f5fc74707e8b7c/model_list_for_comfy.json"
+
 
 class Envs:
     def __init__(self):
@@ -177,6 +179,57 @@ def download(name: str, url: str, type: str):
         print("\033[?25h")
 
     print(f"Download completed: {name}")
+
+
+def select_download_model_list():
+    models_header = widgets.HTML('<h3 style="width: 200px;">Model List</h3>')
+    headers = widgets.HBox([models_header])
+    display(headers)
+
+    get_model_list = requests.get(model_list_url).json()
+
+    checkboxes = []
+
+    for item in get_model_list:
+        checkbox = widgets.Checkbox(
+            value=False,
+            description=item["name"],
+            indent=False,
+            layout={"width": "auto"},
+        )
+        val = item["url"]
+        checkboxes.append((checkbox, val))
+        display(checkbox)
+
+    download_button = widgets.Button(description="Download", button_style="primary")
+
+    output = widgets.Output()
+
+    def on_press(button):
+        with output:
+            output.clear_output()
+            try:
+                for _checkbox, _url in checkboxes:
+                    if _checkbox.value:
+                        command = f"python pre_download_model.py --input {_url}"
+                        with subprocess.Popen(
+                            shlex.split(command),
+                            stdout=subprocess.PIPE,
+                            stderr=subprocess.STDOUT,
+                            text=True,
+                            bufsize=1,
+                        ) as sp:
+                            for line in sp.stdout:
+                                print(line.strip(), end="", flush=True)
+
+                completed_message()
+
+            except KeyboardInterrupt:
+                print("\n\n--Download Model interrupted--")
+
+    download_button.on_click(on_press)
+
+    display(download_button, output)
 
 
 def download_models():
