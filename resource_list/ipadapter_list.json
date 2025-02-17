@@ -1,0 +1,52 @@
+[
+    {
+        "name": "ip-adapter_sd15.safetensors",
+        "url": "https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15.safetensors",
+        "type": "ipadapter"
+    },
+    {
+        "name": "ip-adapter_sd15_light_v11.bin",
+        "url": "https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15_light_v11.bin",
+        "type": "ipadapter"
+    },
+    {
+        "name": "ip-adapter-plus_sd15.safetensors",
+        "url": "https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus_sd15.safetensors",
+        "type": "ipadapter"
+    },
+    {
+        "name": "ip-adapter-plus-face_sd15.safetensors",
+        "url": "https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus-face_sd15.safetensors",
+        "type": "ipadapter"
+    },
+    {
+        "name": "ip-adapter-full-face_sd15.safetensors",
+        "url": "https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-full-face_sd15.safetensors",
+        "type": "ipadapter"
+    },
+    {
+        "name": "ip-adapter_sd15_vit-G.safetensors",
+        "url": "https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15_vit-G.safetensors",
+        "type": "ipadapter"
+    },
+    {
+        "name": "ip-adapter_sdxl_vit-h.safetensors",
+        "url": "https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter_sdxl_vit-h.safetensors",
+        "type": "ipadapter"
+    },
+    {
+        "name": "ip-adapter-plus_sdxl_vit-h.safetensors",
+        "url": "https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus_sdxl_vit-h.safetensors",
+        "type": "ipadapter"
+    },
+    {
+        "name": "ip-adapter-plus-face_sdxl_vit-h.safetensors",
+        "url": "https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus-face_sdxl_vit-h.safetensors",
+        "type": "ipadapter"
+    },
+    {
+        "name": "ip-adapter_sdxl.safetensors",
+        "url": "https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter_sdxl.safetensors",
+        "type": "ipadapter"
+    }
+]

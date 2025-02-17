@@ -1,0 +1,12 @@
+[
+    {
+        "name": "NoobAI-XL V-pred v1.0",
+        "url": "https://civitai.com/api/download/models/1190596?type=Model&format=SafeTensor&size=full&fp=bf16",
+        "type": "checkpoints"
+    },
+    {
+        "name": "SDXL VAE",
+        "url": "https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/resolve/main/sdxl.vae.safetensors",
+        "type": "vae"
+    }
+]
