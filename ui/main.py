@@ -276,7 +276,7 @@ def launch_comfyui():
 
             with output:
                 output.clear_output()
-                print("kohya-ss GUI has been started see logs at console")
+                print("ComfyUI has been started")
                 print(proxy_url)
 
                 for i in process.stdout:
