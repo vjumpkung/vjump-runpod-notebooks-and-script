@@ -17,12 +17,12 @@ restore_snapshot() {
     else
         curl $SNAPSHOT_FILE_URL >./src/my_snapshot.json
         comfy --workspace /notebooks/ComfyUI node restore-snapshot ./src/my_snapshot.json --pip-non-url
-        echo "Restored Completed"
+        echo "Restore Completed"
     fi
 }
 
 curl https://raw.githubusercontent.com/vjumpkung/vjump-comfyui-runpod-template/refs/heads/main/src/extra_model_paths.yaml >/notebooks/ComfyUI/extra_model_paths.yaml
 
 make_directory
-update_comfyui
 restore_snapshot
+update_comfyui
