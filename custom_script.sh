@@ -23,3 +23,4 @@ curl https://raw.githubusercontent.com/vjumpkung/vjump-comfyui-runpod-template/r
 
 make_directory
 update_comfyui
+restore_snapshot
