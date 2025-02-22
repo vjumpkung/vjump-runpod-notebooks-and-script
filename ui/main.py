@@ -5,6 +5,8 @@ import os
 import shlex
 import requests
 import torch
+import hashlib
+import json
 
 
 platform_id = "OTHER"
@@ -110,6 +112,14 @@ def setup():
 
     save_button.on_click(on_save)
     display(save_button, output)
+
+
+def completed_message():
+    completed = widgets.Button(
+        description="Completed", button_style="success", icon="check"
+    )
+    print("\n")
+    display(completed)
 
 
 check_types = [
@@ -328,12 +338,85 @@ def download_models():
     display(download_button, output)
 
 
-def completed_message():
-    completed = widgets.Button(
-        description="Completed", button_style="success", icon="check"
+def run_snapshot(url):
+    # --- Step 1: Fetch JSON data using requests ---
+    # Replace with the actual URL you want to fetch from.
+    response = requests.get(url)
+    response.raise_for_status()  # will raise an error for bad responses
+    json_data = response.json()
+
+    # --- Step 2: Generate a random SHA256 hash ---
+    # Create 32 random bytes and compute its SHA256 hash.
+    random_bytes = os.urandom(32)
+    hash_digest = hashlib.sha256(random_bytes).hexdigest()
+
+    # Build the filename using the random hash.
+    filename = f"./src/snapshot-{hash_digest}.json"
+
+    # Ensure the directory exists.
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
+
+    # Write the JSON data to the file.
+    with open(filename, "w") as file:
+        json.dump(json_data, file, indent=2)
+
+    print(f"JSON data written to {filename}")
+
+    # --- Step 3: Run the subprocess command ---
+    # Command: comfy --workspace /notebooks/ComfyUI node restore-snapshot <filename> --pip-non-url
+
+    command = f"comfy --workspace /notebooks/ComfyUI node restore-snapshot {filename} --pip-non-url"
+
+    with subprocess.Popen(
+        shlex.split(command),
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        bufsize=1,
+    ) as sp:
+        for i in sp.stdout:
+            print(i.strip())
+
+
+def restore_snapshot():
+
+    header = widgets.HTML(
+        '<h3 style="width: auto;">Restore ComfyUI Snapshot (Do not run ComfyUI process)</h3>'
     )
-    print("\n")
-    display(completed)
+    display(header)
+
+    textinputlayout = widgets.Layout(width="400px", height="40px")
+    url_snapshot = widgets.Text(
+        value="",
+        placeholder="Paste ComfyUI Snapshot json url",
+        disabled=False,
+        layout=textinputlayout,
+    )
+
+    textWidget = widgets.HBox(
+        [widgets.Label("Custom Node Pack URL (snapshot):"), url_snapshot]
+    )
+    display(textWidget)
+
+    download_button = widgets.Button(description="Download", button_style="primary")
+    output = widgets.Output()
+
+    def on_press(button):
+        with output:
+            output.clear_output()
+            try:
+                if url_snapshot.value != "":
+                    run_snapshot(url_snapshot.value)
+                output.clear_output()
+                completed_message()
+
+            except KeyboardInterrupt:
+                output.clear_output()
+                print("\n\n--Snapshot restore interrupt--")
+
+    download_button.on_click(on_press)
+
+    display(download_button, output)
 
 
 def launch_comfyui():
