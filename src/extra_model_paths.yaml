@@ -4,7 +4,7 @@ runpod_worker_comfy:
   LLM: models/LLM/
   animatediff_models: models/animatediff_models/
   animatediff_motion_lora: models/animatediff_motion_lora/
-  checkpoints: models/checkpoints/
+  checkpoints: models/ckpts/
   clip: models/clip/
   clip_vision: models/clip_vision/
   configs: models/configs/
