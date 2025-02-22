@@ -11,11 +11,13 @@ update_comfyui() {
 }
 
 restore_snapshot() {
+    echo "Restoring Snapshot from $SNAPSHOT_FILE_URL"
     if [[ -z $SNAPSHOT_FILE_URL ]]; then
         echo "No snapshot file restore skip..."
     else
         curl $SNAPSHOT_FILE_URL >./src/my_snapshot.json
         comfy --workspace /notebooks/ComfyUI node restore-snapshot ./src/my_snapshot.json --pip-non-url
+        echo "Restored Completed"
     fi
 }
 
