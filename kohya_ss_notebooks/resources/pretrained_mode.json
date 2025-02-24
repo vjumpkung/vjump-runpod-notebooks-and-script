@@ -1,0 +1,67 @@
+[
+    {
+        "id": "sd15",
+        "name": "Stable Diffusion 1.5 (Base Model)",
+        "url": "https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors"
+    },
+    {
+        "id": "sd15",
+        "name": "AnyLoRA (สำหรับเทรน Anime)",
+        "url": "https://civitai.com/api/download/models/95489?type=Model&format=SafeTensor&size=full&fp=fp16"
+    },
+    {
+        "id": "sd15",
+        "name": "ChilloutMix (สำหรับ Realistic หน้าเอเชีย)",
+        "url": "https://civitai.com/api/download/models/11732?type=Model&format=SafeTensor&size=full&fp=fp16"
+    },
+    {
+        "id": "sdxl",
+        "name": "SDXL V1.0 (Base Model)",
+        "url": "https://civitai.com/api/download/models/128078?type=Model&format=SafeTensor&size=pruned&fp=fp16"
+    },
+    {
+        "id": "sdxl",
+        "name": "Juggernaut XL XI (สำหรับ Realistic)",
+        "url": "https://civitai.com/api/download/models/782002?type=Model&format=SafeTensor&size=full&fp=fp16"
+    },
+    {
+        "id": "sdxl",
+        "name": "animagine-xl-3.1 (สำหรับ Anime)",
+        "url": "https://huggingface.co/cagliostrolab/animagine-xl-3.1/resolve/main/animagine-xl-3.1.safetensors"
+    },
+    {
+        "id": "sdxl",
+        "name": "Pony Diffusion V6 XL (Pony)",
+        "url": "https://civitai.com/api/download/models/290640?type=Model&format=SafeTensor&size=pruned&fp=fp16"
+    },
+    {
+        "id": "sdxl",
+        "name": "Illustrious-XL-v0.1 (Illustrious)",
+        "url": "https://huggingface.co/OnomaAIResearch/Illustrious-xl-early-release-v0/resolve/main/Illustrious-XL-v0.1.safetensors"
+    },
+    {
+        "id": "sd3",
+        "name": "Stable Diffusion 3 Medium (ต้องการ huggingface user access token)",
+        "url": "https://huggingface.co/stabilityai/stable-diffusion-3-medium/resolve/main/sd3_medium.safetensors"
+    },
+    {
+        "id": "sd3",
+        "name": "Stable Diffusion 3.5 Large (ต้องการ huggingface user access token)",
+        "url": "https://huggingface.co/stabilityai/stable-diffusion-3.5-large/resolve/main/sd3.5_large.safetensors"
+    },
+    {
+        "id": "sd3",
+        "name": "Stable Diffusion 3.5 Medium (ต้องการ huggingface user access token)",
+        "url": "https://huggingface.co/stabilityai/stable-diffusion-3.5-medium/resolve/main/sd3.5_medium.safetensors"
+    },
+    {
+        "id": "flux",
+        "name": "Flux.1 Dev (FP16) (ต้องการ huggingface user access token)",
+        "url": "https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/flux1-dev.safetensors"
+    },
+    {
+        "id": "flux",
+        "name": "Flux.1 Dev (FP8)",
+        "url": "https://huggingface.co/Kijai/flux-fp8/resolve/main/flux1-dev-fp8-e4m3fn.safetensors"
+    }
+]

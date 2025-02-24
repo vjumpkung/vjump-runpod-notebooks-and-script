@@ -1,0 +1,37 @@
+[
+    {
+        "id": "clip",
+        "name": "clip-l (สำหรับ Flux และ SD3.5)",
+        "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors"
+    },
+    {
+        "id": "clip",
+        "name": "clip-g (สำหรับ SD3.5)",
+        "url": "https://huggingface.co/calcuis/sd3.5-large-gguf/resolve/7f72f2a432131bba82ecd1aafb931ac99f0f05f7/clip_g.safetensors"
+    },
+    {
+        "id": "clip",
+        "name": "t5xxl_fp16 (สำหรับ Flux และ SD3.5)",
+        "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors"
+    },
+    {
+        "id": "clip",
+        "name": "t5xxl_fp8_e4m3fn (สำหรับ Flux และ SD3.5)",
+        "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors"
+    },
+    {
+        "id": "vae",
+        "name": "ae (สำหรับ Flux)",
+        "url": "https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors"
+    },
+    {
+        "id": "vae",
+        "name": "sd3.5 vae",
+        "url": "https://civitai.com/api/download/models/985137?type=Model&format=SafeTensor"
+    },
+    {
+        "id": "vae",
+        "name": "sdxl vae",
+        "url": "https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/resolve/main/sdxl.vae.safetensors"
+    }
+]
