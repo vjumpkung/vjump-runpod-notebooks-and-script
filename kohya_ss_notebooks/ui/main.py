@@ -106,7 +106,7 @@ def download(name: str, url: str, type: str):
 
     print(f"Starting download: {name}")
 
-    if envs.CIVITAI_TOKEN != "":
+    if envs.CIVITAI_TOKEN != "" and "civitai" in url:
         if "?" in url:
             url += f"&token={envs.CIVITAI_TOKEN}"
         else:
@@ -114,7 +114,7 @@ def download(name: str, url: str, type: str):
 
     command = f"aria2c --console-log-level=error -c -x 16 -s 16 -k 1M {url} --dir={destination} --download-result=hide"
 
-    if envs.HUGGINGFACE_TOKEN != "":
+    if envs.HUGGINGFACE_TOKEN != "" and "huggingface" in url:
         command += f' --header="Authorization: Bearer {envs.HUGGINGFACE_TOKEN}"'
 
     if "huggingface" in url:
