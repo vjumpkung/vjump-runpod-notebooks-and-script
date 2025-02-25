@@ -173,3 +173,8 @@ cython_debug/
 
 my-runpod-volume
 my-runpod-volume/*
+
+model
+model/*
+lora_project
+lora_project/*

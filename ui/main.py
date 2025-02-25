@@ -163,6 +163,7 @@ check_types = [
 
 
 def download(name: str, url: str, type: str):
+    import sys
 
     if "envs" not in globals():
         global envs
@@ -171,7 +172,7 @@ def download(name: str, url: str, type: str):
 
     if type not in check_types:
         print("Invalid Model Type")
-        return
+        return sys.exit(1)
 
     destination = ""
     filename = ""
@@ -206,6 +207,7 @@ def download(name: str, url: str, type: str):
             f"python ./ui/google_drive_download.py --path {destination} --url {url}"
         )
 
+    process_success = True
     with subprocess.Popen(
         shlex.split(command),
         stdout=subprocess.PIPE,
@@ -223,10 +225,20 @@ def download(name: str, url: str, type: str):
                 if prev_line != "":
                     print("", flush=True)
             else:
-                print(line.strip(), end="", flush=True)
+                print(line.strip(), flush=True)
         print("\033[?25h")
 
-    print(f"Download completed: {name}")
+        # Check the return code of the process
+        return_code = sp.wait()
+        if return_code != 0:
+            process_success = False
+
+    if process_success:
+        print(f"Download completed: {name}")
+        return 0
+    else:
+        print(f"Download failed: {name}")
+        return sys.exit(1)
 
 
 def select_download_model_list():
@@ -320,10 +332,11 @@ def download_models():
             try:
                 if url_model.value != "":
                     download(
-                        f"Download {model_type.value} : ",
+                        model_type.value,
                         url_model.value,
                         model_type.value,
                     )
+                output.clear_output()
                 completed_message()
 
             except KeyboardInterrupt:

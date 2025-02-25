@@ -2,6 +2,7 @@ import gdown
 import os
 import zipfile
 import argparse
+import sys
 
 
 def main(path: str, url: str):
@@ -33,4 +34,7 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-    main(args.path, args.url)
+    try:
+        main(args.path, args.url)
+    except:
+        sys.exit(1)

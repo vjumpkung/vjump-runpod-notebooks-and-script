@@ -5,6 +5,7 @@ import os
 import shlex
 import zipfile
 import requests
+import sys
 
 
 platform_id = "OTHER"
@@ -88,6 +89,7 @@ def setup():
 
 
 def download(name: str, url: str, type: str):
+
     destination = ""
     filename = ""
 
@@ -128,7 +130,7 @@ def download(name: str, url: str, type: str):
         command = (
             f"python ./ui/google_drive_download.py --path {destination} --url {url}"
         )
-
+    process_success = True
     with subprocess.Popen(
         shlex.split(command),
         stdout=subprocess.PIPE,
@@ -146,14 +148,23 @@ def download(name: str, url: str, type: str):
                 if prev_line != "":
                     print("", flush=True)
             else:
-                print(line.strip(), end="", flush=True)
+                print(line.strip(), flush=True)
         print("\033[?25h")
 
-    if zipfile.is_zipfile(os.path.join(destination, filename)):
-        with zipfile.ZipFile(os.path.join(destination, filename), "r") as zip_ref:
-            zip_ref.extractall(destination)
+        # Check the return code of the process
+        return_code = sp.wait()
+        if return_code != 0:
+            process_success = False
 
-    print(f"Download completed: {name}")
+    if process_success:
+        if zipfile.is_zipfile(os.path.join(destination, filename)):
+            with zipfile.ZipFile(os.path.join(destination, filename), "r") as zip_ref:
+                zip_ref.extractall(destination)
+        print(f"Download completed: {name}")
+        return 0
+    else:
+        print(f"Download failed: {name}")
+        return sys.exit(1)
 
 
 def completed_message():
@@ -207,12 +218,20 @@ def select_pretrained_model():
         with output:
             output.clear_output()
             try:
+                success_lst = []
                 for _res, _checkbox in checkboxes:
                     if _checkbox.value:
-                        download(_res["name"], _res["url"], _res["id"])
+                        if download(_res["name"], _res["url"], _res["id"]) == 0:
+                            success_lst.append(_res["name"])
                 if custom_model.value != "":
-                    download("Custom Model", custom_model.value, "custom_model")
-
+                    if (
+                        download("Custom Model", custom_model.value, "custom_model")
+                        == 0
+                    ):
+                        success_lst.append(_res["name"])
+                output.clear_output()
+                for i in success_lst:
+                    print("Download", i, "success")
                 completed_message()
 
             except KeyboardInterrupt:
@@ -252,9 +271,14 @@ def select_clip_vae_model():
         with output:
             output.clear_output()
             try:
+                success_lst = []
                 for _res, _checkbox in checkboxes:
                     if _checkbox.value:
-                        download(_res["name"], _res["url"], _res["id"])
+                        if download(_res["name"], _res["url"], _res["id"]) == 0:
+                            success_lst.append(_res["name"])
+                output.clear_output()
+                for i in success_lst:
+                    print("Download", i, "success")
                 completed_message()
 
             except KeyboardInterrupt:
