@@ -3,6 +3,7 @@ from IPython.display import display
 import subprocess
 import os
 import shlex
+import torch
 import zipfile
 import requests
 import sys
@@ -53,6 +54,16 @@ def test():
 
 
 def setup():
+
+    if not torch.cuda.is_available():
+        warn = widgets.HTML('<h3 style="width: 500px;">ไม่พบ CUDA โปรดสร้าง Pod ใหม่</h3>')
+        headers = widgets.HBox([warn])
+        display(headers)
+    else:
+        warn = widgets.HTML('<h3 style="width: 500px;">พบ CUDA :)</h3>')
+        headers = widgets.HBox([warn])
+        display(headers)
+
     settings = []
     input_list = [
         ("CIVITAI_TOKEN", "CivitAI API Key", "Paste your API key here", ""),
