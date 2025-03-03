@@ -80,15 +80,12 @@ def run_model_batch(
     return generated_text[0].replace("</s>", "").replace("<s>", "").replace("<pad>", "")
 
 
-zip_location = ""  # @param {type:"string"}
-caption_types = "tag (สำหรับ Pony, Illustrious)"  # @param ["บรรยาย (สำหรับ Flux)", "tag (สำหรับ Pony, Illustrious)"]
-TRIGGER_WORD = ""  # @param {type:"string"}
 convert_types = {
     "บรรยาย (สำหรับ Flux)": "<MORE_DETAILED_CAPTION>",
     "tag (สำหรับ Pony, Illustrious)": "<GENERATE_TAGS>",
 }
 
-prompt = "<MORE_DETAILED_CAPTION>"
+prompt = convert_types[caption_types]
 
 model_name = "MiaoshouAI/Florence-2-large-PromptGen-v2.0"
 
