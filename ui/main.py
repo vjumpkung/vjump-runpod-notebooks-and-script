@@ -468,6 +468,7 @@ def launch_comfyui():
 
         command = "python -u main.py --listen 0.0.0.0 --disable-auto-launch --output-directory /notebooks/output_images/"
 
+        proxy_url = "not found please check the provider proxy url port 8188 or 3001"
         if platform_id == "RUNPOD":
             proxy_url = f'URL : https://{os.environ.get("RUNPOD_POD_ID")}-{8188}.proxy.runpod.net'
         elif platform_id == "PAPERSPACE":
