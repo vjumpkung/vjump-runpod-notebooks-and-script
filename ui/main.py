@@ -293,7 +293,15 @@ def select_download_model_list():
 
 def download_models():
     models_header = widgets.HTML(
-        '<h3 style="width: auto;">Download Model จาก Google Drive, CivitAI หรือ Huggingface</h3>'
+        """<h3 style="width: auto;">Download Model จาก Google Drive, CivitAI หรือ Huggingface</h3>
+            <p>ตัวอย่าง Link CivitAI</p>
+            <img src="https://res.cloudinary.com/dtyymlemv/image/upload/v1741153257/sd_workflows/hfu7ow2r4ntku0hckkhh.png" width=200>
+            <p>https://civitai.com/api/download/models/1468390?type=Model&format=SafeTensor</p>
+            <p>ตัวอย่าง Link Huggingface</p>
+            <img src="https://res.cloudinary.com/dtyymlemv/image/upload/v1741153356/sd_workflows/shkjcfbc0kuqfuedcose.png" width=250>
+            <p>https://huggingface.co/OnomaAIResearch/Illustrious-xl-early-release-v0/resolve/main/Illustrious-XL-v0.1.safetensors</p>
+            
+        """
     )
     display(models_header)
 
@@ -393,6 +401,26 @@ def restore_snapshot():
         '<h3 style="width: auto;">Restore ComfyUI Snapshot (Do not run ComfyUI process)</h3>'
     )
     display(header)
+
+    header2 = widgets.HTML(
+        '<h4 style="width: auto;">When you restore snapshot ComfyUI version will be same as snapshot version.</h4>'
+    )
+    display(header2)
+
+    header3 = widgets.HTML(
+        '<h4 style="width: auto;">หาก restore snapshot แล้ว version ของ ComfyUI จะตรงกับ snapshot หากต้องการ update ให้ run ComfyUI แล้วไปที่ ComfyUI Manager แล้วกด Update All</h4>'
+    )
+    display(header3)
+
+    header4 = widgets.HTML(
+        '<p>ให้เปิดไฟล์ json แล้วฝากไว้ที่ <a style="color:blue;" href="https://gist.github.com/" target="_blank" rel="noopener noreferrer">gist GitHub</a> หรือ <a style="color:blue;" href="https://pastebin.com/" target="_blank" rel="noopener noreferrer">pastebin</a> หรือเว็บฝากข้อความใดๆ แล้ว copy link ที่แสดงแค่ json ที่ได้ upload ไว้</p>'
+    )
+    display(header4)
+
+    example_text_file = widgets.HTML(
+        '<a style="color:blue;" href="https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/src/default_kit.json" target="_blank" rel="noopener noreferrer">exmaple</a><br><img src="https://res.cloudinary.com/dtyymlemv/image/upload/v1741152681/sd_workflows/ube8hnoxmd3kgd6txvhc.png" width="400">'
+    )
+    display(example_text_file)
 
     textinputlayout = widgets.Layout(width="400px", height="40px")
     url_snapshot = widgets.Text(
