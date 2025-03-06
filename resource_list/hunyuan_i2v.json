@@ -11,7 +11,8 @@
     },
     {
         "name": "llava_llama3_fp16",
-        "url": "https://huggingface.co/Comfy-Org/HunyuanVideo_repackaged/resolve/main/split_files/text_encoders/llava_llama3_fp16.safetensors"
+        "url": "https://huggingface.co/Comfy-Org/HunyuanVideo_repackaged/resolve/main/split_files/text_encoders/llava_llama3_fp16.safetensors",
+        "type": "text_encoders"
     },
     {
         "name": "llava_llama3_fp8_scaled",
@@ -25,7 +26,7 @@
     },
     {
         "name": "hunyuan_video_image_to_video_720p_bf16",
-        "type": "https://huggingface.co/Comfy-Org/HunyuanVideo_repackaged/resolve/main/split_files/diffusion_models/hunyuan_video_image_to_video_720p_bf16.safetensors",
-        "url": "diffusion_models"
+        "url": "https://huggingface.co/Comfy-Org/HunyuanVideo_repackaged/resolve/main/split_files/diffusion_models/hunyuan_video_image_to_video_720p_bf16.safetensors",
+        "type": "diffusion_models"
     }
 ]
