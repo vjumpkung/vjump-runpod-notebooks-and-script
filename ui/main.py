@@ -102,12 +102,14 @@ def setup():
                         or textInput.value != ""
                     ):
                         envs.CIVITAI_TOKEN = textInput.value
+                        os.environ["CIVITAI_TOKEN"] = textInput.value
                 elif key == "HUGGINGFACE_TOKEN":
                     if (
                         textInput.value != "Imported From Environment Variable"
                         or textInput.value != ""
                     ):
                         envs.HUGGINGFACE_TOKEN = textInput.value
+                        os.environ["HUGGINGFACE_TOKEN"] = textInput.value
             print("\nSaved ✔")
 
     save_button.on_click(on_save)
