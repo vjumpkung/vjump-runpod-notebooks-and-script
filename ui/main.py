@@ -434,7 +434,9 @@ def restore_snapshot():
     )
     display(textWidget)
 
-    download_button = widgets.Button(description="Download", button_style="primary")
+    download_button = widgets.Button(
+        description="Restore Snapshot", button_style="primary"
+    )
     output = widgets.Output()
 
     def on_press(button):
