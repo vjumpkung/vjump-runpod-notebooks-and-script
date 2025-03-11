@@ -295,12 +295,11 @@ def download_models():
     models_header = widgets.HTML(
         """<h3 style="width: auto;">Download Model จาก Google Drive, CivitAI หรือ Huggingface</h3>
             <p>ตัวอย่าง Link CivitAI</p>
-            <img src="https://res.cloudinary.com/dtyymlemv/image/upload/v1741153257/sd_workflows/hfu7ow2r4ntku0hckkhh.png" width=200>
+            <img src="https://res.cloudinary.com/dtyymlemv/image/upload/v1741153257/sd_workflows/hfu7ow2r4ntku0hckkhh.png" width=350>
             <p>https://civitai.com/api/download/models/1468390?type=Model&format=SafeTensor</p>
             <p>ตัวอย่าง Link Huggingface</p>
-            <img src="https://res.cloudinary.com/dtyymlemv/image/upload/v1741153356/sd_workflows/shkjcfbc0kuqfuedcose.png" width=250>
+            <img src="https://res.cloudinary.com/dtyymlemv/image/upload/v1741153356/sd_workflows/shkjcfbc0kuqfuedcose.png" width=400>
             <p>https://huggingface.co/OnomaAIResearch/Illustrious-xl-early-release-v0/resolve/main/Illustrious-XL-v0.1.safetensors</p>
-            
         """
     )
     display(models_header)

@@ -5,11 +5,6 @@
         "type": "checkpoints"
     },
     {
-        "name": "WAI-NSFW-illustrious-SDXL",
-        "url": "https://civitai.com/api/download/models/1410435?type=Model&format=SafeTensor&size=pruned&fp=fp16",
-        "type": "checkpoints"
-    },
-    {
         "name": "SDXL VAE",
         "url": "https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/resolve/main/sdxl.vae.safetensors",
         "type": "vae"
