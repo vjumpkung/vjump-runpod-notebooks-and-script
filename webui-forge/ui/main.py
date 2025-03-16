@@ -151,6 +151,56 @@ argss = [
     "--lora-dir",
 ]
 
+types_mapping = {
+    "checkpoints": "ckpts",
+    "vae": "vae",
+    "text-encoder": "text-encoder",
+    "upscale_models": "esrgan",
+    "unet": "ckpts",
+    "clip": "clip",
+    "embeddings": "embeddings",
+    "controlnet": "controlnet",
+    "hypernetworks": "hypernetwork",
+}
+
+patch_output_directory = {
+    "outdir_txt2img_samples": "/notebooks/outputs/txt2img-images",
+    "outdir_img2img_samples": "/notebooks/outputs/img2img-images",
+    "outdir_extras_samples": "/notebooks/outputs/extras-images",
+    "outdir_txt2img_grids": "/notebooks/outputs/txt2img-grids",
+    "outdir_img2img_grids": "/notebooks/outputs/img2img-grids",
+    "outdir_init_images": "/notebooks/outputs/init-images",
+}
+
+
+def download_cmd(command: str):
+    process_success = True
+    with subprocess.Popen(
+        shlex.split(command),
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        bufsize=1,
+    ) as sp:
+        print("\033[?25l", end="")
+        for line in sp.stdout:
+            if line.startswith("[#"):
+                text = "Download progress {}".format(line.strip("\n"))
+                print("\r" + " " * 100 + "\r" + text, end="", flush=True)
+                prev_line = text
+            elif line.startswith("[COMPLETED]"):
+                if prev_line != "":
+                    print("", flush=True)
+            else:
+                print(line.strip(), flush=True)
+        print("\033[?25h")
+
+        # Check the return code of the process
+        return_code = sp.wait()
+        if return_code != 0:
+            process_success = False
+    return process_success
+
 
 def download(name: str, url: str, type: str):
     import sys
@@ -160,15 +210,16 @@ def download(name: str, url: str, type: str):
         envs = Envs()
         envs.get_enviroment_variable()
 
-    if type not in check_types:
+    if type in types_mapping.keys():
+        type = types_mapping[type]
+    elif type in check_types:
+        pass
+    else:
         print("Invalid Model Type")
         return sys.exit(1)
 
     destination = ""
     filename = ""
-
-    if type == "checkpoints":
-        type = "ckpts"
 
     destination = f"./my-runpod-volume/models/{type}/"
 
@@ -197,31 +248,7 @@ def download(name: str, url: str, type: str):
             f"python ./ui/google_drive_download.py --path {destination} --url {url}"
         )
 
-    process_success = True
-    with subprocess.Popen(
-        shlex.split(command),
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        text=True,
-        bufsize=1,
-    ) as sp:
-        print("\033[?25l", end="")
-        for line in sp.stdout:
-            if line.startswith("[#"):
-                text = "Download progress {}".format(line.strip("\n"))
-                print("\r" + " " * 100 + "\r" + text, end="", flush=True)
-                prev_line = text
-            elif line.startswith("[COMPLETED]"):
-                if prev_line != "":
-                    print("", flush=True)
-            else:
-                print(line.strip(), flush=True)
-        print("\033[?25h")
-
-        # Check the return code of the process
-        return_code = sp.wait()
-        if return_code != 0:
-            process_success = False
+    process_success = download_cmd(command)
 
     if process_success:
         print(f"Download completed: {name}")
@@ -345,7 +372,11 @@ def download_models():
 
 
 def launch_forge():
-    os.makedirs("/notebooks/output_images/", exist_ok=True)
+    os.makedirs("/notebooks/outputs/txt2img-images", exist_ok=True)
+    os.makedirs("/notebooks/outputs/img2img-images", exist_ok=True)
+    os.makedirs("/notebooks/outputs/extras-images", exist_ok=True)
+    os.makedirs("/notebooks/outputs/img2img-grids", exist_ok=True)
+    os.makedirs("/notebooks/outputs/init-images", exist_ok=True)
     models_header = widgets.HTML(
         '<h3 style="width: 250px;">เริ่มโปรแกรม WebUI Forge ตรงนี้</h3>'
     )
@@ -353,7 +384,6 @@ def launch_forge():
     output = widgets.Output()
 
     def run_forge(button):
-
         os.chdir("/notebooks/")
 
         command = "python -u launch.py --loglevel WARNING --disable-console-progressbars --disable-safe-unpickle --enable-insecure-extension-access --no-download-sd-model --no-hashing --api --xformers"
@@ -378,6 +408,14 @@ def launch_forge():
         os.chdir(
             "/notebooks/stable-diffusion-webui-forge/"
         )  # Change to the Forge directory
+
+        print("updating output directory...")
+        with open("config.json", "r") as fp:
+            load_config: dict = json.load(fp)
+            load_config.update(patch_output_directory)
+        with open("config.json", "w") as fp:
+            fp.write(json.dumps(load_config, indent=4))
+        print("update output directory completed")
 
         try:
             # Start the subprocess with unbuffered output
