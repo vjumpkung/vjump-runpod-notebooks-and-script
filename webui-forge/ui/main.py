@@ -398,23 +398,32 @@ def launch_forge():
         )
         if platform_id == "RUNPOD":
             proxy_url = f'URL : https://{os.environ.get("RUNPOD_POD_ID")}-{FORGE_PORT}.proxy.runpod.net'
-            command += f" --port {FORGE_PORT}"
+            command += f" --port {FORGE_PORT} --listen"
         elif platform_id == "PAPERSPACE":
             proxy_url = f'URL : https://tensorboard-{os.environ.get("PAPERSPACE_FQDN")}'
-            command += f" --port {FORGE_PORT}"
+            command += f" --port {FORGE_PORT} --listen"
         else:
-            command += f" --share --port {FORGE_PORT}"
+            command += f" --share --port {FORGE_PORT} --listen"
 
         os.chdir(
             "/notebooks/stable-diffusion-webui-forge/"
         )  # Change to the Forge directory
 
         print("updating output directory...")
-        with open("config.json", "r") as fp:
-            load_config: dict = json.load(fp)
-            load_config.update(patch_output_directory)
-        with open("config.json", "w") as fp:
-            fp.write(json.dumps(load_config, indent=4))
+        # Check if file exists; if not, create it with an empty dictionary
+        config_file = "config.json"
+        if not os.path.exists(config_file):
+            with open(config_file, "w") as fp:
+                json.dump({}, fp, indent=4)
+
+        # Read, update, and write back the config
+        with open(config_file, "r") as fp:
+            load_config = json.load(fp)
+
+        load_config.update(patch_output_directory)
+
+        with open(config_file, "w") as fp:
+            json.dump(load_config, fp, indent=4)
         print("update output directory completed")
 
         try:
