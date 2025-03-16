@@ -154,10 +154,10 @@ argss = [
 types_mapping = {
     "checkpoints": "ckpts",
     "vae": "vae",
-    "text-encoder": "text-encoder",
+    "text-encoder": "vae",
     "upscale_models": "esrgan",
     "unet": "ckpts",
-    "clip": "clip",
+    "clip": "vae",
     "embeddings": "embeddings",
     "controlnet": "controlnet",
     "hypernetworks": "hypernetwork",
