@@ -154,10 +154,10 @@ argss = [
 types_mapping = {
     "checkpoints": "ckpts",
     "vae": "vae",
-    "text-encoder": "vae",
+    "text-encoder": "text-encoder",
     "upscale_models": "esrgan",
     "unet": "ckpts",
-    "clip": "vae",
+    "clip": "text-encoder",
     "embeddings": "embeddings",
     "controlnet": "controlnet",
     "hypernetworks": "hypernetwork",
@@ -409,7 +409,6 @@ def launch_forge():
             "/notebooks/stable-diffusion-webui-forge/"
         )  # Change to the Forge directory
 
-        print("updating output directory...")
         # Check if file exists; if not, create it with an empty dictionary
         config_file = "config.json"
         if not os.path.exists(config_file):
@@ -424,7 +423,6 @@ def launch_forge():
 
         with open(config_file, "w") as fp:
             json.dump(load_config, fp, indent=4)
-        print("update output directory completed")
 
         try:
             # Start the subprocess with unbuffered output
