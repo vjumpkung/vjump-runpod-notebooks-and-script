@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Stable Diffusion 1.5",
+        "url": "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/sd15_list.json"
+    },
+    {
+        "name": "SDXL (Juggernaut)",
+        "url": "https://github.com/vjumpkung/vjump-runpod-notebooks-and-script/raw/refs/heads/main/resource_list/sdxl_list.json"
+    },
+    {
+        "name": "Pony",
+        "url": "https://github.com/vjumpkung/vjump-runpod-notebooks-and-script/raw/refs/heads/main/resource_list/pony.json"
+    },
+    {
+        "name": "IllustriousXL v0.1",
+        "url": "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/IL_list.json"
+    },
+    {
+        "name": "NoobAI",
+        "url": "https://github.com/vjumpkung/vjump-runpod-notebooks-and-script/raw/refs/heads/main/resource_list/noobai_list.json"
+    },
+    {
+        "name": "Flux.1 Dev (FP8)",
+        "url": "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/flux_fp8_list.json"
+    },
+    {
+        "name": "AI Angel Flux",
+        "url": "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/AI_ANGEL_FLUX.json"
+    },
+    {
+        "name": "Controlnet V1.1 (For SD1.5)",
+        "url": "https://github.com/vjumpkung/vjump-runpod-notebooks-and-script/raw/refs/heads/main/resource_list/controlnet_sd15_list.json"
+    },
+    {
+        "name": "Hunyuan T2V fp16",
+        "url": "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/hunyuan_video_text_to_video_fp16.json"
+    },
+    {
+        "name": "Hunyuan I2V fp16",
+        "url": "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/hunyuan_video_image_to_video_720p_bf16.json"
+    },
+    {
+        "name": "WAN2.1 1.3B T2V 480p fp16",
+        "url": "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/wan2.1_t2v_1.3B_fp16.json"
+    },
+    {
+        "name": "WAN2.1 14B T2V 480p fp16",
+        "url": "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/wan2.1_t2v_14B_fp16.json"
+    },
+    {
+        "name": "WAN2.1 I2V 480p fp16",
+        "url": "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/wan2.1_i2v_480p_14B_fp16.json"
+    },
+    {
+        "name": "WAN2.1 I2V 720p fp16",
+        "url": "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/wan2.1_i2v_720p_14B_fp16.json"
+    },
+    {
+        "name": "ipadapter",
+        "url": "https://github.com/vjumpkung/vjump-runpod-notebooks-and-script/raw/refs/heads/main/resource_list/ipadapter_list.json"
+    }
+]

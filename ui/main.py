@@ -16,7 +16,7 @@ if "RUNPOD_POD_ID" in os.environ.keys():
 elif "PAPERSPACE_FQDN" in os.environ.keys():
     platform_id = "PAPERSPACE"
 
-model_list_url = "https://pastebin.com/raw/xQpdW2ka"
+model_list_url = "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/all.json"
 
 
 class Envs:

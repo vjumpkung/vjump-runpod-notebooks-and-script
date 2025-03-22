@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Generator</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .result {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        .copy-btn {
+            margin-top: 10px;
+        }
+        .entries-container {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        .entry-card {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <h1 class="mb-4">JSON Generator</h1>
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                Add New Entry
+            </div>
+            <div class="card-body">
+                <form id="entryForm">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter name" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="url" class="form-label">URL</label>
+                        <input type="url" class="form-control" id="url" placeholder="Enter URL" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="type" class="form-label">Type</label>
+                        <select class="form-select" id="type" required>
+                            <option value="" disabled selected>Select type</option>
+                            <option value="CatVTON">CatVTON</option>
+                            <option value="LLM">LLM</option>
+                            <option value="animatediff_models">animatediff_models</option>
+                            <option value="animatediff_motion_lora">animatediff_motion_lora</option>
+                            <option value="checkpoints">checkpoints</option>
+                            <option value="clip">clip</option>
+                            <option value="clip_vision">clip_vision</option>
+                            <option value="configs">configs</option>
+                            <option value="controlnet">controlnet</option>
+                            <option value="diffusers">diffusers</option>
+                            <option value="diffusion_models">diffusion_models</option>
+                            <option value="embeddings">embeddings</option>
+                            <option value="facedetection">facedetection</option>
+                            <option value="facerestore_models">facerestore_models</option>
+                            <option value="gligen">gligen</option>
+                            <option value="grounding-dino">grounding-dino</option>
+                            <option value="hypernetworks">hypernetworks</option>
+                            <option value="insightface">insightface</option>
+                            <option value="ipadapter">ipadapter</option>
+                            <option value="loras">loras</option>
+                            <option value="mmdets">mmdets</option>
+                            <option value="nsfw_detector">nsfw_detector</option>
+                            <option value="onnx">onnx</option>
+                            <option value="photomaker">photomaker</option>
+                            <option value="reactor">reactor</option>
+                            <option value="rembg">rembg</option>
+                            <option value="reswapper">reswapper</option>
+                            <option value="sam2">sam2</option>
+                            <option value="sams">sams</option>
+                            <option value="style_models">style_models</option>
+                            <option value="text_encoders">text_encoders</option>
+                            <option value="ultralytics">ultralytics</option>
+                            <option value="unet">unet</option>
+                            <option value="upscale_models">upscale_models</option>
+                            <option value="vae">vae</option>
+                            <option value="vae_approx">vae_approx</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Add Entry</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span>Current Entries</span>
+                <button id="clearEntries" class="btn btn-sm btn-outline-danger">Clear All</button>
+            </div>
+            <div class="card-body">
+                <div id="entriesContainer" class="entries-container">
+                    <!-- Entries will be displayed here -->
+                    <div class="text-center text-muted py-3" id="noEntries">
+                        No entries added yet.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                Generated JSON
+            </div>
+            <div class="card-body">
+                <pre id="jsonOutput" class="result">[]</pre>
+                <button id="copyBtn" class="btn btn-success copy-btn">Copy JSON</button>
+                <button id="downloadBtn" class="btn btn-info copy-btn ms-2">Download JSON</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize entries array
+            let entries = [];
+            
+            // Form submission handler
+            document.getElementById('entryForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value.trim();
+                const url = document.getElementById('url').value.trim();
+                const type = document.getElementById('type').value;
+                
+                // Create new entry
+                const entry = {
+                    name: name,
+                    url: url,
+                    type: type
+                };
+                
+                // Add to entries array
+                entries.push(entry);
+                
+                // Update UI
+                updateEntriesUI();
+                updateJSON();
+                
+                // Reset form
+                this.reset();
+            });
+            
+            // Clear all entries
+            document.getElementById('clearEntries').addEventListener('click', function() {
+                if (entries.length === 0 || confirm('Are you sure you want to clear all entries?')) {
+                    entries = [];
+                    updateEntriesUI();
+                    updateJSON();
+                }
+            });
+            
+            // Copy JSON button
+            document.getElementById('copyBtn').addEventListener('click', function() {
+                const jsonText = document.getElementById('jsonOutput').textContent;
+                navigator.clipboard.writeText(jsonText).then(
+                    function() {
+                        const originalText = this.textContent;
+                        this.textContent = 'Copied!';
+                        setTimeout(() => {
+                            this.textContent = originalText;
+                        }, 2000);
+                    }.bind(this),
+                    function() {
+                        alert('Failed to copy. Please try again.');
+                    }
+                );
+            });
+            
+            // Download JSON button
+            document.getElementById('downloadBtn').addEventListener('click', function() {
+                const jsonText = document.getElementById('jsonOutput').textContent;
+                const blob = new Blob([jsonText], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'data.json';
+                document.body.appendChild(a);
+                a.click();
+                
+                // Cleanup
+                setTimeout(function() {
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(url);
+                }, 0);
+            });
+            
+            // Function to update entries UI
+            function updateEntriesUI() {
+                const container = document.getElementById('entriesContainer');
+                const noEntries = document.getElementById('noEntries');
+                
+                // Clear container
+                container.innerHTML = '';
+                
+                if (entries.length === 0) {
+                    container.appendChild(noEntries);
+                    return;
+                }
+                
+                // Add each entry
+                entries.forEach((entry, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'card entry-card';
+                    
+                    const cardBody = document.createElement('div');
+                    cardBody.className = 'card-body py-2';
+                    
+                    const row = document.createElement('div');
+                    row.className = 'row align-items-center';
+                    
+                    const col1 = document.createElement('div');
+                    col1.className = 'col';
+                    col1.innerHTML = `<strong>${entry.name}</strong>`;
+                    
+                    const col2 = document.createElement('div');
+                    col2.className = 'col';
+                    const urlTruncated = entry.url.length > 40 ? entry.url.substring(0, 37) + '...' : entry.url;
+                    col2.innerHTML = `<a href="${entry.url}" target="_blank" title="${entry.url}">${urlTruncated}</a>`;
+                    
+                    const col3 = document.createElement('div');
+                    col3.className = 'col';
+                    col3.innerHTML = `<span class="badge bg-secondary">${entry.type}</span>`;
+                    
+                    const col4 = document.createElement('div');
+                    col4.className = 'col-auto';
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'btn btn-sm btn-outline-danger';
+                    deleteBtn.textContent = 'Remove';
+                    deleteBtn.addEventListener('click', function() {
+                        entries.splice(index, 1);
+                        updateEntriesUI();
+                        updateJSON();
+                    });
+                    col4.appendChild(deleteBtn);
+                    
+                    row.appendChild(col1);
+                    row.appendChild(col2);
+                    row.appendChild(col3);
+                    row.appendChild(col4);
+                    
+                    cardBody.appendChild(row);
+                    card.appendChild(cardBody);
+                    container.appendChild(card);
+                });
+            }
+            
+            // Function to update JSON output
+            function updateJSON() {
+                const jsonOutput = document.getElementById('jsonOutput');
+                const jsonText = JSON.stringify(entries, null, 4);
+                jsonOutput.textContent = jsonText;
+            }
+        });
+    </script>
+</body>
+</html>
