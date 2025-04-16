@@ -1,0 +1,27 @@
+[
+    {
+        "name": "clip_l_hidream",
+        "url": "https://huggingface.co/Comfy-Org/HiDream-I1_ComfyUI/resolve/main/split_files/text_encoders/clip_l_hidream.safetensors",
+        "type": "text_encoders"
+    },
+    {
+        "name": "clip_g_hidream",
+        "url": "https://huggingface.co/Comfy-Org/HiDream-I1_ComfyUI/resolve/main/split_files/text_encoders/clip_g_hidream.safetensors",
+        "type": "text_encoders"
+    },
+    {
+        "name": "t5xxl_fp8_e4m3fn_scaled",
+        "url": "https://huggingface.co/Comfy-Org/HiDream-I1_ComfyUI/blob/main/split_files/text_encoders/t5xxl_fp8_e4m3fn_scaled.safetensors",
+        "type": "text_encoders"
+    },
+    {
+        "name": "llama_3.1_8b_instruct_fp8_scaled",
+        "url": "https://huggingface.co/Comfy-Org/HiDream-I1_ComfyUI/resolve/main/split_files/text_encoders/llama_3.1_8b_instruct_fp8_scaled.safetensors",
+        "type": "text_encoders"
+    },
+    {
+        "name": "hidream_i1_fast_bf16",
+        "url": "https://huggingface.co/Comfy-Org/HiDream-I1_ComfyUI/resolve/main/split_files/diffusion_models/hidream_i1_fast_bf16.safetensors",
+        "type": "diffusion_models"
+    }
+]

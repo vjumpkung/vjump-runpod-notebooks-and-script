@@ -24,6 +24,18 @@
         "url": "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/flux_fp8_list.json"
     },
     {
+        "name": "HiDream-I1 Full (required VRAM 40GB++)",
+        "url": "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/hidream-full.json"
+    },
+    {
+        "name": "HiDream-I1 Dev (required VRAM 40GB++)",
+        "url": "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/hidream-dev.json"
+    },
+    {
+        "name": "HiDream-I1 Fast (required VRAM 40GB++)",
+        "url": "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/hidream-fast.json"
+    },
+    {
         "name": "AI Angel Flux",
         "url": "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/AI_ANGEL_FLUX.json"
     },
