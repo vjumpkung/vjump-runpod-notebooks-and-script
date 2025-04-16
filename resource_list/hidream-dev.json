@@ -11,7 +11,7 @@
     },
     {
         "name": "t5xxl_fp8_e4m3fn_scaled",
-        "url": "https://huggingface.co/Comfy-Org/HiDream-I1_ComfyUI/blob/main/split_files/text_encoders/t5xxl_fp8_e4m3fn_scaled.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/HiDream-I1_ComfyUI/resolve/main/split_files/text_encoders/t5xxl_fp8_e4m3fn_scaled.safetensors",
         "type": "text_encoders"
     },
     {
