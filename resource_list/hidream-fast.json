@@ -26,7 +26,7 @@
     },
     {
         "name": "ae",
-        "url": "https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/HiDream-I1_ComfyUI/resolve/main/split_files/vae/ae.safetensors",
         "type": "vae"
     }
 ]
