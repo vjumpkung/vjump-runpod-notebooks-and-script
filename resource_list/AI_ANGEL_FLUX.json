@@ -16,7 +16,7 @@
     },
     {
         "name": "ae",
-        "url": "https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors",
+        "url": "https://huggingface.co/ffxvs/vae-flux/resolve/main/ae.safetensors",
         "type": "vae"
     }
 ]

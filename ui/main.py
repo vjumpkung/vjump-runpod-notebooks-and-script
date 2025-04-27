@@ -7,7 +7,7 @@ import requests
 import torch
 import hashlib
 import json
-
+import sys
 
 platform_id = "OTHER"
 
@@ -165,8 +165,6 @@ check_types = [
 
 
 def download(name: str, url: str, type: str):
-    import sys
-
     if "envs" not in globals():
         global envs
         envs = Envs()
@@ -237,10 +235,10 @@ def download(name: str, url: str, type: str):
 
     if process_success:
         print(f"Download completed: {name}")
-        return 0
+        return True
     else:
         print(f"Download failed: {name}")
-        return sys.exit(1)
+        return False
 
 
 def select_download_model_list():
@@ -271,18 +269,28 @@ def select_download_model_list():
         with output:
             output.clear_output()
             try:
+                isFailed = False
+                completed_lst = []
                 for _checkbox, _url in checkboxes:
                     if _checkbox.value:
-                        command = f"python pre_download_model.py --input {_url}"
-                        with subprocess.Popen(
-                            shlex.split(command),
-                            stdout=subprocess.PIPE,
-                            stderr=subprocess.STDOUT,
-                            text=True,
-                            bufsize=1,
-                        ) as sp:
-                            for line in sp.stdout:
-                                print(line.strip())
+
+                        dl_lst = requests.get(_url).json()
+
+                        for i in dl_lst:
+                            if download(
+                                i["name"],
+                                i["url"],
+                                i["type"],
+                            ):
+                                completed_lst.append(f'{i["name"]} COMPLETED')
+                            else:
+                                completed_lst.append(f'{i["name"]} FAILED')
+                                isFailed = True
+
+                if not isFailed:
+                    output.clear_output()
+                for i in completed_lst:
+                    print(i)
                 completed_message()
 
             except KeyboardInterrupt:

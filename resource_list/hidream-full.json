@@ -1,7 +1,7 @@
 [
     {
         "name": "HiDream-I1 Full",
-        "url": "https://huggingface.co/Comfy-Org/HiDream-I1_ComfyUI/resolve/main/split_files/diffusion_models/hidream_i1_full_fp16.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/HiDream-I1_ComfyUI/resolve/main/split_files/diffusion_models/hidream_i1_full_fp8.safetensors",
         "type": "diffusion_models"
     },
     {
