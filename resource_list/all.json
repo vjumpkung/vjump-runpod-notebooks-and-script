@@ -36,6 +36,10 @@
         "url": "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/hidream-fast.json"
     },
     {
+        "name": "HiDream-E1 bf16 (required VRAM 40GB (fp8) 80GB (bf16))",
+        "url": "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/hidream-e1_full.json"
+    },
+    {
         "name": "AI Angel Flux fp8 (VRAM 24 GB)",
         "url": "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/AI_ANGEL_FLUX.json"
     },
