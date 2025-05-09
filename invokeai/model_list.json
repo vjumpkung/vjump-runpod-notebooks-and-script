@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Stable Diffusion 1.5 (VRAM 6 GB)",
+        "url": "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/sd15_list.json"
+    },
+    {
+        "name": "SDXL (Juggernaut) (VRAM 8 GB)",
+        "url": "https://github.com/vjumpkung/vjump-runpod-notebooks-and-script/raw/refs/heads/main/resource_list/sdxl_list.json"
+    },
+    {
+        "name": "Pony (VRAM 8 GB)",
+        "url": "https://github.com/vjumpkung/vjump-runpod-notebooks-and-script/raw/refs/heads/main/resource_list/pony.json"
+    },
+    {
+        "name": "IllustriousXL v0.1 (VRAM 8 GB)",
+        "url": "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/IL_list.json"
+    },
+    {
+        "name": "Flux.1 Dev (FP8) (VRAM 24 GB)",
+        "url": "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/flux_fp8_list.json"
+    },
+    {
+        "name": "AI Angel Flux fp8 (VRAM 24 GB)",
+        "url": "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/resource_list/AI_ANGEL_FLUX.json"
+    },
+    {
+        "name": "Controlnet V1.1 (For SD1.5)",
+        "url": "https://github.com/vjumpkung/vjump-runpod-notebooks-and-script/raw/refs/heads/main/resource_list/controlnet_sd15_list.json"
+    },
+    {
+        "name": "ipadapter (VRAM 8 GB)",
+        "url": "https://github.com/vjumpkung/vjump-runpod-notebooks-and-script/raw/refs/heads/main/resource_list/ipadapter_list.json"
+    }
+]
