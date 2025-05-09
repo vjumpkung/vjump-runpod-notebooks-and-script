@@ -11,7 +11,7 @@ make_directory() {
 
 update_comfyui() {
     echo "Updating ComfyUI"
-    comfy --workspace /notebooks/ComfyUI update all
+    yes | comfy --workspace /notebooks/ComfyUI update all
     echo "Update ComfyUI Completed"
 }
 
@@ -40,7 +40,7 @@ restore_snapshot() {
         echo "No snapshot file restore skip..."
     else
         curl -s $SNAPSHOT_FILE_URL >./src/my_snapshot.json
-        comfy --workspace /notebooks/ComfyUI node restore-snapshot ./src/my_snapshot.json --pip-non-url
+        yes | comfy --workspace /notebooks/ComfyUI node restore-snapshot ./src/my_snapshot.json --pip-non-url
         echo "Restore Completed"
     fi
 }

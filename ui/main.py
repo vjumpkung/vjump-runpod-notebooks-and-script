@@ -347,13 +347,17 @@ def download_models():
         with output:
             output.clear_output()
             try:
+                success = []
                 if url_model.value != "":
-                    download(
+                    if download(
                         model_type.value,
                         url_model.value,
                         model_type.value,
-                    )
+                    ):
+                        success.append((url_model.value, model_type.value))
                 output.clear_output()
+                for u, t in success:
+                    print(f"download {t} from {u} success")
                 completed_message()
 
             except KeyboardInterrupt:
