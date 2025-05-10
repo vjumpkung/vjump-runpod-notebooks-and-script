@@ -333,11 +333,15 @@ def download_models():
                         model_type.value,
                     ):
                         success.append((url_model.value, model_type.value))
+                    else:
+                        raise PermissionError
                 output.clear_output()
                 for u, t in success:
                     print(f"download {t} from {u} success")
                 completed_message()
 
+            except PermissionError:
+                print("\n\nPlease Provide API Key before download")
             except KeyboardInterrupt:
                 print("\n\n--Download Model interrupted--")
 
