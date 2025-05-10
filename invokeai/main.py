@@ -126,7 +126,6 @@ def completed_message():
 
 check_types = [
     "checkpoints",
-    "clip",
     "clip_vision",
     "controlnet",
     "embeddings",
@@ -134,11 +133,8 @@ check_types = [
     "hypernetworks",
     "ipadapter",
     "loras",
-    "text_encoders",
     "unet",
     "upscale_models",
-    "vae",
-    "vae_approx",
 ]
 
 
@@ -255,6 +251,10 @@ def select_download_model_list():
                         dl_lst = requests.get(_url).json()
 
                         for i in dl_lst:
+                            if i["type"] in ["text_encoders","clip","vae"]:
+                                print(f"SKIP {i["name"]} because InvokeAI cannot import")
+                                continue
+                            
                             if download(
                                 i["name"],
                                 i["url"],
@@ -327,6 +327,9 @@ def download_models():
             try:
                 success = []
                 if url_model.value != "":
+                    if model_type.value in ["text_encoders","clip","vae"]:
+                        print(f"SKIP {url_model.value} because InvokeAI cannot import")
+                        raise ValueError
                     if download(
                         model_type.value,
                         url_model.value,
