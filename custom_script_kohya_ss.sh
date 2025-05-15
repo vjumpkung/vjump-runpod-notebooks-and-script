@@ -6,6 +6,8 @@ curl https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-scri
 
 echo "Updating kohya-ss GUI"
 
+pip install pydantic==2.8.0
+
 cd kohya_ss && git pull --ff-only && python ./setup/validate_requirements.py --requirements requirements_runpod.txt
 
 echo "Update Completed"
