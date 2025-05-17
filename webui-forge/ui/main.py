@@ -360,11 +360,15 @@ def download_models():
                         url_model.value,
                         model_type.value,
                     )
+                else:
+                    raise PermissionError
                 output.clear_output()
                 completed_message()
 
             except KeyboardInterrupt:
                 print("\n\n--Download Model interrupted--")
+            except PermissionError:
+                print("plase put API token before download model")
 
     download_button.on_click(on_press)
 
