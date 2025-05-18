@@ -45,9 +45,9 @@ restore_snapshot() {
     fi
 }
 
-download_workflows
-update_model_path
 make_directory
+update_model_path
+download_workflows
 restore_snapshot
 update_comfyui
 
