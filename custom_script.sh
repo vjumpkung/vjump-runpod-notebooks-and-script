@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ีupdate_model_path() {
+update_model_path() {
     curl -s https://raw.githubusercontent.com/vjumpkung/vjump-comfyui-runpod-template/refs/heads/main/src/extra_model_paths.yaml >/notebooks/ComfyUI/extra_model_paths.yaml
 }
 
@@ -45,8 +45,9 @@ restore_snapshot() {
     fi
 }
 
+download_workflows
 update_model_path
 make_directory
 restore_snapshot
 update_comfyui
-download_workflows
+
