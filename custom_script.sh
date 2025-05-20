@@ -16,22 +16,25 @@ update_comfyui() {
 }
 
 download_workflows() {
-    echo "downloading workflows"
+    echo "downloading ComfyUI Native workflows"
     cd /notebooks/
-    cd /notebooks/ComfyUI/user/default/workflows/ && wget https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/flux_dev_example.json
-    cd /notebooks/ComfyUI/user/default/workflows/ && wget https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/hidream_dev_example.json
-    cd /notebooks/ComfyUI/user/default/workflows/ && wget https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/hidream_fast_example.json
-    cd /notebooks/ComfyUI/user/default/workflows/ && wget https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/hidream_full_example.json
-    cd /notebooks/ComfyUI/user/default/workflows/ && wget https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/hunyuan_video_image_to_video.json
-    cd /notebooks/ComfyUI/user/default/workflows/ && wget https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/hunyuan_video_text_to_video.json
-    cd /notebooks/ComfyUI/user/default/workflows/ && wget https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/image_to_video_wan_720p_example.json
-    cd /notebooks/ComfyUI/user/default/workflows/ && wget https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/image_to_video_wan_480p_example.json
-    cd /notebooks/ComfyUI/user/default/workflows/ && wget https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/sd15_txt2img_workflow.json
-    cd /notebooks/ComfyUI/user/default/workflows/ && wget https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/sdxl_txt2img_workflow.json
-    cd /notebooks/ComfyUI/user/default/workflows/ && wget https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/text_to_video_wan21_1_3B.json
-    cd /notebooks/ComfyUI/user/default/workflows/ && wget https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/text_to_video_wan21_14B.json
+    cd /notebooks/ComfyUI/user/default/workflows/ && wget -q https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/flux_dev_example.json
+    cd /notebooks/ComfyUI/user/default/workflows/ && wget -q https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/hidream_dev_example.json
+    cd /notebooks/ComfyUI/user/default/workflows/ && wget -q https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/hidream_fast_example.json
+    cd /notebooks/ComfyUI/user/default/workflows/ && wget -q https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/hidream_full_example.json
+    cd /notebooks/ComfyUI/user/default/workflows/ && wget -q https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/hunyuan_video_image_to_video.json
+    cd /notebooks/ComfyUI/user/default/workflows/ && wget -q https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/hunyuan_video_text_to_video.json
+    cd /notebooks/ComfyUI/user/default/workflows/ && wget -q https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/image_to_video_wan_720p_example.json
+    cd /notebooks/ComfyUI/user/default/workflows/ && wget -q https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/image_to_video_wan_480p_example.json
+    cd /notebooks/ComfyUI/user/default/workflows/ && wget -q https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/sd15_txt2img_workflow.json
+    cd /notebooks/ComfyUI/user/default/workflows/ && wget -q https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/sdxl_txt2img_workflow.json
+    cd /notebooks/ComfyUI/user/default/workflows/ && wget -q https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/text_to_video_wan21_1_3B.json
+    cd /notebooks/ComfyUI/user/default/workflows/ && wget -q https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/text_to_video_wan21_14B.json
+    cd /notebooks/ComfyUI/user/default/workflows/ && wget -q https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/vace_i2v.json
+    cd /notebooks/ComfyUI/user/default/workflows/ && wget -q https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/vace_t2v.json
+    cd /notebooks/ComfyUI/user/default/workflows/ && wget -q https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/workflows/vace_v2v.json
     cd /notebooks/
-    echo "downloading workflows completed"
+    echo "downloading ComfyUI Native workflows completed"
 }
 
 restore_snapshot() {
@@ -50,4 +53,3 @@ update_model_path
 download_workflows
 restore_snapshot
 update_comfyui
-
