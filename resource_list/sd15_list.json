@@ -21,7 +21,7 @@
     },
     {
         "name": "badhandv4",
-        "url": "https://civitai.com/models/16993/badhandv4",
+        "url": "https://civitai.com/api/download/models/20068?type=Model&format=PickleTensor&size=full&fp=fp16",
         "type": "embeddings"
     },
     {
