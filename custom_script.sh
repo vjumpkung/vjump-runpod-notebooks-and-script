@@ -10,9 +10,9 @@ make_directory() {
 }
 
 update_comfyui() {
-    echo "Updating ComfyUI"
-    yes | comfy --workspace /notebooks/ComfyUI update all
-    echo "Update ComfyUI Completed"
+    echo "Updating ComfyUI" >>$PROGRAM_LOG
+    yes | comfy --workspace /notebooks/ComfyUI update all >>$PROGRAM_LOG
+    echo "Update ComfyUI Completed" >>$PROGRAM_LOG
 }
 
 download_workflows() {
@@ -38,13 +38,13 @@ download_workflows() {
 }
 
 restore_snapshot() {
-    echo "Restoring Snapshot from $SNAPSHOT_FILE_URL"
+    echo "Restoring Snapshot from $SNAPSHOT_FILE_URL" >>$PROGRAM_LOG
     if [[ -z $SNAPSHOT_FILE_URL ]]; then
-        echo "No snapshot file restore skip..."
+        echo "No snapshot file restore skip..." >>$PROGRAM_LOG
     else
         curl -s $SNAPSHOT_FILE_URL >./src/my_snapshot.json
-        yes | comfy --workspace /notebooks/ComfyUI node restore-snapshot ./src/my_snapshot.json --pip-non-url
-        echo "Restore Completed"
+        yes | comfy --workspace /notebooks/ComfyUI node restore-snapshot ./src/my_snapshot.json --pip-non-url >>$PROGRAM_LOG
+        echo "Restore Completed" >>$PROGRAM_LOG
     fi
 }
 
