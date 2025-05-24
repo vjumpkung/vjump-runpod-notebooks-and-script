@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Chroma v31",
+        "url": "https://huggingface.co/lodestones/Chroma/resolve/main/chroma-unlocked-v31.safetensors",
+        "type": "diffusion_models"
+    },
+    {
+        "name": "t5xxl_fp8_e4m3fn",
+        "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors",
+        "type": "text_encoders"
+    }
+]
