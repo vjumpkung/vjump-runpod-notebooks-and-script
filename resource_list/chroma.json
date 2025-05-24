@@ -8,5 +8,10 @@
         "name": "t5xxl_fp8_e4m3fn",
         "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors",
         "type": "text_encoders"
+    },
+    {
+        "name": "ae",
+        "url": "https://huggingface.co/ffxvs/vae-flux/resolve/main/ae.safetensors",
+        "type": "vae"
     }
 ]
