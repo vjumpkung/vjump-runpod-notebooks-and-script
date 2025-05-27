@@ -22,7 +22,7 @@
     {
         "id": "vae",
         "name": "ae (สำหรับ Flux)",
-        "url": "https://huggingface.co/ffxvs/vae-flux/resolve/main/ae.safetensors"
+        "url": "https://huggingface.co/lovis93/testllm/resolve/ed9cf1af7465cebca4649157f118e331cf2a084f/ae.safetensors"
     },
     {
         "id": "vae",
