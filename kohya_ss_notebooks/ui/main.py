@@ -25,8 +25,8 @@ class Envs:
 
 envs = Envs()
 
-model_url = "https://gist.githubusercontent.com/vjumpkung/4663f8a608699ac80f1769a6bd0daee4/raw/9f3411a6eb51bd4244bb655bee8b458330284f89/vjump_notebook_model_template.json"
-clip_vae_url = "https://gist.githubusercontent.com/vjumpkung/421667857264bc11686cb28026f374dd/raw/6210ee04b03f362043ccc1c2974d8d3df7da26b6/vjump_notebook_clipvae.json"
+model_url = "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/kohya_ss_notebooks/resources/pretrained_mode.json"
+clip_vae_url = "https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/kohya_ss_notebooks/resources/vae_te.json"
 
 
 def get_model_list():
