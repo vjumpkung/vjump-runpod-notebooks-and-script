@@ -1,7 +1,7 @@
 [
     {
-        "name": "Chroma v31",
-        "url": "https://huggingface.co/lodestones/Chroma/resolve/main/chroma-unlocked-v31.safetensors",
+        "name": "Chroma v32",
+        "url": "https://huggingface.co/lodestones/Chroma/resolve/main/chroma-unlocked-v32.safetensors",
         "type": "diffusion_models"
     },
     {
