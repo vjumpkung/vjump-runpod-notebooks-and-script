@@ -8,6 +8,6 @@ echo "Updating kohya-ss GUI"
 
 pip install pydantic==2.8.0
 
-cd kohya_ss && git pull --ff-only && python ./setup/validate_requirements.py --requirements requirements_runpod.txt
+cd kohya_ss && git pull --ff-only && python ./setup/validate_requirements.py --requirements requirements_linux.txt
 
 echo "Update Completed"
