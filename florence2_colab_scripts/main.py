@@ -87,7 +87,7 @@ convert_types = {
 
 prompt = convert_types[caption_types]
 
-model_name = "MiaoshouAI/Florence-2-large-PromptGen-v2.0"
+model_name = "MiaoshouAI/Florence-2-large-PromptGen-v2.0" if caption_types == "tag (สำหรับ Pony, Illustrious)" else "gokaygokay/Florence-2-Flux-Large"
 
 model, processor = download_and_load_model(model_name)
 
@@ -151,5 +151,3 @@ with zipfile.ZipFile(new_dataset_filename, "w", zipfile.ZIP_DEFLATED) as zipf:
     zipdir(location, zipf)
 
 print("Caption Completed")
-del model
-del processor
