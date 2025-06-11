@@ -216,46 +216,49 @@ def main(caption_types, zip_location, TRIGGER_WORD):
     print("Caption Completed")
 
 
-import argparse
+import json
+import argparse  # Keep argparse for handling the path to the JSON file
 
 
-def parse_arguments():
-    parser = argparse.ArgumentParser(
-        description="Process images with caption types and trigger word"
-    )
+def parse_arguments_from_json(json_file_path):
+    """
+    Parses arguments from a specified JSON file.
+    """
+    with open(json_file_path, "r") as f:
+        config = json.load(f)
+    return config
 
-    parser.add_argument(
-        "--zip_location",
-        type=str,
-        default="/content/processed_image.zip",
-        help="Path to the zip file location (default: /content/processed_image.zip)",
-    )
 
-    parser.add_argument(
-        "--caption_types",
-        type=str,
-        choices=["natural_language", "tags"],
-        default="natural_language",
-        help="Type of caption to generate (default: บรรยาย (สำหรับ Flux))",
-    )
-
-    parser.add_argument(
-        "--trigger_word",
-        type=str,
-        default="tha1mura1pa1nt1ng",
-        help="Trigger word for the model (default: tha1mura1pa1nt1ng)",
-    )
-
-    return parser.parse_args()
+# Assuming 'main' function is defined elsewhere or will be added
+def main(caption_types, zip_location, trigger_word):
+    print(f"Executing main with:")
+    print(f"  Zip location: {zip_location}")
+    print(f"  Caption types: {caption_types}")
+    print(f"  Trigger word: {trigger_word}")
+    # Your main logic would go here
 
 
 if __name__ == "__main__":
-    args = parse_arguments()
+    parser = argparse.ArgumentParser(
+        description="Process images with caption types and trigger word using a JSON configuration file."
+    )
+    parser.add_argument(
+        "--config",
+        type=str,
+        default="config.json",  # Default JSON config file name
+        help="Path to the JSON configuration file (default: config.json)",
+    )
+    args = parser.parse_args()
+
+    # Parse arguments from the specified JSON file
+    config_data = parse_arguments_from_json(args.config)
 
     # Access the arguments
-    zip_location = args.zip_location
-    caption_types = args.caption_types
-    trigger_word = args.trigger_word
+    # We use .get() with a default value to make the script more robust
+    # in case a key is missing in the JSON file.
+    zip_location = config_data.get("zip_location", "/content/processed_image.zip")
+    caption_types = config_data.get("caption_types", "natural_language")
+    trigger_word = config_data.get("trigger_word", "tha1mura1pa1nt1ng")
 
     print(f"Zip location: {zip_location}")
     print(f"Caption types: {caption_types}")
