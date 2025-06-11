@@ -228,16 +228,6 @@ def parse_arguments_from_json(json_file_path):
         config = json.load(f)
     return config
 
-
-# Assuming 'main' function is defined elsewhere or will be added
-def main(caption_types, zip_location, trigger_word):
-    print(f"Executing main with:")
-    print(f"  Zip location: {zip_location}")
-    print(f"  Caption types: {caption_types}")
-    print(f"  Trigger word: {trigger_word}")
-    # Your main logic would go here
-
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Process images with caption types and trigger word using a JSON configuration file."
