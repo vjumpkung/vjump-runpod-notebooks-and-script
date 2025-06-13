@@ -1,6 +1,6 @@
 [
     {
-        "name": "HiDream-E1 Full",
+        "name": "hidream_e1_full_bf16",
         "url": "https://huggingface.co/Comfy-Org/HiDream-I1_ComfyUI/resolve/main/split_files/diffusion_models/hidream_e1_full_bf16.safetensors",
         "type": "diffusion_models"
     },

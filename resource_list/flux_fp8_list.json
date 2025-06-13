@@ -1,21 +1,21 @@
 [
     {
-        "name": "Flux.1 Dev (FP8)",
+        "name": "flux1-dev-fp8-e4m3fn.safetensors",
         "url": "https://huggingface.co/Kijai/flux-fp8/resolve/main/flux1-dev-fp8-e4m3fn.safetensors",
         "type": "unet"
     },
     {
-        "name": "clip-l",
+        "name": "clip_l.safetensors",
         "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors",
         "type": "clip"
     },
     {
-        "name": "t5xxl_fp8_e4m3fn",
+        "name": "t5xxl_fp8_e4m3fn.safetensors",
         "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors",
         "type": "clip"
     },
     {
-        "name": "ae",
+        "name": "ae.safetensors",
         "url": "https://huggingface.co/ffxvs/vae-flux/resolve/main/ae.safetensors",
         "type": "vae"
     }
