@@ -1,0 +1,17 @@
+[
+    {
+        "name": "qwen_2.5_vl_fp16.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/Omnigen2_ComfyUI_repackaged/resolve/main/split_files/text_encoders/qwen_2.5_vl_fp16.safetensors",
+        "type": "text_encoders"
+    },
+    {
+        "name": "omnigen2_fp16.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/Omnigen2_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/omnigen2_fp16.safetensors",
+        "type": "diffusion_models"
+    },
+    {
+        "name": "ae.safetensors",
+        "url": "https://huggingface.co/ffxvs/vae-flux/resolve/main/ae.safetensors",
+        "type": "vae"
+    }
+]
