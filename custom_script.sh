@@ -37,19 +37,29 @@ download_workflows() {
     echo "downloading ComfyUI Native workflows completed"
 }
 
-restore_snapshot() {
-    echo "Restoring Snapshot from $SNAPSHOT_FILE_URL" >>$PROGRAM_LOG
-    if [[ -z $SNAPSHOT_FILE_URL ]]; then
-        echo "No snapshot file restore skip..." >>$PROGRAM_LOG
-    else
-        curl -s $SNAPSHOT_FILE_URL >./src/my_snapshot.json
-        yes | comfy --workspace /notebooks/ComfyUI node restore-snapshot ./src/my_snapshot.json --pip-non-url >>$PROGRAM_LOG
-        echo "Restore Completed" >>$PROGRAM_LOG
-    fi
+# restore_snapshot() {
+#     echo "Restoring Snapshot from $SNAPSHOT_FILE_URL" >>$PROGRAM_LOG
+#     if [[ -z $SNAPSHOT_FILE_URL ]]; then
+#         echo "No snapshot file restore skip..." >>$PROGRAM_LOG
+#     else
+#         curl -s $SNAPSHOT_FILE_URL >./src/my_snapshot.json
+#         yes | comfy --workspace /notebooks/ComfyUI node restore-snapshot ./src/my_snapshot.json --pip-non-url >>$PROGRAM_LOG
+#         echo "Restore Completed" >>$PROGRAM_LOG
+#     fi
+# }
+
+install_custom_nodes() {
+    WORKSPACE="/notebooks/ComfyUI"
+    nodes=("comfyui-impact-pack" "comfyui_ultimatesdupscale" "ComfyUI-GGUF" "comfyui-kjnodes" 
+        "comfyui_controlnet_aux" "comfyui_ipadapter_plus" "comfyui-videohelpersuite" 
+        "comfyui-inpaint-nodes" "rgthree-comfy" "comfyui-florence2" "ComfyUI-Crystools")
+    for node in "${nodes[@]}"; do
+        yes | comfy --workspace $WORKSPACE node install $node
+    done
 }
 
 make_directory
 update_model_path
 download_workflows
-restore_snapshot
+# restore_snapshot
 update_comfyui
