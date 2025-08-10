@@ -62,4 +62,5 @@ make_directory
 update_model_path
 download_workflows
 # restore_snapshot
+install_custom_nodes
 update_comfyui
