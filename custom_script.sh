@@ -54,8 +54,8 @@ install_custom_nodes() {
         "comfyui_controlnet_aux" "comfyui_ipadapter_plus" "comfyui-videohelpersuite" 
         "comfyui-inpaint-nodes" "rgthree-comfy" "comfyui-florence2" "ComfyUI-Crystools")
     for node in "${nodes[@]}"; do
-        echo installing $node | tee -a $PROGRAM_LOG
-        yes | comfy --workspace $WORKSPACE node install $node | tee -a $PROGRAM_LOG
+        echo installing $node >> $PROGRAM_LOG
+        yes | comfy --workspace $WORKSPACE node install $node >> $PROGRAM_LOG
     done
 }
 
