@@ -52,7 +52,7 @@ install_custom_nodes() {
     WORKSPACE="/notebooks/ComfyUI"
     nodes=("comfyui-impact-pack" "comfyui_ultimatesdupscale" "ComfyUI-GGUF" "comfyui-kjnodes" 
         "comfyui_controlnet_aux" "comfyui_ipadapter_plus" "comfyui-videohelpersuite" 
-        "comfyui-inpaint-nodes" "rgthree-comfy" "comfyui-florence2" "ComfyUI-Crystools")
+        "comfyui-inpaint-nodes" "rgthree-comfy" "comfyui-florence2" "ComfyUI-Crystools" "ComfyUI-Distributed")
     for node in "${nodes[@]}"; do
         echo installing $node >> $PROGRAM_LOG
         yes | comfy --workspace $WORKSPACE node install $node >> $PROGRAM_LOG
