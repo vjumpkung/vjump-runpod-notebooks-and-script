@@ -1,0 +1,22 @@
+[
+    {
+        "name": "flux1-krea-dev_fp8_scaled.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/FLUX.1-Krea-dev_ComfyUI/resolve/main/split_files/diffusion_models/flux1-krea-dev_fp8_scaled.safetensors",
+        "type": "unet"
+    },
+    {
+        "name": "clip_l.safetensors",
+        "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors",
+        "type": "clip"
+    },
+    {
+        "name": "t5xxl_fp8_e4m3fn.safetensors",
+        "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors",
+        "type": "clip"
+    },
+    {
+        "name": "ae.safetensors",
+        "url": "https://huggingface.co/ffxvs/vae-flux/resolve/main/ae.safetensors",
+        "type": "vae"
+    }
+]
