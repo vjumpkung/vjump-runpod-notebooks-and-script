@@ -13,5 +13,10 @@
         "name": "wan2.2_vae.safetensors",
         "url": "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/vae/wan2.2_vae.safetensors",
         "type": "vae"
+    },
+    {
+        "name": "Wan22_TI2V_5B_Turbo_lora_rank_64_fp16.safetensors",
+        "url": "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan22-Turbo/Wan22_TI2V_5B_Turbo_lora_rank_64_fp16.safetensors",
+        "type": "loras"
     }
 ]
