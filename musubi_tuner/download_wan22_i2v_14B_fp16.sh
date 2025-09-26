@@ -3,15 +3,15 @@
 # Wan 2.2 Model Download Script
 # Downloads Wan 2.2 ComfyUI models using aria2c
 
-echo "Starting Wan 2.2 T2V model downloads..."
+echo "Starting Wan 2.2 I2V model downloads..."
 
 # Create directories for organized storage
 mkdir -p diffusion_models
 mkdir -p vae
 mkdir -p text_encoders
 
-# Download diffusion model (main T2V model)
-echo "Downloading Wan 2.2 T2V Low 14B model..."
+# Download diffusion model (main I2V model)
+echo "Downloading Wan 2.2 I2V Low 14B model..."
 aria2c \
   --continue=true \
   --max-connection-per-server=16 \
@@ -21,11 +21,11 @@ aria2c \
   --file-allocation=none \
   --summary-interval=10 \
   --dir=./diffusion_models \
-  --out=wan2.2_t2v_low_noise_14B_fp16.safetensors \
-  "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_t2v_low_noise_14B_fp16.safetensors?download=true"
+  --out=wan2.2_i2v_low_noise_14B_fp16.safetensors \
+  "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_i2v_low_noise_14B_fp16.safetensors"
   
-# Download diffusion model (main T2V model)
-echo "Downloading Wan 2.2 T2V High 14B model..."
+# Download diffusion model (main I2V model)
+echo "Downloading Wan 2.2 I2V High 14B model..."
 aria2c \
   --continue=true \
   --max-connection-per-server=16 \
@@ -35,8 +35,8 @@ aria2c \
   --file-allocation=none \
   --summary-interval=10 \
   --dir=./diffusion_models \
-  --out=wan2.2_t2v_high_noise_14B_fp16.safetensors \
-  "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_t2v_high_noise_14B_fp16.safetensors?download=true"
+  --out=wan2.2_i2v_high_noise_14B_fp16.safetensors \
+  "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_i2v_high_noise_14B_fp16.safetensors"
   
 # Download VAE model
 echo "Downloading Wan 2.1 VAE..."
@@ -69,7 +69,7 @@ aria2c \
 echo "All downloads completed!"
 echo ""
 echo "Files downloaded to:"
-echo "  - diffusion_models/wan2.2_t2v_high_noise_14B_fp16.safetensors"
-echo "  - diffusion_models/wan2.2_t2v_low_noise_14B_fp16.safetensors"
+echo "  - diffusion_models/wan2.2_i2v_high_noise_14B_fp16.safetensors"
+echo "  - diffusion_models/wan2.2_i2v_low_noise_14B_fp16.safetensors"
 echo "  - vae/wan_2.1_vae.safetensors"
 echo "  - text_encoders/models_t5_umt5-xxl-enc-bf16.pth"

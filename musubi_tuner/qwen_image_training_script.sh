@@ -21,17 +21,17 @@ text_encoder="./text_encoders/qwen_2.5_vl_7b.safetensors" # maybe check with saf
 
 # network settings
 network_module="networks.lora_qwen_image"
-network_dim=8
-network_alpha=8
+network_dim=16
+network_alpha=16
 # network_args= # using with lora_plus
 
 # setting optimizer
-optimizer_type="adamw8bit" # adamw, adamw8bit others optimizer should install library manually
+optimizer_type="adamw" # adamw, adamw8bit others optimizer should install library manually
 # optimizer_args="weight_decay=0.01 eps=1e-7" 
 
 # setting leraning rate
 learning_rate=1e-4 # 1e-4 is standard learning rate
-lr_scheduler="constant_with_warmup" # linear, cosine, cosine_with_restarts, polynomial, constant (default), constant_with_warmup, adafactor
+lr_scheduler="cosine" # linear, cosine, cosine_with_restarts, polynomial, constant (default), constant_with_warmup, adafactor
 lr_warmup_steps=0.05 # 0-1
 
 # advance learning rate settings (uncomment below to use)
@@ -46,7 +46,7 @@ mixed_precision="bf16"
 
 # using fp8 precision (enable both) for VRAM 32GB or below
 fp8_base=true
-fp8_scaled=true
+# fp8_scaled=true
 
 # reduce vram usage blocks_to_swap=16 for VRAM 24 GB blocks_to_swap=45 for VRAM 16 GB
 blocks_to_swap=0
@@ -61,7 +61,7 @@ timestep_sampling="shift"
 discrete_flow_shift=3.0
 gradient_checkpointing=true
 weighting_scheme="none"
-guidance_scale=1.0
+# guidance_scale=1.0
 seed=42
 persistent_data_loader_workers=true
 max_data_loader_n_workers=2 # for faster dataset loading
