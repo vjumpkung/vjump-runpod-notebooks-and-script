@@ -10,7 +10,7 @@ mkdir -p diffusion_models
 mkdir -p vae
 mkdir -p text_encoders
 
-# Download diffusion model (main T2V model)
+# Download diffusion model
 echo "Downloading QWEN Image model..."
 aria2c \
   --continue=true \

@@ -21,8 +21,8 @@ aria2c \
   --file-allocation=none \
   --summary-interval=10 \
   --dir=./diffusion_models \
-  --out=qwen_image_fp8_e4m3fn.safetensors \
-  "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_fp8_e4m3fn.safetensors"
+  --out=qwen_image_edit_bf16.safetensors \
+  "https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_edit_bf16.safetensors"
 
 # Download VAE model
 echo "Downloading QWEN Image VAE..."
@@ -38,8 +38,8 @@ aria2c \
   --out=qwen_image_vae.safetensors \
   "https://huggingface.co/Qwen/Qwen-Image/resolve/main/vae/diffusion_pytorch_model.safetensors"
 
-# Download QWEN text encoder
-echo "Downloading QWEN 2.5 VL 7B encoder..."
+# Download QWEN
+echo "Downloading QWEN 2.5 VL encoder..."
 aria2c \
   --continue=true \
   --max-connection-per-server=16 \
@@ -55,6 +55,6 @@ aria2c \
 echo "All downloads completed!"
 echo ""
 echo "Files downloaded to:"
-echo "  - diffusion_models/qwen_image_fp8_e4m3fn.safetensors"
+echo "  - diffusion_models/qwen_image_edit_bf16.safetensors"
 echo "  - vae/qwen_image_vae.safetensors"
 echo "  - text_encoders/qwen_2.5_vl_7b.safetensors"
