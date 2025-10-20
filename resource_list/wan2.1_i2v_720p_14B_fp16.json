@@ -18,5 +18,10 @@
         "name": "wan2.1_i2v_720p_14B_fp16",
         "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_i2v_720p_14B_fp16.safetensors",
         "type": "diffusion_models"
+    },
+    {
+        "name": "wan2.1_i2v_lora_rank64_lightx2v_4step.safetensors",
+        "url": "https://huggingface.co/lightx2v/Wan2.1-Distill-Loras/resolve/main/wan2.1_i2v_lora_rank64_lightx2v_4step.safetensors",
+        "type": "loras"
     }
 ]

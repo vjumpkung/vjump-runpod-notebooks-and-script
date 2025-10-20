@@ -28,5 +28,15 @@
         "name": "Wan2.2-Lightning_I2V-A14B-4steps-lora_HIGH_fp16.safetensors",
         "url": "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/LoRAs/Wan22-Lightning/old/Wan2.2-Lightning_I2V-A14B-4steps-lora_HIGH_fp16.safetensors",
         "type": "loras"
+    },
+    {
+        "name": "Wan_2_2_I2V_A14B_HIGH_lightx2v_MoE_distill_lora_rank_64_bf16.safetensors",
+        "url": "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/LoRAs/Wan22_Lightx2v/Wan_2_2_I2V_A14B_HIGH_lightx2v_MoE_distill_lora_rank_64_bf16.safetensors",
+        "type": "loras"
+    },
+    {
+        "name": "Wan_2_2_I2V_A14B_LOW_lightx2v_MoE_distill_lora_rank_64_bf16.safetensors",
+        "url": "https://huggingface.co/lightx2v/Wan2.2-I2V-A14B-Moe-Distill-Lightx2v/resolve/main/loras/low_noise_model_rank64.safetensors",
+        "type": "loras"
     }
 ]
