@@ -16,7 +16,7 @@
     },
     {
         "name": "Wan22_TI2V_5B_Turbo_lora_rank_64_fp16.safetensors",
-        "url": "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan22-Turbo/Wan22_TI2V_5B_Turbo_lora_rank_64_fp16.safetensors",
+        "url": "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/LoRAs/Wan22-Turbo/Wan22_TI2V_5B_Turbo_lora_rank_64_fp16.safetensors",
         "type": "loras"
     }
 ]

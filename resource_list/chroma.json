@@ -1,7 +1,7 @@
 [
     {
-        "name": "Chroma.safetensors",
-        "url": "https://huggingface.co/lodestones/Chroma1-Base/resolve/main/Chroma.safetensors",
+        "name": "Chroma1-HD.safetensors",
+        "url": "https://huggingface.co/lodestones/Chroma1-HD/resolve/main/Chroma1-HD.safetensors",
         "type": "diffusion_models"
     },
     {
