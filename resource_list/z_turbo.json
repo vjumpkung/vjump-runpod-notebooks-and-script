@@ -1,0 +1,17 @@
+[
+  {
+    "name": "ae.safetensors",
+    "url": "https://huggingface.co/lovis93/testllm/resolve/ed9cf1af7465cebca4649157f118e331cf2a084f/ae.safetensors",
+    "type": "vae"
+  },
+  {
+    "name": "qwen_3_4b.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "z_image_turbo_bf16.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors",
+    "type": "diffusion_models"
+  }
+]
