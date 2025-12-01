@@ -10,6 +10,7 @@ make_directory() {
 }
 
 update_comfyui() {
+    WORKSPACE="/notebooks/ComfyUI"
     echo "Updating ComfyUI" >>$PROGRAM_LOG
     yes | comfy --workspace $WORKSPACE update all >>$PROGRAM_LOG
     echo "Update ComfyUI Completed" >>$PROGRAM_LOG
