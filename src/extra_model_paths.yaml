@@ -8,6 +8,7 @@ runpod_worker_comfy:
   clip: models/clip/
   clip_vision: models/clip_vision/
   configs: models/configs/
+  detection: models/detection/
   controlnet: models/controlnet/
   diffusers: models/diffusers/
   diffusion_models: models/diffusion_models/
