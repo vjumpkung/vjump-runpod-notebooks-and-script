@@ -12,7 +12,7 @@ make_directory() {
 update_comfyui() {
     WORKSPACE="/notebooks/ComfyUI"
     echo "Updating ComfyUI" >>$PROGRAM_LOG
-    yes | comfy --workspace $WORKSPACE update all --mode remote >>$PROGRAM_LOG
+    yes | comfy --workspace $WORKSPACE update all >>$PROGRAM_LOG
     echo "Update ComfyUI Completed" >>$PROGRAM_LOG
 }
 
@@ -23,7 +23,7 @@ install_custom_nodes() {
         "comfyui-inpaint-nodes" "rgthree-comfy" "comfyui-florence2" "ComfyUI-Crystools" "ComfyUI-Distributed")
     for node in "${nodes[@]}"; do
         echo installing $node >> $PROGRAM_LOG
-        yes | comfy --workspace $WORKSPACE node install $node --mode remote >> $PROGRAM_LOG
+        yes | comfy --workspace $WORKSPACE node install $node >> $PROGRAM_LOG
     done
 }
 
