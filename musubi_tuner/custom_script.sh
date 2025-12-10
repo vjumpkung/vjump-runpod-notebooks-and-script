@@ -9,3 +9,5 @@ wget https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-scri
 wget https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/musubi_tuner/wan22_training_script.sh -O wan22_training_script.sh
 wget https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/musubi_tuner/download_wan22_t2v_14B_fp16.sh -O download_wan22_t2v_14B_fp16.sh
 wget https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/musubi_tuner/download_wan22_i2v_14B_fp16.sh -O download_wan22_i2v_14B_fp16.sh
+wget https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/musubi_tuner/download_z_image_turbo_bf16.sh -O download_z_image_turbo_bf16.sh
+wget https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/musubi_tuner/z_image_turbo_training_script.sh -O z_image_turbo_training_script.sh
