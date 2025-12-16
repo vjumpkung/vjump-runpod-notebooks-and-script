@@ -1,0 +1,42 @@
+[
+  {
+    "name": "umt5-xxl-enc-fp8_e4m3fn.safetensors",
+    "url": "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/umt5-xxl-enc-fp8_e4m3fn.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "wan_2.1_vae.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors",
+    "type": "vae"
+  },
+  {
+    "name": "clip_vision_h.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/clip_vision/clip_vision_h.safetensors",
+    "type": "clip_vision"
+  },
+  {
+    "name": "lightx2v_I2V_14B_480p_cfg_step_distill_rank64_bf16.safetensors",
+    "url": "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Lightx2v/lightx2v_I2V_14B_480p_cfg_step_distill_rank64_bf16.safetensors",
+    "type": "loras"
+  },
+  {
+    "name": "vitpose_h_wholebody_model.onnx",
+    "url": "https://huggingface.co/Kijai/vitpose_comfy/resolve/main/onnx/vitpose_h_wholebody_model.onnx",
+    "type": "detection"
+  },
+  {
+    "name": "vitpose_h_wholebody_data.bin",
+    "url": "https://huggingface.co/Kijai/vitpose_comfy/resolve/main/onnx/vitpose_h_wholebody_data.bin",
+    "type": "detection"
+  },
+  {
+    "name": "yolov10m.onnx",
+    "url": "https://huggingface.co/Wan-AI/Wan2.2-Animate-14B/resolve/main/process_checkpoint/det/yolov10m.onnx",
+    "type": "detection"
+  },
+  {
+    "name": "Wan21-14B-SCAIL-preview_fp8_e4m3fn_scaled_KJ.safetensors",
+    "url": "https://huggingface.co/Kijai/WanVideo_comfy_fp8_scaled/resolve/main/SCAIL/Wan21-14B-SCAIL-preview_fp8_e4m3fn_scaled_KJ.safetensors",
+    "type": "diffusion_models"
+  }
+]
