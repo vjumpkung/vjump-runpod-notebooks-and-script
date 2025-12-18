@@ -22,6 +22,7 @@ runpod_worker_comfy:
   ipadapter: models/ipadapter/
   loras: models/loras/
   mmdets: models/mmdets/
+  model_patches: models/model_patches/
   nsfw_detector: models/nsfw_detector/
   onnx: models/onnx/
   photomaker: models/photomaker/
