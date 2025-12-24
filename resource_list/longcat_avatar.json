@@ -1,0 +1,32 @@
+[
+  {
+    "name": "umt5-xxl-enc-fp8_e4m3fn.safetensors",
+    "url": "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/umt5-xxl-enc-fp8_e4m3fn.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "LongCat-Avatar-single_fp8_e4m3fn_scaled_mixed_KJ.safetensors",
+    "url": "https://huggingface.co/Kijai/LongCat-Video_comfy/resolve/main/Avatar/LongCat-Avatar-single_fp8_e4m3fn_scaled_mixed_KJ.safetensors",
+    "type": "diffusion_models"
+  },
+  {
+    "name": "LongCat_distill_lora_alpha64_bf16.safetensors",
+    "url": "https://huggingface.co/Kijai/LongCat-Video_comfy/resolve/main/LongCat_distill_lora_alpha64_bf16.safetensors",
+    "type": "loras"
+  },
+  {
+    "name": "clip_vision_h.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/clip_vision/clip_vision_h.safetensors",
+    "type": "clip_vision"
+  },
+  {
+    "name": "MelBandRoformer_fp32.safetensors",
+    "url": "https://huggingface.co/Kijai/MelBandRoFormer_comfy/resolve/main/MelBandRoformer_fp32.safetensors",
+    "type": "diffusion_models"
+  },
+  {
+    "name": "wan_2.1_vae.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors",
+    "type": "vae"
+  }
+]

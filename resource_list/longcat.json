@@ -1,0 +1,22 @@
+[
+  {
+    "name": "umt5-xxl-enc-fp8_e4m3fn.safetensors",
+    "url": "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/umt5-xxl-enc-fp8_e4m3fn.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "LongCat_TI2V_comfy_fp8_e4m3fn_scaled_KJ.safetensors",
+    "url": "https://huggingface.co/Kijai/LongCat-Video_comfy/resolve/main/LongCat_TI2V_comfy_fp8_e4m3fn_scaled_KJ.safetensors",
+    "type": "diffusion_models"
+  },
+  {
+    "name": "LongCat_distill_lora_alpha64_bf16.safetensors",
+    "url": "https://huggingface.co/Kijai/LongCat-Video_comfy/resolve/main/LongCat_distill_lora_alpha64_bf16.safetensors",
+    "type": "loras"
+  },
+  {
+    "name": "LongCat_refinement_lora_rank128_bf16.safetensors",
+    "url": "https://huggingface.co/Kijai/LongCat-Video_comfy/resolve/main/LongCat_refinement_lora_rank128_bf16.safetensors",
+    "type": "loras"
+  }
+]

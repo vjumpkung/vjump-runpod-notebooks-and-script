@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Wan2_1-T2V-1_3B_FlashVSR_fp32.safetensors",
+    "url": "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/FlashVSR/Wan2_1-T2V-1_3B_FlashVSR_fp32.safetensors",
+    "type": "diffusion_models"
+  },
+  {
+    "name": "umt5-xxl-enc-fp8_e4m3fn.safetensors",
+    "url": "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/umt5-xxl-enc-fp8_e4m3fn.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "Wan2_1_FlashVSR_LQ_proj_model_bf16.safetensors",
+    "url": "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/FlashVSR/Wan2_1_FlashVSR_LQ_proj_model_bf16.safetensors",
+    "type": "diffusion_models"
+  },
+  {
+    "name": "Wan2_1_FlashVSR_TCDecoder_fp32.safetensors",
+    "url": "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/FlashVSR/Wan2_1_FlashVSR_TCDecoder_fp32.safetensors",
+    "type": "vae"
+  }
+]
