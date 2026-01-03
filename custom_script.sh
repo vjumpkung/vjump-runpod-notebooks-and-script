@@ -17,11 +17,15 @@ update_comfyui() {
 }
 
 install_custom_nodes() {
+
+    # add soundfile
+    uv pip install "soundfile==0.13.1"
+
     WORKSPACE="/notebooks/ComfyUI"
     NODES=("comfyui-impact-pack" "comfyui_ultimatesdupscale" "ComfyUI-GGUF" "comfyui-kjnodes" 
         "comfyui_controlnet_aux" "comfyui_ipadapter_plus" "comfyui-videohelpersuite" 
         "comfyui-inpaint-nodes" "rgthree-comfy" "comfyui-florence2" "ComfyUI-Crystools" 
-        "ComfyUI-WanVideoWrapper" "comfyui-custom-scripts" "was-ns" "comfyui-starwrapper" "ComfyUI-QwenVL")
+        "ComfyUI-WanVideoWrapper" "comfyui-custom-scripts" "was-ns" "comfyui-starwrapper" "ComfyUI-QwenVL" "comfyui-custom-scripts")
     for node in "${NODES[@]}"; do
         echo installing $node >> $PROGRAM_LOG
         yes | comfy --workspace $WORKSPACE node install $node >> $PROGRAM_LOG
