@@ -14,7 +14,9 @@ make_directory() {
 update_comfyui() {
     WORKSPACE="/notebooks/ComfyUI"
     echo "Updating ComfyUI" >>$PROGRAM_LOG
-    yes | comfy --workspace $WORKSPACE update all >>$PROGRAM_LOG
+    cd $WORKSPACE 
+    git pull >>$PROGRAM_LOG
+    uv pip install -r requirements.txt >>$PROGRAM_LOG
     echo "Update ComfyUI Completed" >>$PROGRAM_LOG
 }
 
