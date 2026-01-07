@@ -1,0 +1,47 @@
+[
+  {
+    "name": "ltx-2-19b-ic-lora-depth-control.safetensors",
+    "url": "https://huggingface.co/Lightricks/LTX-2-19b-IC-LoRA-Depth-Control/resolve/main/ltx-2-19b-ic-lora-depth-control.safetensors",
+    "type": "loras"
+  },
+  {
+    "name": "ltx-2-19b-ic-lora-pose-control.safetensors",
+    "url": "https://huggingface.co/Lightricks/LTX-2-19b-IC-LoRA-Pose-Control/resolve/main/ltx-2-19b-ic-lora-pose-control.safetensors",
+    "type": "loras"
+  },
+  {
+    "name": "ltx-2-19b-lora-camera-control-dolly-in.safetensors",
+    "url": "https://huggingface.co/Lightricks/LTX-2-19b-LoRA-Camera-Control-Dolly-In/resolve/main/ltx-2-19b-lora-camera-control-dolly-in.safetensors",
+    "type": "loras"
+  },
+  {
+    "name": "ltx-2-19b-lora-camera-control-dolly-out.safetensors",
+    "url": "https://huggingface.co/Lightricks/LTX-2-19b-LoRA-Camera-Control-Dolly-Out/resolve/main/ltx-2-19b-lora-camera-control-dolly-out.safetensors",
+    "type": "loras"
+  },
+  {
+    "name": "ltx-2-19b-lora-camera-control-dolly-left.safetensors",
+    "url": "https://huggingface.co/Lightricks/LTX-2-19b-LoRA-Camera-Control-Dolly-Left/resolve/main/ltx-2-19b-lora-camera-control-dolly-left.safetensors",
+    "type": "loras"
+  },
+  {
+    "name": "ltx-2-19b-lora-camera-control-dolly-right.safetensors",
+    "url": "https://huggingface.co/Lightricks/LTX-2-19b-LoRA-Camera-Control-Dolly-Right/resolve/main/ltx-2-19b-lora-camera-control-dolly-right.safetensors",
+    "type": "loras"
+  },
+  {
+    "name": "ltx-2-19b-lora-camera-control-jib-down.safetensors",
+    "url": "https://huggingface.co/Lightricks/LTX-2-19b-LoRA-Camera-Control-Jib-Down/resolve/main/ltx-2-19b-lora-camera-control-jib-down.safetensors",
+    "type": "loras"
+  },
+  {
+    "name": "ltx-2-19b-lora-camera-control-jib-up.safetensors",
+    "url": "https://huggingface.co/Lightricks/LTX-2-19b-LoRA-Camera-Control-Jib-Up/resolve/main/ltx-2-19b-lora-camera-control-jib-up.safetensors",
+    "type": "loras"
+  },
+  {
+    "name": "ltx-2-19b-lora-camera-control-static.safetensors",
+    "url": "https://huggingface.co/Lightricks/LTX-2-19b-LoRA-Camera-Control-Static/resolve/main/ltx-2-19b-lora-camera-control-static.safetensors",
+    "type": "loras"
+  }
+]
