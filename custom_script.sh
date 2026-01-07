@@ -21,6 +21,9 @@ update_comfyui() {
 }
 
 install_custom_nodes() {
+    uv pip install onnxruntime-gpu
+    uv pip install PyWavelets
+
     # Step 11: Install custom nodes using git clone
     echo ""
     echo "========================================"
@@ -40,7 +43,7 @@ install_custom_nodes() {
     echo "  [09/14] ComfyUI-Custom-Scripts    - Custom JavaScript scripts"
     echo "  [10/14] was-node-suite-comfyui    - WAS Node Suite"
     echo "  [11/14] ComfyUI-QwenVL            - QwenVL model support"
-    echo "  [12/14] ComfyUI-nunchaku          - Nunchaku acceleration"
+    echo "  [12/14] ComfyUI-MelBandRoFormer   - MelBandRoFormer"
     echo "  [13/14] RES4LYF                   - Resolution tools"
     echo "  [14/14] ComfyUI-LTXVideo          - LTX Video generation"
     echo ""
@@ -89,7 +92,7 @@ install_custom_nodes() {
     install_node "https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git" "ComfyUI-Custom-Scripts" "09/14"
     install_node "https://github.com/ltdrdata/was-node-suite-comfyui.git" "was-node-suite-comfyui" "10/14"
     install_node "https://github.com/1038lab/ComfyUI-QwenVL.git" "ComfyUI-QwenVL" "11/14"
-    install_node "https://github.com/nunchaku-tech/ComfyUI-nunchaku.git" "ComfyUI-nunchaku" "12/14"
+    install_node "https://github.com/kijai/ComfyUI-MelBandRoFormer.git" "ComfyUI-MelBandRoFormer" "12/14"
     install_node "https://github.com/ClownsharkBatwing/RES4LYF.git" "RES4LYF" "13/14"
     install_node "https://github.com/Lightricks/ComfyUI-LTXVideo.git" "ComfyUI-LTXVideo" "14/14"
 
