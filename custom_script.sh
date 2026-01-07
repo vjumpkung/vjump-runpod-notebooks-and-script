@@ -78,6 +78,41 @@ install_custom_nodes() {
         else
             echo "> Repository already exists, skipping clone"
         fi
+
+
+        # Enter the repository directory
+        cd "$REPO_NAME" || {
+            echo "  [X] Failed to enter directory - continuing with next node..."
+            return 1
+        }
+
+        # Check for install.py and run it, otherwise use requirements.txt
+        if [ -f "install.py" ]; then
+            echo "> Running install.py..."
+            if python install.py 2>/dev/null; then
+                echo "  [OK] Installed via install.py"
+            else
+                echo "  [!] install.py failed - continuing anyway..."
+            fi
+        fi
+
+        if [ -f "requirements.txt" ]; then
+            echo "> Installing dependencies from requirements.txt..."
+            if python -m uv pip install -r requirements.txt 2>/dev/null; then
+                echo "  [OK] Dependencies installed successfully"
+            else
+                echo "  [!] Failed to install requirements - continuing anyway..."
+            fi
+        else
+            if [ ! -f "install.py" ]; then
+                echo "> No install.py or requirements.txt found"
+            fi
+        fi
+
+        echo "  [DONE] $REPO_NAME processing completed"
+
+        # Return to custom_nodes directory
+        cd ..
     }
 
     # Clone and install each custom node
@@ -95,10 +130,6 @@ install_custom_nodes() {
     install_node "https://github.com/kijai/ComfyUI-MelBandRoFormer.git" "ComfyUI-MelBandRoFormer" "12/14"
     install_node "https://github.com/ClownsharkBatwing/RES4LYF.git" "RES4LYF" "13/14"
     install_node "https://github.com/Lightricks/ComfyUI-LTXVideo.git" "ComfyUI-LTXVideo" "14/14"
-
-    # restore dependencies
-    cd /notebooks/ComfyUI/custom_nodes/ComfyUI-Manager
-    python cm-cli.py restore-dependencies
 
     # Return to ComfyUI directory
     cd /notebooks/ComfyUI
