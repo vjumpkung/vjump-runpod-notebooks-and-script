@@ -1,72 +1,12 @@
 [
-    {
-        "name": "EasyNegative",
-        "url": "https://civitai.com/api/download/models/9208?type=Model&format=SafeTensor&size=full&fp=fp16",
-        "type": "embeddings"
-    },
-    {
-        "name": "Deep Negative V1.75",
-        "url": "https://civitai.com/api/download/models/5637?type=Model&format=Other",
-        "type": "embeddings"
-    },
-    {
-        "name": "negative_hand Negative Embedding",
-        "url": "https://civitai.com/api/download/models/60938?type=Negative&format=Other",
-        "type": "embeddings"
-    },
-    {
-        "name": "veryBadImageNegative",
-        "url": "https://civitai.com/api/download/models/25820?type=Model&format=PickleTensor&size=full&fp=fp16",
-        "type": "embeddings"
-    },
-    {
-        "name": "badhandv4",
-        "url": "https://civitai.com/api/download/models/20068?type=Model&format=PickleTensor&size=full&fp=fp16",
-        "type": "embeddings"
-    },
-    {
-        "name": "Realistic Vision V5.1",
-        "url": "https://civitai.com/api/download/models/130072?type=Model&format=SafeTensor&size=pruned&fp=fp16",
-        "type": "checkpoints"
-    },
-    {
-        "name": "vae-ft-mse-840000-ema-pruned.safetensors",
-        "url": "https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors",
-        "type": "vae"
-    },
-    {
-        "name": "kl-f8-anime2 VAE",
-        "url": "https://civitai.com/api/download/models/28569?type=Model&format=SafeTensor",
-        "type": "vae"
-    },
-    {
-        "name": "ChilloutMix",
-        "url": "https://civitai.com/api/download/models/11732?type=Model&format=SafeTensor&size=full&fp=fp16",
-        "type": "checkpoints"
-    },
-    {
-        "name": "majicMIX realistic",
-        "url": "https://civitai.com/api/download/models/176425?type=Model&format=SafeTensor&size=pruned&fp=fp16",
-        "type": "checkpoints"
-    },
-    {
-        "name": "Counterfeit-V3.0",
-        "url": "https://civitai.com/api/download/models/57618?type=Model&format=SafeTensor&size=pruned&fp=fp16",
-        "type": "checkpoints"
-    },
-    {
-        "name": "Cetus-Mix",
-        "url": "https://civitai.com/api/download/models/105924?type=Model&format=SafeTensor&size=pruned&fp=fp16",
-        "type": "checkpoints"
-    },
-    {
-        "name": "Detail Tweaker LoRA",
-        "url": "https://civitai.com/api/download/models/62833?type=Model&format=SafeTensor",
-        "type": "loras"
-    },
-    {
-        "name": "EnvyBetterHands LoCon",
-        "url": "https://civitai.com/api/download/models/55199?type=Model&format=SafeTensor",
-        "type": "loras"
-    }
+  {
+    "name": "v1-5-pruned-emaonly-fp16.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive/resolve/main/v1-5-pruned-emaonly-fp16.safetensors",
+    "type": "checkpoints"
+  },
+  {
+    "name": "vae-ft-mse-840000-ema-pruned.safetensors",
+    "url": "https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors",
+    "type": "vae"
+  }
 ]
