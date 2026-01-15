@@ -1,0 +1,17 @@
+[
+  {
+    "name": "qwen_3_4b.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/flux2-klein-4B/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "flux-2-klein-base-4b.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/flux2-klein-4B/resolve/main/split_files/diffusion_models/flux-2-klein-base-4b.safetensors",
+    "type": "diffusion_models"
+  },
+  {
+    "name": "flux2-vae.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/flux2-klein-4B/resolve/main/split_files/vae/flux2-vae.safetensors",
+    "type": "vae"
+  }
+]

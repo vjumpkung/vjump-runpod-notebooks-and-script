@@ -1,0 +1,17 @@
+[
+  {
+    "name": "qwen_3_8b_fp4mixed.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/flux2-klein-9B/resolve/main/split_files/text_encoders/qwen_3_8b_fp4mixed.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "flux-2-klein-9b-nvfp4.safetensors",
+    "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-9b-nvfp4/resolve/main/flux-2-klein-9b-nvfp4.safetensors",
+    "type": "diffusion_models"
+  },
+  {
+    "name": "flux2-vae.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/flux2-klein-4B/resolve/main/split_files/vae/flux2-vae.safetensors",
+    "type": "vae"
+  }
+]
