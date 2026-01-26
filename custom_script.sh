@@ -14,8 +14,9 @@ make_directory() {
 update_comfyui() {
     WORKSPACE="/notebooks/ComfyUI"
     echo "Updating ComfyUI" >>$PROGRAM_LOG
-    cd $WORKSPACE 
-    git pull >>$PROGRAM_LOG
+    cd $WORKSPACE
+    git fetch >>$PROGRAM_LOG
+    git pull --ff-only >>$PROGRAM_LOG
     uv pip install -r requirements.txt >>$PROGRAM_LOG
     echo "Update ComfyUI Completed" >>$PROGRAM_LOG
 }
@@ -32,20 +33,20 @@ install_custom_nodes() {
     echo "This may take several minutes..."
     echo ""
     echo "Custom Nodes to be installed:"
-    echo "  [01/14] ComfyUI-Impact-Pack       - Advanced image processing"
-    echo "  [02/14] ComfyUI-GGUF              - GGUF model support"
-    echo "  [03/14] ComfyUI-KJNodes           - General utility nodes"
-    echo "  [04/14] comfyui_controlnet_aux    - ControlNet preprocessors"
-    echo "  [05/14] ComfyUI-VideoHelperSuite  - Video processing tools"
-    echo "  [06/14] rgthree-comfy             - Workflow enhancements"
-    echo "  [07/14] ComfyUI-Crystools         - Crystal tools collection"
-    echo "  [08/14] ComfyUI-WanVideoWrapper   - Wan Video integration"
-    echo "  [09/14] ComfyUI-Custom-Scripts    - Custom JavaScript scripts"
-    echo "  [10/14] was-node-suite-comfyui    - WAS Node Suite"
-    echo "  [11/14] ComfyUI-QwenVL            - QwenVL model support"
-    echo "  [12/14] ComfyUI-MelBandRoFormer   - MelBandRoFormer"
-    echo "  [13/14] RES4LYF                   - Resolution tools"
-    echo "  [14/14] ComfyUI-LTXVideo          - LTX Video generation"
+    echo "  [01/14] ComfyUI-Impact-Pack     "
+    echo "  [02/14] ComfyUI-GGUF            "
+    echo "  [03/14] ComfyUI-KJNodes         "
+    echo "  [04/14] comfyui_controlnet_aux  "
+    echo "  [05/14] ComfyUI-VideoHelperSuite"
+    echo "  [06/14] rgthree-comfy           "
+    echo "  [07/14] ComfyUI-Crystools       "
+    echo "  [08/14] ComfyUI-WanVideoWrapper "
+    echo "  [09/14] ComfyUI-Custom-Scripts  "
+    echo "  [10/14] was-node-suite-comfyui  "
+    echo "  [11/14] ComfyUI-QwenVL          "
+    echo "  [12/14] ComfyUI-MelBandRoFormer "
+    echo "  [13/14] RES4LYF                 "
+    echo "  [14/14] ComfyUI-LTXVideo        "
     echo ""
 
     # Navigate to custom_nodes directory
@@ -140,7 +141,13 @@ start_ssh_server() {
     bash -c 'apt update;DEBIAN_FRONTEND=noninteractive apt-get install openssh-server -y;mkdir -p ~/.ssh;cd $_;chmod 700 ~/.ssh;echo "$PUBLIC_KEY" >> authorized_keys;chmod 700 authorized_keys;service ssh start;'
 }
 
+install_runpodctl() {
+    # Download and install via wget
+    wget -qO- cli.runpod.net | sudo bash
+}
+
 start_ssh_server
+install_runpodctl
 make_directory
 update_model_path
 update_comfyui
