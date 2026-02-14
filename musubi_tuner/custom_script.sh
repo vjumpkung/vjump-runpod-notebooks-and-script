@@ -1,3 +1,9 @@
+update_musubi_tuner() {
+    cd /notebooks/musubi-tuner && git fetch && git pull --ff-only && uv pip install -e .
+}
+
+update_musubi_tuner
+
 echo "downloading scripts"
 
 wget https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/musubi_tuner/download_qwen_image_fp8.sh -O download_qwen_image_fp8.sh
