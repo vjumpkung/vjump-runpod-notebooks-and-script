@@ -21,8 +21,8 @@ aria2c \
   --file-allocation=none \
   --summary-interval=10 \
   --dir=./diffusion_models \
-  --out=z_image_de_turbo_v1_bf16.safetensors \
-  "https://huggingface.co/ostris/Z-Image-De-Turbo/resolve/main/z_image_de_turbo_v1_bf16.safetensors"
+  --out=z_image_bf16.safetensors \
+  "https://huggingface.co/Comfy-Org/z_image/resolve/main/split_files/diffusion_models/z_image_bf16.safetensors"
 
 # Download VAE model
 echo "Downloading Z Image Turbo VAE..."
@@ -55,6 +55,6 @@ aria2c \
 echo "All downloads completed!"
 echo ""
 echo "Files downloaded to:"
-echo "  - diffusion_models/z_image_de_turbo_v1_bf16.safetensors"
+echo "  - diffusion_models/z_image_bf16.safetensors"
 echo "  - vae/ae.safetensors"
 echo "  - text_encoders/qwen_3_4b.safetensors"
