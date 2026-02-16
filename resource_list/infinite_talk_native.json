@@ -10,8 +10,8 @@
     "type": "vae"
   },
   {
-    "name": "lightx2v_I2V_14B_480p_cfg_step_distill_rank64_bf16.safetensors",
-    "url": "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Lightx2v/lightx2v_I2V_14B_480p_cfg_step_distill_rank64_bf16.safetensors",
+    "name": "wan2.1_i2v_lora_rank64_lightx2v_4step.safetensors",
+    "url": "https://huggingface.co/lightx2v/Wan2.1-Distill-Loras/resolve/main/wan2.1_i2v_lora_rank64_lightx2v_4step.safetensors",
     "type": "loras"
   },
   {
