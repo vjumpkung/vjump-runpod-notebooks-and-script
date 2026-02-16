@@ -2,6 +2,7 @@ runpod_worker_comfy:
   base_path: /notebooks/my-runpod-volume/
   CatVTON: models/CatVTON/
   LLM: models/LLM/
+  audio_encoders: models/audio_encoders/
   animatediff_models: models/animatediff_models/
   animatediff_motion_lora: models/animatediff_motion_lora/
   checkpoints: models/ckpts/
