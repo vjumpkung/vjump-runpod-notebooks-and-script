@@ -15,8 +15,8 @@
     "type": "loras"
   },
   {
-    "name": "Wan2_1-I2V-14B-480p_fp8_e5m2_scaled_KJ.safetensors",
-    "url": "https://huggingface.co/Kijai/WanVideo_comfy_fp8_scaled/resolve/main/I2V/Wan2_1-I2V-14B-480p_fp8_e5m2_scaled_KJ.safetensors",
+    "name": "wan2.1_i2v_480p_14B_fp8_scaled.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_i2v_480p_14B_fp8_scaled.safetensors",
     "type": "diffusion_models"
   },
   {
@@ -38,5 +38,10 @@
     "name": "wav2vec2-chinese-base_fp16.safetensors",
     "url": "https://huggingface.co/Kijai/wav2vec2_safetensors/resolve/main/wav2vec2-chinese-base_fp16.safetensors",
     "type": "audio_encoders"
+  },
+  {
+    "name": "clip_vision_h.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/clip_vision/clip_vision_h.safetensors",
+    "type": "clip_vision"
   }
 ]
