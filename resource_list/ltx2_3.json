@@ -1,0 +1,27 @@
+[
+  {
+    "name": "ltx-2.3-22b-dev.safetensors",
+    "url": "https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-22b-dev.safetensors",
+    "type": "checkpoints"
+  },
+  {
+    "name": "ltx-2.3-22b-distilled-lora-384.safetensors",
+    "url": "https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-22b-distilled-lora-384.safetensors",
+    "type": "loras"
+  },
+  {
+    "name": "gemma_3_12B_it.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/ltx-2/resolve/main/split_files/text_encoders/gemma_3_12B_it.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "ltx-2.3-spatial-upscaler-x2-1.0.safetensors",
+    "url": "https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-spatial-upscaler-x2-1.0.safetensors",
+    "type": "latent_upscale_models"
+  },
+  {
+    "name": "ltx-2.3-temporal-upscaler-x2-1.0.safetensors",
+    "url": "https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-temporal-upscaler-x2-1.0.safetensors",
+    "type": "latent_upscale_models"
+  }
+]
