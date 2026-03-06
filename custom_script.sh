@@ -132,7 +132,7 @@ install_custom_nodes() {
     install_node "https://github.com/kijai/ComfyUI-MelBandRoFormer.git" "ComfyUI-MelBandRoFormer" "12/15"
     install_node "https://github.com/ClownsharkBatwing/RES4LYF.git" "RES4LYF" "13/15"
     install_node "https://github.com/Lightricks/ComfyUI-LTXVideo.git" "ComfyUI-LTXVideo" "14/15"
-    install_node "https://github.com/vjumpkung/comfyui-infinitalk-native-sampler.git" "ComfyUI-InfiniteTalk-Native-Sampler" "15/15"
+    install_node "https://github.com/vjumpkung/comfyui-infinitetalk-native-sampler.git" "comfyui-infinitetalk-native-sampler" "15/15"
 
     # Return to ComfyUI directory
     cd /notebooks/ComfyUI
