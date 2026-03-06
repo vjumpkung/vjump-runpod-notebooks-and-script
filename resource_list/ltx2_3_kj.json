@@ -30,8 +30,8 @@
     "type": "latent_upscale_models"
   },
   {
-    "name": "LTX23_audio_vae_bf16.safetensorsC",
-    "url": "https://huggingface.co/Kijai/LTX2.3_comfy/resolve/main/vae/LTX23_audio_vae_bf16.safetensorsC",
+    "name": "LTX23_audio_vae_bf16.safetensors",
+    "url": "https://huggingface.co/Kijai/LTX2.3_comfy/resolve/main/vae/LTX23_audio_vae_bf16.safetensors",
     "type": "vae"
   },
   {
