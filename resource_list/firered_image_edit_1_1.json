@@ -1,0 +1,22 @@
+[
+  {
+    "name": "FireRed-Image-Edit-1.1-transformer.safetensors",
+    "url": "https://huggingface.co/FireRedTeam/FireRed-Image-Edit-1.1-ComfyUI/resolve/main/FireRed-Image-Edit-1.1-transformer.safetensors",
+    "type": "diffusion_models"
+  },
+  {
+    "name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "qwen_image_vae.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors",
+    "type": "vae"
+  },
+  {
+    "name": "FireRed-Image-Edit-1.0-Lightning-8steps-v1.0.safetensors",
+    "url": "https://huggingface.co/FireRedTeam/FireRed-Image-Edit-1.0-ComfyUI/resolve/main/FireRed-Image-Edit-1.0-Lightning-8steps-v1.0.safetensors",
+    "type": "loras"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/HunyuanVideo_1.5_repackaged/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "clip_l.safetensors",
+    "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "kandinsky5lite_t2v_sft_5s.safetensors",
+    "url": "https://huggingface.co/kandinskylab/Kandinsky-5.0-T2V-Lite-sft-5s/resolve/main/model/kandinsky5lite_t2v_sft_5s.safetensors",
+    "type": "diffusion_models"
+  },
+  {
+    "name": "hunyuan_video_vae_bf16.safetensors",
+    "url": "https://huggingface.co/Kijai/HunyuanVideo_comfy/resolve/main/hunyuan_video_vae_bf16.safetensors",
+    "type": "vae"
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "name": "capybara_v0.1.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/HunyuanVideo_1.5_repackaged/resolve/main/split_files/diffusion_models/capybara_v0.1.safetensors",
+    "type": "diffusion_models"
+  },
+  {
+    "name": "qwen_2.5_vl_7b.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/HunyuanImage_2.1_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "byt5_small_glyphxl_fp16.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/HunyuanVideo_1.5_repackaged/resolve/main/split_files/text_encoders/byt5_small_glyphxl_fp16.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "hunyuanvideo15_vae_fp16.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/HunyuanVideo_1.5_repackaged/resolve/main/split_files/vae/hunyuanvideo15_vae_fp16.safetensors",
+    "type": "vae"
+  },
+  {
+    "name": "sigclip_vision_patch14_384.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/HunyuanVideo_1.5_repackaged/resolve/main/split_files/clip_vision/sigclip_vision_patch14_384.safetensors",
+    "type": "clip_vision"
+  }
+]
