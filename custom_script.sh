@@ -147,7 +147,7 @@ install_runpodctl() {
 
 install_additional() {
     uv pip install flatbuffers numpy packaging protobuf sympy coloredlogs onnx
-    CUDA_VER=$(nvcc --version 2>/dev/null | grep -oP 'release \K[0-9]+\.[0-9]+' | tr -d '.')
+    CUDA_VER=$(python -c "import torch; print(torch.version.cuda.replace('.', ''))" 2>/dev/null)
     if [ "$CUDA_VER" = "130" ]; then
         uv pip install https://github.com/JamePeng/llama-cpp-python/releases/download/v0.3.34-cu130-Basic-linux-20260331/llama_cpp_python-0.3.34+cu130.basic-cp312-cp312-linux_x86_64.whl
         uv pip install --pre --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/ort-cuda-13-nightly/pypi/simple/ onnxruntime-gpu
