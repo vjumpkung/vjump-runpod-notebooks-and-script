@@ -13,18 +13,15 @@ make_directory() {
 
 update_comfyui() {
     WORKSPACE="/notebooks/ComfyUI"
-    echo "Updating ComfyUI" >>$PROGRAM_LOG
+    echo "Updating ComfyUI" 
     cd $WORKSPACE
-    git fetch >>$PROGRAM_LOG
-    git pull --ff-only >>$PROGRAM_LOG
-    uv pip install -r requirements.txt >>$PROGRAM_LOG
-    echo "Update ComfyUI Completed" >>$PROGRAM_LOG
+    git fetch
+    git pull --ff-only 
+    uv pip install -r requirements.txt 
+    echo "Update ComfyUI Completed"
 }
 
 install_custom_nodes() {
-    uv pip install onnxruntime-gpu
-    uv pip install PyWavelets
-
     # Step 11: Install custom nodes using git clone
     echo ""
     echo "========================================"
@@ -145,7 +142,24 @@ start_ssh_server() {
 
 install_runpodctl() {
     # Download and install via wget
-    wget -qO- cli.runpod.net | sudo bash
+    wget -qO- cli.runpod.net | bash
+}
+
+install_additional() {
+    uv pip install flatbuffers numpy packaging protobuf sympy coloredlogs onnx
+    CUDA_VER=$(nvcc --version 2>/dev/null | grep -oP 'release \K[0-9]+\.[0-9]+' | tr -d '.')
+    if [ "$CUDA_VER" = "130" ]; then
+        uv pip install https://github.com/JamePeng/llama-cpp-python/releases/download/v0.3.34-cu130-Basic-linux-20260331/llama_cpp_python-0.3.34+cu130.basic-cp312-cp312-linux_x86_64.whl
+        uv pip install --pre --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/ort-cuda-13-nightly/pypi/simple/ onnxruntime-gpu
+    elif [ "$CUDA_VER" = "128" ]; then
+        uv pip install https://github.com/JamePeng/llama-cpp-python/releases/download/v0.3.34-cu128-Basic-linux-20260331/llama_cpp_python-0.3.34+cu128.basic-cp312-cp312-linux_x86_64.whl
+        pip install --pre --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/ORT-Nightly/pypi/simple/ onnxruntime-gpu==1.24.0.dev20260127002
+    elif [ "$CUDA_VER" = "124" ]; then
+        uv pip install https://github.com/JamePeng/llama-cpp-python/releases/download/v0.3.34-cu124-Basic-linux-20260331/llama_cpp_python-0.3.34+cu124.basic-cp312-cp312-linux_x86_64.whl
+        pip install --pre --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/ORT-Nightly/pypi/simple/ onnxruntime-gpu==1.24.0.dev20260127002
+    else
+        echo "Unsupported or unknown CUDA version: $CUDA_VER"
+    fi
 }
 
 start_ssh_server
@@ -153,4 +167,5 @@ install_runpodctl
 make_directory
 update_model_path
 update_comfyui
+install_additional
 install_custom_nodes
