@@ -151,13 +151,18 @@ install_additional() {
     CUDA_VER=$(python -c "import torch; print(torch.version.cuda.replace('.', ''))" 2>/dev/null)
     if [ "$CUDA_VER" = "130" ]; then
         uv pip install https://github.com/JamePeng/llama-cpp-python/releases/download/v0.3.34-cu130-Basic-linux-20260331/llama_cpp_python-0.3.34+cu130.basic-cp312-cp312-linux_x86_64.whl
+        uv pip install https://github.com/0xrushi/flash-attention/releases/download/v2.8.4/flash_attn-2.8.3-cp312-cp312-linux_x86_64.whl
+        uv pip install flash_attn_3 --find-links https://windreamer.github.io/flash-attention3-wheels/cu130_torch291
         uv pip install --pre --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/ort-cuda-13-nightly/pypi/simple/ onnxruntime-gpu==1.25.0.dev20260403004
     elif [ "$CUDA_VER" = "128" ]; then
         uv pip install https://github.com/JamePeng/llama-cpp-python/releases/download/v0.3.34-cu128-Basic-linux-20260331/llama_cpp_python-0.3.34+cu128.basic-cp312-cp312-linux_x86_64.whl
-        pip install --pre --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/ORT-Nightly/pypi/simple/ onnxruntime-gpu==1.24.0.dev20260127002
+        uv pip install flash_attn_3 --find-links https://windreamer.github.io/flash-attention3-wheels/cu128_torch291
+        uv pip install flash-attn==2.8.3
+        uv pip install --pre --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/ORT-Nightly/pypi/simple/ onnxruntime-gpu==1.24.0.dev20260127002
     elif [ "$CUDA_VER" = "124" ]; then
         uv pip install https://github.com/JamePeng/llama-cpp-python/releases/download/v0.3.34-cu124-Basic-linux-20260331/llama_cpp_python-0.3.34+cu124.basic-cp312-cp312-linux_x86_64.whl
-        pip install --pre --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/ORT-Nightly/pypi/simple/ onnxruntime-gpu==1.24.0.dev20260127002
+        uv pip install flash-attn==2.8.3
+        uv pip install --pre --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/ORT-Nightly/pypi/simple/ onnxruntime-gpu==1.24.0.dev20260127002
     else
         echo "Unsupported or unknown CUDA version: $CUDA_VER"
     fi
