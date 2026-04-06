@@ -147,7 +147,7 @@ install_runpodctl() {
 }
 
 install_additional() {
-    uv pip install flatbuffers numpy packaging protobuf sympy coloredlogs onnx
+    uv pip install flatbuffers numpy packaging protobuf sympy coloredlogs onnx "transformers==5.5.0"
     CUDA_VER=$(python -c "import torch; print(torch.version.cuda.replace('.', ''))" 2>/dev/null)
     if [ "$CUDA_VER" = "130" ]; then
         uv pip install https://github.com/JamePeng/llama-cpp-python/releases/download/v0.3.34-cu130-Basic-linux-20260331/llama_cpp_python-0.3.34+cu130.basic-cp312-cp312-linux_x86_64.whl
