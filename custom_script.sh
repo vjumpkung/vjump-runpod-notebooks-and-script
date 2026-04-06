@@ -166,6 +166,8 @@ install_additional() {
     else
         echo "Unsupported or unknown CUDA version: $CUDA_VER"
     fi
+    # test additional scripts
+    python3 -c "import importlib.util; [print(f'{n}: ' + (getattr(importlib.import_module(m), '__version__', 'installed') if importlib.util.find_spec(m) else 'NOT installed')) for n, m in [('sageattention', 'sageattention'), ('flash-attn v2', 'flash_attn'), ('flash-attn v3', 'flash_attn_3'), ('llama-cpp-python', 'llama_cpp')]]"
 }
 
 start_ssh_server
