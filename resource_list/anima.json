@@ -1,7 +1,7 @@
 [
   {
-    "name": "anima-preview2.safetensors",
-    "url": "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/diffusion_models/anima-preview2.safetensors",
+    "name": "anima-preview3-base.safetensors",
+    "url": "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/diffusion_models/anima-preview3-base.safetensors",
     "type": "diffusion_models"
   },
   {
