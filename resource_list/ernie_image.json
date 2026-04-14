@@ -1,0 +1,17 @@
+[
+  {
+    "name": "ernie-image.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/ERNIE-Image/resolve/main/diffusion_models/ernie-image.safetensors",
+    "type": "diffusion_models"
+  },
+  {
+    "name": "ministral-3-3b.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/ERNIE-Image/resolve/main/text_encoders/ministral-3-3b.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "flux2-vae.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/ERNIE-Image/resolve/main/vae/flux2-vae.safetensors",
+    "type": "vae"
+  }
+]
