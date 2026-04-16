@@ -170,8 +170,8 @@ install_additional() {
     python3 -c "import importlib.util; [print(f'{n}: ' + (getattr(importlib.import_module(m), '__version__', 'installed') if importlib.util.find_spec(m) else 'NOT installed')) for n, m in [('sageattention', 'sageattention'), ('flash-attn v2', 'flash_attn'), ('flash-attn v3', 'flash_attn_3'), ('llama-cpp-python', 'llama_cpp')]]"
 }
 
-start_ssh_server
-install_runpodctl
+start_ssh_server &
+install_runpodctl &
 make_directory
 update_model_path
 update_comfyui
