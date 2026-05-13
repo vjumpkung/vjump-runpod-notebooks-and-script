@@ -132,6 +132,13 @@ install_custom_nodes() {
     install_node "https://github.com/vjumpkung/comfyui-infinitetalk-native-sampler.git" "comfyui-infinitetalk-native-sampler" "15/15"
     install_node "https://github.com/vjumpkung/comfyui-vjumpkung-runpod-template-resource-manager.git" "comfyui-vjumpkung-runpod-template-resource-manager" "FRONTEND"
 
+    CUDA_VER=$(python -c "import torch; print(torch.version.cuda.replace('.', ''))" 2>/dev/null)
+    if [ "$CUDA_VER" = "130" ]; then
+        install_node "https://github.com/vjumpkung/comfyui-pixal-3d-wrapper.git" "comfyui-pixal-3d-wrapper" "3D"
+    else
+        echo "Unsupported or unknown CUDA version: $CUDA_VER"
+    fi
+
     # Return to ComfyUI directory
     cd /notebooks/ComfyUI
     echo ""
@@ -147,13 +154,19 @@ install_runpodctl() {
 }
 
 install_additional() {
-    uv pip install flatbuffers numpy packaging protobuf sympy coloredlogs onnx "transformers==5.5.0"
+    uv pip install flatbuffers numpy packaging protobuf sympy coloredlogs onnx
     CUDA_VER=$(python -c "import torch; print(torch.version.cuda.replace('.', ''))" 2>/dev/null)
     if [ "$CUDA_VER" = "130" ]; then
         uv pip install https://github.com/JamePeng/llama-cpp-python/releases/download/v0.3.34-cu130-Basic-linux-20260331/llama_cpp_python-0.3.34+cu130.basic-cp312-cp312-linux_x86_64.whl
         uv pip install https://github.com/mjun0812/flash-attention-prebuild-wheels/releases/download/v0.9.0/flash_attn-2.8.3+cu130torch2.10-cp312-cp312-linux_x86_64.whl
         uv pip install flash_attn_3 --find-links https://windreamer.github.io/flash-attention3-wheels/cu130_torch2100
         uv pip install --pre --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/ort-cuda-13-nightly/pypi/simple/ onnxruntime-gpu
+        uv pip install https://github.com/vjumpkung/vjump-runpod-notebooks-and-script/raw/refs/heads/main/trellis_2_wheels/cumesh-1.0-cp312-cp312-linux_x86_64.whl
+        uv pip install https://github.com/vjumpkung/vjump-runpod-notebooks-and-script/raw/refs/heads/main/trellis_2_wheels/flex_gemm-1.0.0-cp312-cp312-linux_x86_64.whl
+        uv pip install https://github.com/vjumpkung/vjump-runpod-notebooks-and-script/raw/refs/heads/main/trellis_2_wheels/nvdiffrast-0.4.0-cp312-cp312-linux_x86_64.whl
+        uv pip install https://github.com/vjumpkung/vjump-runpod-notebooks-and-script/raw/refs/heads/main/trellis_2_wheels/nvdiffrec_render-0.0.0-cp312-cp312-linux_x86_64.whl
+        uv pip install https://github.com/vjumpkung/vjump-runpod-notebooks-and-script/raw/refs/heads/main/trellis_2_wheels/o_voxel-0.0.1-cp312-cp312-linux_x86_64.whl
+        uv pip install natten==0.21.6+torch2100cu130 -f https://whl.natten.org
     elif [ "$CUDA_VER" = "128" ]; then
         uv pip install https://github.com/JamePeng/llama-cpp-python/releases/download/v0.3.34-cu128-Basic-linux-20260331/llama_cpp_python-0.3.34+cu128.basic-cp312-cp312-linux_x86_64.whl
         uv pip install flash_attn_3 --find-links https://windreamer.github.io/flash-attention3-wheels/cu128_torch291
