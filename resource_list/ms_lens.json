@@ -1,0 +1,17 @@
+[
+  {
+    "name": "lens_bf16.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Lens/resolve/main/diffusion_models/lens_bf16.safetensors",
+    "type": "diffusion_models"
+  },
+  {
+    "name": "gpt_oss_20b_nvfp4.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Lens/resolve/main/text_encoders/gpt_oss_20b_nvfp4.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "flux2-vae.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Lens/resolve/main/vae/flux2-vae.safetensors",
+    "type": "vae"
+  }
+]
