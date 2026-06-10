@@ -1,0 +1,7 @@
+[
+  {
+    "name": "hidream_o1_image_dev_bf16.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/HiDream-O1-Image/resolve/main/checkpoints/hidream_o1_image_dev_bf16.safetensors",
+    "type": "checkpoints"
+  }
+]
