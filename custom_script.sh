@@ -158,8 +158,7 @@ install_additional() {
     uv pip install flatbuffers numpy packaging protobuf sympy coloredlogs onnx
     CUDA_VER=$(python -c "import torch; print(torch.version.cuda.replace('.', ''))" 2>/dev/null)
     if [ "$CUDA_VER" = "130" ]; then
-        wget -O sageattention-2.2.0+cu130.torch210.sm80.86.89.120-cp312-cp312-linux_x86_64.whl https://huggingface.co/vjump21848/sageattention-pre-compiled-wheel/resolve/main/sageattention-2.2.0%2Bcu130.torch210.sm80.86.89.120-cp312-cp312-linux_x86_64.whl
-        uv pip install sageattention-2.2.0+cu130.torch210.sm80.86.89.120-cp312-cp312-linux_x86_64.whl && rm sageattention-2.2.0+cu130.torch210.sm80.86.89.120-cp312-cp312-linux_x86_64.whl
+        uv pip install https://github.com/vjumpkung/vjump-runpod-notebooks-and-script/raw/refs/heads/main/sage_wheels/sageattention-2.2.0+cu130.torch210.sm80.86.89.120-cp312-cp312-linux_x86_64.whl 
         uv pip install https://github.com/JamePeng/llama-cpp-python/releases/download/v0.3.34-cu130-Basic-linux-20260331/llama_cpp_python-0.3.34+cu130.basic-cp312-cp312-linux_x86_64.whl
         uv pip install https://github.com/mjun0812/flash-attention-prebuild-wheels/releases/download/v0.9.0/flash_attn-2.8.3+cu130torch2.10-cp312-cp312-linux_x86_64.whl
         uv pip install flash_attn_3 --find-links https://windreamer.github.io/flash-attention3-wheels/cu130_torch2100
