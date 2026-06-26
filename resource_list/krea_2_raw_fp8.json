@@ -1,0 +1,17 @@
+[
+  {
+    "name": "krea2_raw_fp8_scaled.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/diffusion_models/krea2_raw_fp8_scaled.safetensors",
+    "type": "diffusion_models"
+  },
+  {
+    "name": "qwen_image_vae.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors",
+    "type": "vae"
+  },
+  {
+    "name": "qwen3vl_4b_fp8_scaled.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Qwen3-VL/resolve/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors",
+    "type": "text_encoders"
+  }
+]
