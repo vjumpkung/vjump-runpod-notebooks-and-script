@@ -18,6 +18,7 @@ update_comfyui() {
     git fetch
     git pull --ff-only 
     uv pip install -r requirements.txt 
+    cd $WORKSPACE/custom_nodes/ComfyUI-Manager && git fetch && git pull && uv pip install -r requirements.txt && cd $WORKSPACE
     echo "Update ComfyUI Completed"
 }
 
@@ -131,7 +132,7 @@ install_custom_nodes() {
     install_node "https://github.com/Lightricks/ComfyUI-LTXVideo.git" "ComfyUI-LTXVideo" "14/15"
     install_node "https://github.com/vjumpkung/comfyui-infinitetalk-native-sampler.git" "comfyui-infinitetalk-native-sampler" "15/15"
     install_node "https://github.com/vjumpkung/comfyui-vjumpkung-runpod-template-resource-manager.git" "comfyui-vjumpkung-runpod-template-resource-manager" "FRONTEND"
-    install_node "https://github.com/vjumpkung/ComfyUI-WanAnimatePreprocess.git" "ComfyUI-WanAnimatePreprocess" "WAN ANIMATE"
+    install_node "https://github.com/kijai/ComfyUI-WanAnimatePreprocess.git" "ComfyUI-WanAnimatePreprocess" "WAN ANIMATE"
 
     CUDA_VER=$(python -c "import torch; print(torch.version.cuda.replace('.', ''))" 2>/dev/null)
     if [ "$CUDA_VER" = "130" ]; then
