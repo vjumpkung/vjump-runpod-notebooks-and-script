@@ -1,7 +1,7 @@
 [
   {
     "name": "qwen3vl_8b_fp8_scaled.safetensors",
-    "url": "https://huggingface.co/Comfy-Org/Boogu-Image/resolve/main/text_encoders/qwen3vl_8b_fp8_scaled.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Qwen3-VL/resolve/main/text_encoders/qwen3vl_8b_fp8_scaled.safetensors",
     "type": "text_encoders"
   },
   {
