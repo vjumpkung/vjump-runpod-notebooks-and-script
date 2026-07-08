@@ -1,7 +1,7 @@
 [
   {
-    "name": "krea2_turbo_fp8.safetensors",
-    "url": "https://huggingface.co/AlperKTS/Krea2_FP8/resolve/main/krea2_turbo_fp8.safetensors",
+    "name": "krea2_turbo_fp8_scaled.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/diffusion_models/krea2_turbo_fp8_scaled.safetensors",
     "type": "diffusion_models"
   },
   {
