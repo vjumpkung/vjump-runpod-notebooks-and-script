@@ -117,7 +117,7 @@ install_custom_nodes() {
 
     # Clone and install each custom node
     install_node "https://github.com/pollockjj/ComfyUI-MultiGPU.git" "ComfyUI-MultiGPU" "01/15"
-    install_node "https://github.com/city96/ComfyUI-GGUF.git" "ComfyUI-GGUF" "02/15"
+    install_node "https://github.com/molbal/ComfyUI-GGUF.git" "ComfyUI-GGUF" "02/15"
     install_node "https://github.com/kijai/ComfyUI-KJNodes.git" "ComfyUI-KJNodes" "03/15"
     install_node "https://github.com/Fannovel16/comfyui_controlnet_aux.git" "comfyui_controlnet_aux" "04/15"
     install_node "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git" "ComfyUI-VideoHelperSuite" "05/15"
