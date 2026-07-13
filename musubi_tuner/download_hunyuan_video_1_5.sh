@@ -1,105 +1,77 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-# HunyuanVideo 1.5 Model Download Script
-# Downloads HunyuanVideo 1.5 models using aria2c.
+# HunyuanVideo 1.5 Model Download Script using the Hugging Face CLI
 # DiT (t2v + i2v) and VAE are the bf16 weights from the official tencent repo
 # (the Comfy-Org repackage is fp16-only and not recommended for bf16 training).
 # Text encoders + image encoder come from the Comfy-Org repackaged repo.
 
 echo "Starting HunyuanVideo 1.5 model downloads..."
 
-# Create directories for organized storage
-mkdir -p diffusion_models
-mkdir -p vae
-mkdir -p text_encoders
-mkdir -p image_encoder
+command -v hf >/dev/null 2>&1 || {
+  echo "Error: Hugging Face CLI not found."
+  echo "Install it with: pip install -U huggingface_hub"
+  exit 1
+}
 
-# Download diffusion model (T2V DiT, bf16)
+mkdir -p diffusion_models vae text_encoders image_encoder
+
 echo "Downloading HunyuanVideo 1.5 720p T2V DiT..."
-aria2c \
-  --continue=true \
-  --max-connection-per-server=16 \
-  --split=16 \
-  --min-split-size=1M \
-  --max-concurrent-downloads=1 \
-  --file-allocation=none \
-  --summary-interval=10 \
-  --dir=./diffusion_models \
-  --out=hunyuanvideo1.5_720p_t2v.safetensors \
-  "https://huggingface.co/tencent/HunyuanVideo-1.5/resolve/main/transformer/720p_t2v/diffusion_pytorch_model.safetensors"
+dit_t2v_path="$(
+  hf download \
+    tencent/HunyuanVideo-1.5 \
+    transformer/720p_t2v/diffusion_pytorch_model.safetensors \
+    --quiet
+)"
+cp --reflink=auto "$dit_t2v_path" ./diffusion_models/hunyuanvideo1.5_720p_t2v.safetensors
 
-# Download diffusion model (I2V DiT, bf16) - only needed for --task i2v
 echo "Downloading HunyuanVideo 1.5 720p I2V DiT..."
-aria2c \
-  --continue=true \
-  --max-connection-per-server=16 \
-  --split=16 \
-  --min-split-size=1M \
-  --max-concurrent-downloads=1 \
-  --file-allocation=none \
-  --summary-interval=10 \
-  --dir=./diffusion_models \
-  --out=hunyuanvideo1.5_720p_i2v.safetensors \
-  "https://huggingface.co/tencent/HunyuanVideo-1.5/resolve/main/transformer/720p_i2v/diffusion_pytorch_model.safetensors"
+dit_i2v_path="$(
+  hf download \
+    tencent/HunyuanVideo-1.5 \
+    transformer/720p_i2v/diffusion_pytorch_model.safetensors \
+    --quiet
+)"
+cp --reflink=auto "$dit_i2v_path" ./diffusion_models/hunyuanvideo1.5_720p_i2v.safetensors
 
-# Download VAE model (bf16)
 echo "Downloading HunyuanVideo 1.5 VAE..."
-aria2c \
-  --continue=true \
-  --max-connection-per-server=16 \
-  --split=16 \
-  --min-split-size=1M \
-  --max-concurrent-downloads=1 \
-  --file-allocation=none \
-  --summary-interval=10 \
-  --dir=./vae \
-  --out=hunyuanvideo15_vae.safetensors \
-  "https://huggingface.co/tencent/HunyuanVideo-1.5/resolve/main/vae/diffusion_pytorch_model.safetensors"
+vae_path="$(
+  hf download \
+    tencent/HunyuanVideo-1.5 \
+    vae/diffusion_pytorch_model.safetensors \
+    --quiet
+)"
+cp --reflink=auto "$vae_path" ./vae/hunyuanvideo15_vae.safetensors
 
-# Download Qwen2.5-VL text encoder
 echo "Downloading Qwen2.5-VL 7B text encoder..."
-aria2c \
-  --continue=true \
-  --max-connection-per-server=16 \
-  --split=16 \
-  --min-split-size=1M \
-  --max-concurrent-downloads=1 \
-  --file-allocation=none \
-  --summary-interval=10 \
-  --dir=./text_encoders \
-  --out=qwen_2.5_vl_7b.safetensors \
-  "https://huggingface.co/Comfy-Org/HunyuanVideo_1.5_repackaged/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b.safetensors"
+encoder1_path="$(
+  hf download \
+    Comfy-Org/HunyuanVideo_1.5_repackaged \
+    split_files/text_encoders/qwen_2.5_vl_7b.safetensors \
+    --quiet
+)"
+cp --reflink=auto "$encoder1_path" ./text_encoders/qwen_2.5_vl_7b.safetensors
 
-# Download ByT5 text encoder
 echo "Downloading ByT5 small (glyph) text encoder..."
-aria2c \
-  --continue=true \
-  --max-connection-per-server=16 \
-  --split=16 \
-  --min-split-size=1M \
-  --max-concurrent-downloads=1 \
-  --file-allocation=none \
-  --summary-interval=10 \
-  --dir=./text_encoders \
-  --out=byt5_small_glyphxl_fp16.safetensors \
-  "https://huggingface.co/Comfy-Org/HunyuanVideo_1.5_repackaged/resolve/main/split_files/text_encoders/byt5_small_glyphxl_fp16.safetensors"
+encoder2_path="$(
+  hf download \
+    Comfy-Org/HunyuanVideo_1.5_repackaged \
+    split_files/text_encoders/byt5_small_glyphxl_fp16.safetensors \
+    --quiet
+)"
+cp --reflink=auto "$encoder2_path" ./text_encoders/byt5_small_glyphxl_fp16.safetensors
 
-# Download SigLIP image encoder (only needed for --task i2v)
 echo "Downloading SigLIP image encoder..."
-aria2c \
-  --continue=true \
-  --max-connection-per-server=16 \
-  --split=16 \
-  --min-split-size=1M \
-  --max-concurrent-downloads=1 \
-  --file-allocation=none \
-  --summary-interval=10 \
-  --dir=./image_encoder \
-  --out=sigclip_vision_patch14_384.safetensors \
-  "https://huggingface.co/Comfy-Org/HunyuanVideo_1.5_repackaged/resolve/main/split_files/clip_vision/sigclip_vision_patch14_384.safetensors"
+image_encoder_path="$(
+  hf download \
+    Comfy-Org/HunyuanVideo_1.5_repackaged \
+    split_files/clip_vision/sigclip_vision_patch14_384.safetensors \
+    --quiet
+)"
+cp --reflink=auto "$image_encoder_path" ./image_encoder/sigclip_vision_patch14_384.safetensors
 
 echo "All downloads completed!"
-echo ""
+echo
 echo "Files downloaded to:"
 echo "  - diffusion_models/hunyuanvideo1.5_720p_t2v.safetensors"
 echo "  - diffusion_models/hunyuanvideo1.5_720p_i2v.safetensors"

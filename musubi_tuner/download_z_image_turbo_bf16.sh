@@ -1,60 +1,48 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-# Z Image Turbo Model Download Script
-# Downloads Z Image Turbo ComfyUI models using aria2c
+# Z Image Turbo Model Download Script using the Hugging Face CLI
 
 echo "Starting Z Image Turbo model downloads..."
 
-# Create directories for organized storage
-mkdir -p diffusion_models
-mkdir -p vae
-mkdir -p text_encoders
+command -v hf >/dev/null 2>&1 || {
+  echo "Error: Hugging Face CLI not found."
+  echo "Install it with: pip install -U huggingface_hub"
+  exit 1
+}
 
-# Download diffusion model
+mkdir -p diffusion_models vae text_encoders
+
 echo "Downloading Z Image Turbo model..."
-aria2c \
-  --continue=true \
-  --max-connection-per-server=16 \
-  --split=16 \
-  --min-split-size=1M \
-  --max-concurrent-downloads=1 \
-  --file-allocation=none \
-  --summary-interval=10 \
-  --dir=./diffusion_models \
-  --out=z_image_de_turbo_v1_bf16.safetensors \
-  "https://huggingface.co/ostris/Z-Image-De-Turbo/resolve/main/z_image_de_turbo_v1_bf16.safetensors"
+dit_path="$(
+  hf download \
+    Comfy-Org/z_image_turbo \
+    split_files/diffusion_models/z_image_turbo_bf16.safetensors \
+    --quiet
+)"
+cp --reflink=auto "$dit_path" ./diffusion_models/z_image_turbo_bf16.safetensors
 
-# Download VAE model
 echo "Downloading Z Image Turbo VAE..."
-aria2c \
-  --continue=true \
-  --max-connection-per-server=16 \
-  --split=16 \
-  --min-split-size=1M \
-  --max-concurrent-downloads=1 \
-  --file-allocation=none \
-  --summary-interval=10 \
-  --dir=./vae \
-  --out=ae.safetensors \
-  "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors"
+vae_path="$(
+  hf download \
+    Comfy-Org/z_image_turbo \
+    split_files/vae/ae.safetensors \
+    --quiet
+)"
+cp --reflink=auto "$vae_path" ./vae/ae.safetensors
 
-# Download QWEN text encoder
 echo "Downloading QWEN 3 4B encoder..."
-aria2c \
-  --continue=true \
-  --max-connection-per-server=16 \
-  --split=16 \
-  --min-split-size=1M \
-  --max-concurrent-downloads=1 \
-  --file-allocation=none \
-  --summary-interval=10 \
-  --dir=./text_encoders \
-  --out=qwen_3_4b.safetensors \
-  "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors"
+encoder_path="$(
+  hf download \
+    Comfy-Org/z_image_turbo \
+    split_files/text_encoders/qwen_3_4b.safetensors \
+    --quiet
+)"
+cp --reflink=auto "$encoder_path" ./text_encoders/qwen_3_4b.safetensors
 
 echo "All downloads completed!"
-echo ""
+echo
 echo "Files downloaded to:"
-echo "  - diffusion_models/z_image_de_turbo_v1_bf16.safetensors"
+echo "  - diffusion_models/z_image_turbo_bf16.safetensors"
 echo "  - vae/ae.safetensors"
 echo "  - text_encoders/qwen_3_4b.safetensors"

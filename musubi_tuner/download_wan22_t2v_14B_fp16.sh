@@ -1,73 +1,53 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-# Wan 2.2 Model Download Script
-# Downloads Wan 2.2 ComfyUI models using aria2c
+# Wan 2.2 Model Download Script using the Hugging Face CLI
 
 echo "Starting Wan 2.2 T2V model downloads..."
 
-# Create directories for organized storage
-mkdir -p diffusion_models
-mkdir -p vae
-mkdir -p text_encoders
+command -v hf >/dev/null 2>&1 || {
+  echo "Error: Hugging Face CLI not found."
+  echo "Install it with: pip install -U huggingface_hub"
+  exit 1
+}
 
-# Download diffusion model (main T2V model)
+mkdir -p diffusion_models vae text_encoders
+
 echo "Downloading Wan 2.2 T2V Low 14B model..."
-aria2c \
-  --continue=true \
-  --max-connection-per-server=16 \
-  --split=16 \
-  --min-split-size=1M \
-  --max-concurrent-downloads=1 \
-  --file-allocation=none \
-  --summary-interval=10 \
-  --dir=./diffusion_models \
-  --out=wan2.2_t2v_low_noise_14B_fp16.safetensors \
-  "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_t2v_low_noise_14B_fp16.safetensors?download=true"
-  
-# Download diffusion model (main T2V model)
-echo "Downloading Wan 2.2 T2V High 14B model..."
-aria2c \
-  --continue=true \
-  --max-connection-per-server=16 \
-  --split=16 \
-  --min-split-size=1M \
-  --max-concurrent-downloads=1 \
-  --file-allocation=none \
-  --summary-interval=10 \
-  --dir=./diffusion_models \
-  --out=wan2.2_t2v_high_noise_14B_fp16.safetensors \
-  "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_t2v_high_noise_14B_fp16.safetensors?download=true"
-  
-# Download VAE model
-echo "Downloading Wan 2.1 VAE..."
-aria2c \
-  --continue=true \
-  --max-connection-per-server=16 \
-  --split=16 \
-  --min-split-size=1M \
-  --max-concurrent-downloads=1 \
-  --file-allocation=none \
-  --summary-interval=10 \
-  --dir=./vae \
-  --out=wan_2.1_vae.safetensors \
-  "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors"
+dit_low_path="$(
+  hf download \
+    Comfy-Org/Wan_2.2_ComfyUI_Repackaged \
+    split_files/diffusion_models/wan2.2_t2v_low_noise_14B_fp16.safetensors \
+    --quiet
+)"
+cp --reflink=auto "$dit_low_path" ./diffusion_models/wan2.2_t2v_low_noise_14B_fp16.safetensors
 
-# Download T5 text encoder
+echo "Downloading Wan 2.2 T2V High 14B model..."
+dit_high_path="$(
+  hf download \
+    Comfy-Org/Wan_2.2_ComfyUI_Repackaged \
+    split_files/diffusion_models/wan2.2_t2v_high_noise_14B_fp16.safetensors \
+    --quiet
+)"
+cp --reflink=auto "$dit_high_path" ./diffusion_models/wan2.2_t2v_high_noise_14B_fp16.safetensors
+
+echo "Downloading Wan 2.1 VAE..."
+vae_path="$(
+  hf download \
+    Comfy-Org/Wan_2.1_ComfyUI_repackaged \
+    split_files/vae/wan_2.1_vae.safetensors \
+    --quiet
+)"
+cp --reflink=auto "$vae_path" ./vae/wan_2.1_vae.safetensors
+
 echo "Downloading T5 UMT5-XXL encoder..."
-aria2c \
-  --continue=true \
-  --max-connection-per-server=16 \
-  --split=16 \
-  --min-split-size=1M \
-  --max-concurrent-downloads=1 \
-  --file-allocation=none \
-  --summary-interval=10 \
-  --dir=./text_encoders \
-  --out=models_t5_umt5-xxl-enc-bf16.pth \
-  "https://huggingface.co/Wan-AI/Wan2.1-I2V-14B-480P/resolve/main/models_t5_umt5-xxl-enc-bf16.pth"
+hf download \
+  Wan-AI/Wan2.1-I2V-14B-480P \
+  models_t5_umt5-xxl-enc-bf16.pth \
+  --local-dir ./text_encoders
 
 echo "All downloads completed!"
-echo ""
+echo
 echo "Files downloaded to:"
 echo "  - diffusion_models/wan2.2_t2v_high_noise_14B_fp16.safetensors"
 echo "  - diffusion_models/wan2.2_t2v_low_noise_14B_fp16.safetensors"

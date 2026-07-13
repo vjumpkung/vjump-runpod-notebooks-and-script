@@ -30,7 +30,7 @@ one_frame=true
 
 # load diffusion model, t5 and vae
 # NOTE: one-frame uses Wan2.1 I2V-14B / FLF2V-14B weights (no CLIP needed).
-dit="./diffusion_models/wan2.1_i2v_14B_fp16.safetensors" # Wan2.1 I2V-14B (or FLF2V-14B)
+dit="./diffusion_models/wan2.1_i2v_480p_14B_fp16.safetensors" # Wan2.1 I2V-14B (or FLF2V-14B)
 vae="./vae/wan_2.1_vae.safetensors" # Wan2.1 VAE
 t5="./text_encoders/models_t5_umt5-xxl-enc-bf16.pth" # UMT5-XXL
 

@@ -1,75 +1,58 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-# HunyuanVideo Model Download Script
-# Downloads HunyuanVideo models using aria2c.
+# HunyuanVideo Model Download Script using the Hugging Face CLI
 # DiT and VAE come from the official tencent repo (.pt); text encoders from the
 # Comfy-Org repackaged repo (.safetensors).
 
 echo "Starting HunyuanVideo model downloads..."
 
-# Create directories for organized storage
-mkdir -p diffusion_models
-mkdir -p vae
-mkdir -p text_encoders
+command -v hf >/dev/null 2>&1 || {
+  echo "Error: Hugging Face CLI not found."
+  echo "Install it with: pip install -U huggingface_hub"
+  exit 1
+}
 
-# Download diffusion model (DiT, official .pt)
+mkdir -p diffusion_models vae text_encoders
+
 echo "Downloading HunyuanVideo DiT (mp_rank_00_model_states.pt)..."
-aria2c \
-  --continue=true \
-  --max-connection-per-server=16 \
-  --split=16 \
-  --min-split-size=1M \
-  --max-concurrent-downloads=1 \
-  --file-allocation=none \
-  --summary-interval=10 \
-  --dir=./diffusion_models \
-  --out=mp_rank_00_model_states.pt \
-  "https://huggingface.co/tencent/HunyuanVideo/resolve/main/hunyuan-video-t2v-720p/transformers/mp_rank_00_model_states.pt"
+dit_path="$(
+  hf download \
+    tencent/HunyuanVideo \
+    hunyuan-video-t2v-720p/transformers/mp_rank_00_model_states.pt \
+    --quiet
+)"
+cp --reflink=auto "$dit_path" ./diffusion_models/mp_rank_00_model_states.pt
 
-# Download VAE model (official .pt)
 echo "Downloading HunyuanVideo VAE (pytorch_model.pt)..."
-aria2c \
-  --continue=true \
-  --max-connection-per-server=16 \
-  --split=16 \
-  --min-split-size=1M \
-  --max-concurrent-downloads=1 \
-  --file-allocation=none \
-  --summary-interval=10 \
-  --dir=./vae \
-  --out=pytorch_model.pt \
-  "https://huggingface.co/tencent/HunyuanVideo/resolve/main/hunyuan-video-t2v-720p/vae/pytorch_model.pt"
+vae_path="$(
+  hf download \
+    tencent/HunyuanVideo \
+    hunyuan-video-t2v-720p/vae/pytorch_model.pt \
+    --quiet
+)"
+cp --reflink=auto "$vae_path" ./vae/pytorch_model.pt
 
-# Download LLaVA-LLaMA3 text encoder (text_encoder1)
 echo "Downloading LLaVA-LLaMA3 text encoder..."
-aria2c \
-  --continue=true \
-  --max-connection-per-server=16 \
-  --split=16 \
-  --min-split-size=1M \
-  --max-concurrent-downloads=1 \
-  --file-allocation=none \
-  --summary-interval=10 \
-  --dir=./text_encoders \
-  --out=llava_llama3_fp16.safetensors \
-  "https://huggingface.co/Comfy-Org/HunyuanVideo_repackaged/resolve/main/split_files/text_encoders/llava_llama3_fp16.safetensors"
+encoder1_path="$(
+  hf download \
+    Comfy-Org/HunyuanVideo_repackaged \
+    split_files/text_encoders/llava_llama3_fp16.safetensors \
+    --quiet
+)"
+cp --reflink=auto "$encoder1_path" ./text_encoders/llava_llama3_fp16.safetensors
 
-# Download CLIP-L text encoder (text_encoder2)
 echo "Downloading CLIP-L text encoder..."
-aria2c \
-  --continue=true \
-  --max-connection-per-server=16 \
-  --split=16 \
-  --min-split-size=1M \
-  --max-concurrent-downloads=1 \
-  --file-allocation=none \
-  --summary-interval=10 \
-  --dir=./text_encoders \
-  --out=clip_l.safetensors \
-  "https://huggingface.co/Comfy-Org/HunyuanVideo_repackaged/resolve/main/split_files/text_encoders/clip_l.safetensors"
+encoder2_path="$(
+  hf download \
+    Comfy-Org/HunyuanVideo_repackaged \
+    split_files/text_encoders/clip_l.safetensors \
+    --quiet
+)"
+cp --reflink=auto "$encoder2_path" ./text_encoders/clip_l.safetensors
 
 echo "All downloads completed!"
-echo ""
+echo
 echo "Files downloaded to:"
 echo "  - diffusion_models/mp_rank_00_model_states.pt"
 echo "  - vae/pytorch_model.pt"
