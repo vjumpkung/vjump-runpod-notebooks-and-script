@@ -1,0 +1,17 @@
+[
+  {
+    "name": "mage_flow_edit_bf16.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Mage-Flow/resolve/main/diffusion_models/mage_flow_edit_bf16.safetensors",
+    "type": "diffusion_models"
+  },
+  {
+    "name": "qwen_image_vae.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors",
+    "type": "vae"
+  },
+  {
+    "name": "qwen3vl_4b_bf16.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Mage-Flow/resolve/main/text_encoders/qwen3vl_4b_bf16.safetensors",
+    "type": "text_encoders"
+  }
+]
