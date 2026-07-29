@@ -5,8 +5,8 @@
     "type": "diffusion_models"
   },
   {
-    "name": "qwen_image_vae.safetensors",
-    "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors",
+    "name": "mage_flow_vae_bf16.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Mage-Flow/resolve/main/vae/mage_flow_vae_bf16.safetensors",
     "type": "vae"
   },
   {
