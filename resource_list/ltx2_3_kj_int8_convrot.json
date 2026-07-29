@@ -1,0 +1,42 @@
+[
+  {
+    "name": "ltx-2.3-22b-dev_transformer_only_int8_convrot.safetensors",
+    "url": "https://huggingface.co/Kijai/LTX2.3_comfy/resolve/main/diffusion_models/ltx-2.3-22b-dev_transformer_only_int8_convrot.safetensors",
+    "type": "diffusion_models"
+  },
+  {
+    "name": "ltx-2.3-22b-distilled-lora-384-1.1.safetensors",
+    "url": "https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-22b-distilled-lora-384-1.1.safetensors",
+    "type": "loras"
+  },
+  {
+    "name": "gemma_3_12B_it.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/ltx-2/resolve/main/split_files/text_encoders/gemma_3_12B_it.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "ltx-2.3_text_projection_bf16.safetensors",
+    "url": "https://huggingface.co/Kijai/LTX2.3_comfy/resolve/main/text_encoders/ltx-2.3_text_projection_bf16.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "ltx-2.3-spatial-upscaler-x2-1.1.safetensors",
+    "url": "https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-spatial-upscaler-x2-1.1.safetensors",
+    "type": "latent_upscale_models"
+  },
+  {
+    "name": "ltx-2.3-temporal-upscaler-x2-1.0.safetensors",
+    "url": "https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-temporal-upscaler-x2-1.0.safetensors",
+    "type": "latent_upscale_models"
+  },
+  {
+    "name": "LTX23_audio_vae_bf16.safetensors",
+    "url": "https://huggingface.co/Kijai/LTX2.3_comfy/resolve/main/vae/LTX23_audio_vae_bf16.safetensors",
+    "type": "vae"
+  },
+  {
+    "name": "LTX23_video_vae_bf16.safetensors",
+    "url": "https://huggingface.co/Kijai/LTX2.3_comfy/resolve/main/vae/LTX23_video_vae_bf16.safetensors",
+    "type": "vae"
+  }
+]

@@ -1,0 +1,7 @@
+[
+  {
+    "name": "hidream_o1_image_int8-convrot.safetensors",
+    "url": "https://huggingface.co/obsxrver/ComfyUI-Native-INT8_ConvRot/resolve/main/checkpoints/hidream_o1_image_int8-convrot.safetensors",
+    "type": "checkpoints"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "wan_2.1_vae",
+    "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors",
+    "type": "vae"
+  },
+  {
+    "name": "umt5_xxl_fp8_e4m3fn_scaled",
+    "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "WAN2.1-t2v-14B-int8-ConvRot.safetensors",
+    "url": "https://huggingface.co/Skydexter/WAN-2.1-14B-int8-ConvRot/resolve/main/WAN2.1-t2v-14B-int8-ConvRot.safetensors",
+    "type": "diffusion_models"
+  },
+  {
+    "name": "wan2.1_t2v_14b_lora_rank64_lightx2v_4step.safetensors",
+    "url": "https://huggingface.co/lightx2v/Wan2.1-Distill-Loras/resolve/main/wan2.1_t2v_14b_lora_rank64_lightx2v_4step.safetensors",
+    "type": "loras"
+  }
+]
