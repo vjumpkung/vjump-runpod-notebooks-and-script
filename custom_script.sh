@@ -129,7 +129,7 @@ install_custom_nodes() {
     install_node "https://github.com/1038lab/ComfyUI-QwenVL.git" "ComfyUI-QwenVL" "11/15"
     install_node "https://github.com/kijai/ComfyUI-MelBandRoFormer.git" "ComfyUI-MelBandRoFormer" "12/15"
     install_node "https://github.com/ClownsharkBatwing/RES4LYF.git" "RES4LYF" "13/15"
-    install_node "https://github.com/Lightricks/ComfyUI-LTXVideo.git" "ComfyUI-LTXVideo" "14/15"
+    install_node "https://github.com/kijai/ComfyUI-SolAttn_triton.git" "ComfyUI-SolAttn_triton" "14/15"
     install_node "https://github.com/vjumpkung/comfyui-infinitetalk-native-sampler.git" "comfyui-infinitetalk-native-sampler" "15/15"
     install_node "https://github.com/vjumpkung/comfyui-vjumpkung-runpod-template-resource-manager.git" "comfyui-vjumpkung-runpod-template-resource-manager" "FRONTEND"
     install_node "https://github.com/kijai/ComfyUI-WanAnimatePreprocess.git" "ComfyUI-WanAnimatePreprocess" "WAN ANIMATE"
