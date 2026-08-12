@@ -23,31 +23,6 @@ update_comfyui() {
 }
 
 install_custom_nodes() {
-    # Step 11: Install custom nodes using git clone
-    echo ""
-    echo "========================================"
-    echo "   Installing Custom Nodes (14 nodes)   "
-    echo "========================================"
-    echo "This may take several minutes..."
-    echo ""
-    echo "Custom Nodes to be installed:"
-    echo "  ComfyUI-MultiGPU        "
-    echo "  ComfyUI-GGUF            "
-    echo "  ComfyUI-KJNodes         "
-    echo "  comfyui_controlnet_aux  "
-    echo "  ComfyUI-VideoHelperSuite"
-    echo "  rgthree-comfy           "
-    echo "  ComfyUI-Crystools       "
-    echo "  ComfyUI-WanVideoWrapper "
-    echo "  ComfyUI-Custom-Scripts  "
-    echo "  was-node-suite-comfyui  "
-    echo "  ComfyUI-QwenVL          "
-    echo "  ComfyUI-MelBandRoFormer "
-    echo "  RES4LYF                 "
-    echo "  ComfyUI-LTXVideo        "
-    echo "  ComfyUI-InfiniteTalk-Native-Sampler by VJUMPKUNG "
-    echo ""
-
     # Navigate to custom_nodes directory
     cd /notebooks/ComfyUI/custom_nodes || {
         echo "Error: Failed to enter custom_nodes directory"
@@ -133,6 +108,8 @@ install_custom_nodes() {
     install_node "https://github.com/vjumpkung/comfyui-infinitetalk-native-sampler.git" "comfyui-infinitetalk-native-sampler" "15/15"
     install_node "https://github.com/vjumpkung/comfyui-vjumpkung-runpod-template-resource-manager.git" "comfyui-vjumpkung-runpod-template-resource-manager" "FRONTEND"
     install_node "https://github.com/kijai/ComfyUI-WanAnimatePreprocess.git" "ComfyUI-WanAnimatePreprocess" "WAN ANIMATE"
+    install_node "https://github.com/vjumpkung/comfyui-wan-animate-2-loop-sampler.git" "comfyui-wan-animate-2-loop-sampler" "WAN ANIMATE 2 LOOP SAMPLER"
+    install_node "https://github.com/vjumpkung/comfyui-scail-2-loop-sampler.git" "comfyui-scail-2-loop-sampler" "SCAIL-2 LOOP SAMPLER"
 
     # CUDA_VER=$(python -c "import torch; print(torch.version.cuda.replace('.', ''))" 2>/dev/null)
     # if [ "$CUDA_VER" = "130" ]; then
