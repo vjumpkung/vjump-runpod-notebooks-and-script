@@ -17,7 +17,7 @@ runpod_worker_comfy:
   embeddings: models/embeddings/
   facedetection: models/facedetection/
   facerestore_models: models/facerestore_models/
-  geometry_estimation: moddels/geometry_estimation/
+  geometry_estimation: models/geometry_estimation/
   gligen: models/gligen/
   grounding-dino: models/grounding-dino/
   hypernetworks: models/hypernetworks/
