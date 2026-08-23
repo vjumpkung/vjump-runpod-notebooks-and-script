@@ -1,0 +1,22 @@
+[
+  {
+    "name": "trellis_2_int8_convrot.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/TRELLIS.2/resolve/main/diffusion_models/trellis_2_int8_convrot.safetensors",
+    "type": "diffusion_models"
+  },
+  {
+    "name": "dino_v3_vit_l.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/TRELLIS.2/resolve/main/clip_vision/dino_v3_vit_l.safetensors",
+    "type": "clip_vision"
+  },
+  {
+    "name": "trellis_2_shape_vae_bf16.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/TRELLIS.2/resolve/main/vae/trellis_2_shape_vae_bf16.safetensors",
+    "type": "vae"
+  },
+  {
+    "name": "trellis_2_texture_vae_bf16.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/TRELLIS.2/resolve/main/vae/trellis_2_texture_vae_bf16.safetensors",
+    "type": "vae"
+  }
+]

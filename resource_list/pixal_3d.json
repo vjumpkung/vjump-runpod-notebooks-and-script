@@ -1,0 +1,22 @@
+[
+  {
+    "name": "pixal3d_int8_convrot.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Pixal3D/resolve/main/diffusion_models/pixal3d_int8_convrot.safetensors",
+    "type": "diffusion_models"
+  },
+  {
+    "name": "dino_v3_L_naf_fp32.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Pixal3D/resolve/main/clip_vision/dino_v3_L_naf_fp32.safetensors",
+    "type": "clip_vision"
+  },
+  {
+    "name": "trellis_2_shape_vae_bf16.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Pixal3D/resolve/main/vae/trellis_2_shape_vae_bf16.safetensors",
+    "type": "vae"
+  },
+  {
+    "name": "trellis_2_texture_vae_bf16.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Pixal3D/resolve/main/vae/trellis_2_texture_vae_bf16.safetensors",
+    "type": "vae"
+  }
+]
