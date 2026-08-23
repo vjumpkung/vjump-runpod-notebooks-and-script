@@ -1,5 +1,6 @@
 runpod_worker_comfy:
   base_path: /notebooks/my-runpod-volume/
+  background_removal: models/background_removal/
   CatVTON: models/CatVTON/
   LLM: models/LLM/
   audio_encoders: models/audio_encoders/
@@ -16,6 +17,7 @@ runpod_worker_comfy:
   embeddings: models/embeddings/
   facedetection: models/facedetection/
   facerestore_models: models/facerestore_models/
+  geometry_estimation: moddels/geometry_estimation/
   gligen: models/gligen/
   grounding-dino: models/grounding-dino/
   hypernetworks: models/hypernetworks/
