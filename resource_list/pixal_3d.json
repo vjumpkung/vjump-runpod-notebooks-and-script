@@ -18,5 +18,15 @@
     "name": "trellis_2_texture_vae_bf16.safetensors",
     "url": "https://huggingface.co/Comfy-Org/Pixal3D/resolve/main/vae/trellis_2_texture_vae_bf16.safetensors",
     "type": "vae"
+  },
+  {
+    "name": "moge_2_vitl_normal_fp16.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/MoGe/resolve/main/geometry_estimation/moge_2_vitl_normal_fp16.safetensors",
+    "type": "geometry_estimation"
+  },
+  {
+    "name": "birefnet.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/BiRefNet/blob/main/background_removal/birefnet.safetensors",
+    "type": "background_removal"
   }
 ]

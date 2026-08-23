@@ -18,5 +18,10 @@
     "name": "trellis_2_texture_vae_bf16.safetensors",
     "url": "https://huggingface.co/Comfy-Org/TRELLIS.2/resolve/main/vae/trellis_2_texture_vae_bf16.safetensors",
     "type": "vae"
+  },
+  {
+    "name": "birefnet.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/BiRefNet/blob/main/background_removal/birefnet.safetensors",
+    "type": "background_removal"
   }
 ]
