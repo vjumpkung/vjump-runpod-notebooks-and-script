@@ -1,0 +1,12 @@
+[
+  {
+    "name": "SenseNova-U1.5-8B-MoT-BF16-T8.safetensors",
+    "url": "https://huggingface.co/t8star/SenseNova-U1.5-Comfy/resolve/main/SenseNova-U1.5-8B-MoT-BF16-T8.safetensors",
+    "type": "checkpoints"
+  },
+  {
+    "name": "SenseNova-U1.5-8B-MoT-LoRA-8step-ComfyUI.safetensors",
+    "url": "https://huggingface.co/t8star/SenseNova-U1.5-Comfy/resolve/main/SenseNova-U1.5-8B-MoT-LoRA-8step-ComfyUI.safetensors",
+    "type": "loras"
+  }
+]
