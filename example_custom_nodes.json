@@ -1,0 +1,24 @@
+{
+  "urls": [
+    "https://github.com/pollockjj/ComfyUI-MultiGPU.git",
+    "https://github.com/molbal/ComfyUI-GGUF.git",
+    "https://github.com/kijai/ComfyUI-KJNodes.git",
+    "https://github.com/Fannovel16/comfyui_controlnet_aux.git",
+    "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git",
+    "https://github.com/rgthree/rgthree-comfy.git",
+    "https://github.com/crystian/ComfyUI-Crystools.git",
+    "https://github.com/kijai/ComfyUI-WanVideoWrapper.git",
+    "https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git",
+    "https://github.com/ltdrdata/was-node-suite-comfyui.git",
+    "https://github.com/1038lab/ComfyUI-QwenVL.git",
+    "https://github.com/kijai/ComfyUI-MelBandRoFormer.git",
+    "https://github.com/ClownsharkBatwing/RES4LYF.git",
+    "https://github.com/kijai/ComfyUI-SolAttn_triton.git",
+    "https://github.com/vjumpkung/comfyui-infinitetalk-native-sampler.git",
+    "https://github.com/vjumpkung/comfyui-vjumpkung-runpod-template-resource-manager.git",
+    "https://github.com/kijai/ComfyUI-WanAnimatePreprocess.git",
+    "https://github.com/vjumpkung/comfyui-wan-animate-2-loop-sampler.git",
+    "https://github.com/vjumpkung/comfyui-scail-2-loop-sampler.git",
+    "https://github.com/kijai/ComfyUI-MemoryVisualization.git"
+  ]
+}

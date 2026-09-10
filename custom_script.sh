@@ -1,6 +1,32 @@
 #!/bin/bash
 
-export COMFYUI_CUSTOM_NODES_LIST=${COMFYUI_CUSTOM_NODES_LIST:-""}
+# Set COMFYUI_CUSTOM_NODES_LIST in RunPod to override this default. It accepts
+# the same JSON payload as POST /api/install_custom_node. See
+# example_custom_nodes.json for a copyable example.
+DEFAULT_COMFYUI_CUSTOM_NODES_LIST='{
+    "urls": [
+        "https://github.com/pollockjj/ComfyUI-MultiGPU.git",
+        "https://github.com/molbal/ComfyUI-GGUF.git",
+        "https://github.com/kijai/ComfyUI-KJNodes.git",
+        "https://github.com/Fannovel16/comfyui_controlnet_aux.git",
+        "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git",
+        "https://github.com/rgthree/rgthree-comfy.git",
+        "https://github.com/crystian/ComfyUI-Crystools.git",
+        "https://github.com/kijai/ComfyUI-WanVideoWrapper.git",
+        "https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git",
+        "https://github.com/ltdrdata/was-node-suite-comfyui.git",
+        "https://github.com/1038lab/ComfyUI-QwenVL.git",
+        "https://github.com/kijai/ComfyUI-MelBandRoFormer.git",
+        "https://github.com/ClownsharkBatwing/RES4LYF.git",
+        "https://github.com/kijai/ComfyUI-SolAttn_triton.git",
+        "https://github.com/vjumpkung/comfyui-infinitetalk-native-sampler.git",
+        "https://github.com/vjumpkung/comfyui-vjumpkung-runpod-template-resource-manager.git",
+        "https://github.com/kijai/ComfyUI-WanAnimatePreprocess.git",
+        "https://github.com/vjumpkung/comfyui-wan-animate-2-loop-sampler.git",
+        "https://github.com/vjumpkung/comfyui-scail-2-loop-sampler.git"
+    ]
+}'
+export COMFYUI_CUSTOM_NODES_LIST="${COMFYUI_CUSTOM_NODES_LIST:-$DEFAULT_COMFYUI_CUSTOM_NODES_LIST}"
 
 update_model_path() {
     curl -s https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/extra_model_paths.yaml >/notebooks/ComfyUI/extra_model_paths.yaml
@@ -90,33 +116,71 @@ install_custom_nodes() {
         cd ..
     }
 
-    # Clone and install each custom node
-    install_node "https://github.com/pollockjj/ComfyUI-MultiGPU.git" "ComfyUI-MultiGPU" "01/15"
-    install_node "https://github.com/molbal/ComfyUI-GGUF.git" "ComfyUI-GGUF" "02/15"
-    install_node "https://github.com/kijai/ComfyUI-KJNodes.git" "ComfyUI-KJNodes" "03/15"
-    install_node "https://github.com/Fannovel16/comfyui_controlnet_aux.git" "comfyui_controlnet_aux" "04/15"
-    install_node "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git" "ComfyUI-VideoHelperSuite" "05/15"
-    install_node "https://github.com/rgthree/rgthree-comfy.git" "rgthree-comfy" "06/15"
-    install_node "https://github.com/crystian/ComfyUI-Crystools.git" "ComfyUI-Crystools" "07/15"
-    install_node "https://github.com/kijai/ComfyUI-WanVideoWrapper.git" "ComfyUI-WanVideoWrapper" "08/15"
-    install_node "https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git" "ComfyUI-Custom-Scripts" "09/15"
-    install_node "https://github.com/ltdrdata/was-node-suite-comfyui.git" "was-node-suite-comfyui" "10/15"
-    install_node "https://github.com/1038lab/ComfyUI-QwenVL.git" "ComfyUI-QwenVL" "11/15"
-    install_node "https://github.com/kijai/ComfyUI-MelBandRoFormer.git" "ComfyUI-MelBandRoFormer" "12/15"
-    install_node "https://github.com/ClownsharkBatwing/RES4LYF.git" "RES4LYF" "13/15"
-    install_node "https://github.com/kijai/ComfyUI-SolAttn_triton.git" "ComfyUI-SolAttn_triton" "14/15"
-    install_node "https://github.com/vjumpkung/comfyui-infinitetalk-native-sampler.git" "comfyui-infinitetalk-native-sampler" "15/15"
-    install_node "https://github.com/vjumpkung/comfyui-vjumpkung-runpod-template-resource-manager.git" "comfyui-vjumpkung-runpod-template-resource-manager" "FRONTEND"
-    install_node "https://github.com/kijai/ComfyUI-WanAnimatePreprocess.git" "ComfyUI-WanAnimatePreprocess" "WAN ANIMATE"
-    install_node "https://github.com/vjumpkung/comfyui-wan-animate-2-loop-sampler.git" "comfyui-wan-animate-2-loop-sampler" "WAN ANIMATE 2 LOOP SAMPLER"
-    install_node "https://github.com/vjumpkung/comfyui-scail-2-loop-sampler.git" "comfyui-scail-2-loop-sampler" "SCAIL-2 LOOP SAMPLER"
+    local PARSED_NODES
+    if ! PARSED_NODES="$(python3 <<'PY'
+import json
+import os
+import re
+import sys
+from urllib.parse import unquote, urlsplit
 
-    # CUDA_VER=$(python -c "import torch; print(torch.version.cuda.replace('.', ''))" 2>/dev/null)
-    # if [ "$CUDA_VER" = "130" ]; then
-    #     install_node "https://github.com/vjumpkung/comfyui-pixal-3d-wrapper.git" "comfyui-pixal-3d-wrapper" "3D"
-    # else
-    #     echo "Unsupported or unknown CUDA version: $CUDA_VER"
-    # fi
+try:
+    payload = json.loads(os.environ["COMFYUI_CUSTOM_NODES_LIST"])
+except (KeyError, json.JSONDecodeError) as error:
+    print(f"Invalid COMFYUI_CUSTOM_NODES_LIST JSON: {error}", file=sys.stderr)
+    raise SystemExit(1)
+
+urls = payload.get("urls") if isinstance(payload, dict) else payload
+if not isinstance(urls, list):
+    print("COMFYUI_CUSTOM_NODES_LIST must contain a JSON array or an object with a 'urls' array.", file=sys.stderr)
+    raise SystemExit(1)
+
+for index, repository_url in enumerate(urls):
+    if not isinstance(repository_url, str):
+        print(f"Custom node URL at index {index} must be a string.", file=sys.stderr)
+        raise SystemExit(1)
+
+    parsed = urlsplit(repository_url)
+    name = unquote(parsed.path.rstrip("/").rsplit("/", 1)[-1])
+    if name.lower().endswith(".git"):
+        name = name[:-4]
+
+    if (
+        parsed.scheme not in {"http", "https"}
+        or not parsed.netloc
+        or parsed.username is not None
+        or parsed.password is not None
+        or not re.fullmatch(r"[A-Za-z0-9._-]+", name)
+    ):
+        print(f"Invalid custom node repository URL at index {index}: {repository_url}", file=sys.stderr)
+        raise SystemExit(1)
+
+    print(f"{name}\t{repository_url}")
+PY
+)"; then
+        return 1
+    fi
+
+    if [ -z "$PARSED_NODES" ]; then
+        echo "No custom nodes configured; skipping custom node installation"
+        cd /notebooks/ComfyUI
+        return 0
+    fi
+
+    local CUSTOM_NODE_ENTRIES=()
+    mapfile -t CUSTOM_NODE_ENTRIES <<< "$PARSED_NODES"
+    local TOTAL_NODES="${#CUSTOM_NODE_ENTRIES[@]}"
+    local NODE_INDEX=1
+    local ENTRY
+    local REPO_NAME
+    local REPO_URL
+
+    for ENTRY in "${CUSTOM_NODE_ENTRIES[@]}"; do
+        REPO_NAME="${ENTRY%%$'\t'*}"
+        REPO_URL="${ENTRY#*$'\t'}"
+        install_node "$REPO_URL" "$REPO_NAME" "$(printf '%02d/%02d' "$NODE_INDEX" "$TOTAL_NODES")"
+        NODE_INDEX=$((NODE_INDEX + 1))
+    done
 
     # Return to ComfyUI directory
     cd /notebooks/ComfyUI
