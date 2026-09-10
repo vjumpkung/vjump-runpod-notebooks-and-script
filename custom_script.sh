@@ -27,6 +27,8 @@ DEFAULT_COMFYUI_CUSTOM_NODES_LIST='{
     ]
 }'
 export COMFYUI_CUSTOM_NODES_LIST="${COMFYUI_CUSTOM_NODES_LIST:-$DEFAULT_COMFYUI_CUSTOM_NODES_LIST}"
+# Override this when the Resource Manager API is hosted elsewhere.
+export RESOURCE_MANAGER_API_URL="${RESOURCE_MANAGER_API_URL:-http://localhost:8000}"
 
 update_model_path() {
     curl -s https://raw.githubusercontent.com/vjumpkung/vjump-runpod-notebooks-and-script/refs/heads/main/extra_model_paths.yaml >/notebooks/ComfyUI/extra_model_paths.yaml
@@ -49,142 +51,47 @@ update_comfyui() {
 }
 
 install_custom_nodes() {
-    # Navigate to custom_nodes directory
-    cd /notebooks/ComfyUI/custom_nodes || {
-        echo "Error: Failed to enter custom_nodes directory"
-        return 1
-    }
+    local API_ENDPOINT="${RESOURCE_MANAGER_API_URL%/}/api/install_custom_node"
+    local ATTEMPT
+    local RESPONSE
 
-    # Function to install a single node
-    install_node() {
-        local REPO_URL="$1"
-        local REPO_NAME="$2"
-        local NODE_NUM="$3"
+    echo ""
+    echo "Waiting for Resource Manager API at $RESOURCE_MANAGER_API_URL..."
 
-        echo ""
-        echo "========================================"
-        echo "[$NODE_NUM] $REPO_NAME"
-        echo "========================================"
-
-        # Clone repository if it doesn't exist
-        if [ ! -d "$REPO_NAME" ]; then
-            echo "> Cloning repository..."
-            echo "  URL: $REPO_URL"
-            if git clone "$REPO_URL" 2>/dev/null; then
-                echo "  [OK] Clone successful"
-            else
-                echo "  [X] Failed to clone - continuing with next node..."
-                return 1
-            fi
-        else
-            echo "> Repository already exists, skipping clone"
+    for ATTEMPT in {1..30}; do
+        if curl --silent --fail --output /dev/null \
+            "${RESOURCE_MANAGER_API_URL%/}/api/checkcuda"; then
+            break
         fi
 
-
-        # Enter the repository directory
-        cd "$REPO_NAME" || {
-            echo "  [X] Failed to enter directory - continuing with next node..."
+        if [ "$ATTEMPT" -eq 30 ]; then
+            echo "Error: Resource Manager API did not become ready after 60 seconds."
             return 1
-        }
-
-        # Check for install.py and run it, otherwise use requirements.txt
-        if [ -f "install.py" ]; then
-            echo "> Running install.py..."
-            if python install.py 2>/dev/null; then
-                echo "  [OK] Installed via install.py"
-            else
-                echo "  [!] install.py failed - continuing anyway..."
-            fi
         fi
 
-        if [ -f "requirements.txt" ]; then
-            echo "> Installing dependencies from requirements.txt..."
-            if python -m uv pip install -r requirements.txt 2>/dev/null; then
-                echo "  [OK] Dependencies installed successfully"
-            else
-                echo "  [!] Failed to install requirements - continuing anyway..."
-            fi
-        else
-            if [ ! -f "install.py" ]; then
-                echo "> No install.py or requirements.txt found"
-            fi
+        sleep 2
+    done
+
+    echo "Installing custom nodes through $API_ENDPOINT..."
+    if RESPONSE="$(curl --silent --show-error --fail-with-body \
+        --request POST \
+        --header "Content-Type: application/json" \
+        --data "$COMFYUI_CUSTOM_NODES_LIST" \
+        "$API_ENDPOINT")"; then
+        if ! printf '%s\n' "$RESPONSE" | python3 -m json.tool 2>/dev/null; then
+            printf '%s\n' "$RESPONSE"
         fi
-
-        echo "  [DONE] $REPO_NAME processing completed"
-
-        # Return to custom_nodes directory
-        cd ..
-    }
-
-    local PARSED_NODES
-    if ! PARSED_NODES="$(python3 <<'PY'
-import json
-import os
-import re
-import sys
-from urllib.parse import unquote, urlsplit
-
-try:
-    payload = json.loads(os.environ["COMFYUI_CUSTOM_NODES_LIST"])
-except (KeyError, json.JSONDecodeError) as error:
-    print(f"Invalid COMFYUI_CUSTOM_NODES_LIST JSON: {error}", file=sys.stderr)
-    raise SystemExit(1)
-
-urls = payload.get("urls") if isinstance(payload, dict) else payload
-if not isinstance(urls, list):
-    print("COMFYUI_CUSTOM_NODES_LIST must contain a JSON array or an object with a 'urls' array.", file=sys.stderr)
-    raise SystemExit(1)
-
-for index, repository_url in enumerate(urls):
-    if not isinstance(repository_url, str):
-        print(f"Custom node URL at index {index} must be a string.", file=sys.stderr)
-        raise SystemExit(1)
-
-    parsed = urlsplit(repository_url)
-    name = unquote(parsed.path.rstrip("/").rsplit("/", 1)[-1])
-    if name.lower().endswith(".git"):
-        name = name[:-4]
-
-    if (
-        parsed.scheme not in {"http", "https"}
-        or not parsed.netloc
-        or parsed.username is not None
-        or parsed.password is not None
-        or not re.fullmatch(r"[A-Za-z0-9._-]+", name)
-    ):
-        print(f"Invalid custom node repository URL at index {index}: {repository_url}", file=sys.stderr)
-        raise SystemExit(1)
-
-    print(f"{name}\t{repository_url}")
-PY
-)"; then
-        return 1
-    fi
-
-    if [ -z "$PARSED_NODES" ]; then
-        echo "No custom nodes configured; skipping custom node installation"
-        cd /notebooks/ComfyUI
+        echo "Custom node installation request completed."
         return 0
     fi
 
-    local CUSTOM_NODE_ENTRIES=()
-    mapfile -t CUSTOM_NODE_ENTRIES <<< "$PARSED_NODES"
-    local TOTAL_NODES="${#CUSTOM_NODE_ENTRIES[@]}"
-    local NODE_INDEX=1
-    local ENTRY
-    local REPO_NAME
-    local REPO_URL
-
-    for ENTRY in "${CUSTOM_NODE_ENTRIES[@]}"; do
-        REPO_NAME="${ENTRY%%$'\t'*}"
-        REPO_URL="${ENTRY#*$'\t'}"
-        install_node "$REPO_URL" "$REPO_NAME" "$(printf '%02d/%02d' "$NODE_INDEX" "$TOTAL_NODES")"
-        NODE_INDEX=$((NODE_INDEX + 1))
-    done
-
-    # Return to ComfyUI directory
-    cd /notebooks/ComfyUI
-    echo ""
+    echo "Error: Custom node installation request failed."
+    if [ -n "$RESPONSE" ]; then
+        if ! printf '%s\n' "$RESPONSE" | python3 -m json.tool 2>/dev/null; then
+            printf '%s\n' "$RESPONSE"
+        fi
+    fi
+    return 1
 }
 
 start_ssh_server() {
