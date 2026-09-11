@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # Set COMFYUI_CUSTOM_NODES_LIST in RunPod to override this default. It accepts
-# the same JSON payload as POST /api/install_custom_node. See
-# example_custom_nodes.json for a copyable example.
+# the same JSON payload as POST /api/install_custom_node, or an HTTP/HTTPS URL
+# to a JSON file containing that payload. See example_custom_nodes.json for
+# a copyable example.
 DEFAULT_COMFYUI_CUSTOM_NODES_LIST='{
     "urls": [
         "https://github.com/pollockjj/ComfyUI-MultiGPU.git",
@@ -52,8 +53,25 @@ update_comfyui() {
 
 install_custom_nodes() {
     local API_ENDPOINT="${RESOURCE_MANAGER_API_URL%/}/api/install_custom_node"
+    local CUSTOM_NODES_JSON="$COMFYUI_CUSTOM_NODES_LIST"
     local ATTEMPT
     local RESPONSE
+
+    case "$CUSTOM_NODES_JSON" in
+        http://*|https://*)
+            echo "Downloading custom node list..."
+            if ! CUSTOM_NODES_JSON="$(curl --silent --show-error --fail --location \
+                --url "$CUSTOM_NODES_JSON")"; then
+                echo "Error: Could not download COMFYUI_CUSTOM_NODES_LIST JSON."
+                return 1
+            fi
+            ;;
+    esac
+
+    if ! printf '%s\n' "$CUSTOM_NODES_JSON" | python3 -m json.tool >/dev/null 2>&1; then
+        echo "Error: COMFYUI_CUSTOM_NODES_LIST must contain valid JSON or point to a valid JSON file."
+        return 1
+    fi
 
     echo ""
     echo "Waiting for Resource Manager API at $RESOURCE_MANAGER_API_URL..."
@@ -76,7 +94,7 @@ install_custom_nodes() {
     if RESPONSE="$(curl --silent --show-error --fail-with-body \
         --request POST \
         --header "Content-Type: application/json" \
-        --data "$COMFYUI_CUSTOM_NODES_LIST" \
+        --data "$CUSTOM_NODES_JSON" \
         "$API_ENDPOINT")"; then
         if ! printf '%s\n' "$RESPONSE" | python3 -m json.tool 2>/dev/null; then
             printf '%s\n' "$RESPONSE"
