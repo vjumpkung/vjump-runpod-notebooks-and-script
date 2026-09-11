@@ -9,7 +9,7 @@
     "https://github.com/crystian/ComfyUI-Crystools.git",
     "https://github.com/kijai/ComfyUI-WanVideoWrapper.git",
     "https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git",
-    "https://github.com/ltdrdata/was-node-suite-comfyui.git",
+    "https://github.com/WASasquatch/was-node-suite-comfyui.git",
     "https://github.com/1038lab/ComfyUI-QwenVL.git",
     "https://github.com/kijai/ComfyUI-MelBandRoFormer.git",
     "https://github.com/ClownsharkBatwing/RES4LYF.git",
@@ -19,6 +19,8 @@
     "https://github.com/kijai/ComfyUI-WanAnimatePreprocess.git",
     "https://github.com/vjumpkung/comfyui-wan-animate-2-loop-sampler.git",
     "https://github.com/vjumpkung/comfyui-scail-2-loop-sampler.git",
-    "https://github.com/kijai/ComfyUI-MemoryVisualization.git"
+    "https://github.com/kijai/ComfyUI-MemoryVisualization.git",
+    "https://github.com/PlagueKind/ComfyUI-PlagueKind-Nodes.git",
+    "https://github.com/matlowai/ComfyUI-MAINodes.git"
   ]
 }

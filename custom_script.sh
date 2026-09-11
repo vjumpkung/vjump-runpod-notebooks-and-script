@@ -14,7 +14,7 @@ DEFAULT_COMFYUI_CUSTOM_NODES_LIST='{
         "https://github.com/crystian/ComfyUI-Crystools.git",
         "https://github.com/kijai/ComfyUI-WanVideoWrapper.git",
         "https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git",
-        "https://github.com/ltdrdata/was-node-suite-comfyui.git",
+        "https://github.com/WASasquatch/was-node-suite-comfyui.git",
         "https://github.com/1038lab/ComfyUI-QwenVL.git",
         "https://github.com/kijai/ComfyUI-MelBandRoFormer.git",
         "https://github.com/ClownsharkBatwing/RES4LYF.git",
