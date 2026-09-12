@@ -5,27 +5,31 @@
 # to a JSON file containing that payload. See example_custom_nodes.json for
 # a copyable example.
 DEFAULT_COMFYUI_CUSTOM_NODES_LIST='{
-    "urls": [
-        "https://github.com/pollockjj/ComfyUI-MultiGPU.git",
-        "https://github.com/molbal/ComfyUI-GGUF.git",
-        "https://github.com/kijai/ComfyUI-KJNodes.git",
-        "https://github.com/Fannovel16/comfyui_controlnet_aux.git",
-        "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git",
-        "https://github.com/rgthree/rgthree-comfy.git",
-        "https://github.com/crystian/ComfyUI-Crystools.git",
-        "https://github.com/kijai/ComfyUI-WanVideoWrapper.git",
-        "https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git",
-        "https://github.com/WASasquatch/was-node-suite-comfyui.git",
-        "https://github.com/1038lab/ComfyUI-QwenVL.git",
-        "https://github.com/kijai/ComfyUI-MelBandRoFormer.git",
-        "https://github.com/ClownsharkBatwing/RES4LYF.git",
-        "https://github.com/kijai/ComfyUI-SolAttn_triton.git",
-        "https://github.com/vjumpkung/comfyui-infinitetalk-native-sampler.git",
-        "https://github.com/vjumpkung/comfyui-vjumpkung-runpod-template-resource-manager.git",
-        "https://github.com/kijai/ComfyUI-WanAnimatePreprocess.git",
-        "https://github.com/vjumpkung/comfyui-wan-animate-2-loop-sampler.git",
-        "https://github.com/vjumpkung/comfyui-scail-2-loop-sampler.git"
-    ]
+  "urls": [
+    "https://github.com/pollockjj/ComfyUI-MultiGPU.git",
+    "https://github.com/molbal/ComfyUI-GGUF.git",
+    "https://github.com/kijai/ComfyUI-KJNodes.git",
+    "https://github.com/Fannovel16/comfyui_controlnet_aux.git",
+    "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git",
+    "https://github.com/rgthree/rgthree-comfy.git",
+    "https://github.com/crystian/ComfyUI-Crystools.git",
+    "https://github.com/kijai/ComfyUI-WanVideoWrapper.git",
+    "https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git",
+    "https://github.com/WASasquatch/was-node-suite-comfyui.git",
+    "https://github.com/1038lab/ComfyUI-QwenVL.git",
+    "https://github.com/kijai/ComfyUI-MelBandRoFormer.git",
+    "https://github.com/ClownsharkBatwing/RES4LYF.git",
+    "https://github.com/kijai/ComfyUI-SolAttn_triton.git",
+    "https://github.com/vjumpkung/comfyui-infinitetalk-native-sampler.git",
+    "https://github.com/vjumpkung/comfyui-vjumpkung-runpod-template-resource-manager.git",
+    "https://github.com/kijai/ComfyUI-WanAnimatePreprocess.git",
+    "https://github.com/vjumpkung/comfyui-wan-animate-2-loop-sampler.git",
+    "https://github.com/vjumpkung/comfyui-scail-2-loop-sampler.git",
+    "https://github.com/kijai/ComfyUI-MemoryVisualization.git",
+    "https://github.com/PlagueKind/ComfyUI-PlagueKind-Nodes.git",
+    "https://github.com/matlowai/ComfyUI-MAINodes.git",
+    "https://github.com/seitanism/ComfyUI-H3-Motion-Context-MultiRef.git"
+  ]
 }'
 export COMFYUI_CUSTOM_NODES_LIST="${COMFYUI_CUSTOM_NODES_LIST:-$DEFAULT_COMFYUI_CUSTOM_NODES_LIST}"
 # Override this when the Resource Manager API is hosted elsewhere.
@@ -44,10 +48,10 @@ update_comfyui() {
     WORKSPACE="/notebooks/ComfyUI"
     echo "Updating ComfyUI" 
     cd $WORKSPACE
-    git fetch
-    git pull --ff-only 
-    uv pip install -r requirements.txt 
-    cd $WORKSPACE/custom_nodes/ComfyUI-Manager && git fetch && git pull && uv pip install -r requirements.txt && cd $WORKSPACE
+    git fetch 2>/dev/null
+    git pull --ff-only  2>/dev/null
+    uv pip install -r requirements.txt 2>/dev/null 
+    cd $WORKSPACE/custom_nodes/ComfyUI-Manager && git fetch && git pull && uv pip install -r requirements.txt && cd $WORKSPACE 2>/dev/null
     echo "Update ComfyUI Completed"
 }
 
@@ -113,18 +117,20 @@ install_custom_nodes() {
 }
 
 start_ssh_server() {
-    bash -c 'apt update;DEBIAN_FRONTEND=noninteractive apt-get install openssh-server -y;mkdir -p ~/.ssh;cd $_;chmod 700 ~/.ssh;echo "$PUBLIC_KEY" >> authorized_keys;chmod 700 authorized_keys;service ssh start;'
+    bash -c 'apt update;DEBIAN_FRONTEND=noninteractive apt-get install openssh-server -y;mkdir -p ~/.ssh;cd $_;chmod 700 ~/.ssh;echo "$PUBLIC_KEY" >> authorized_keys;chmod 700 authorized_keys;service ssh start;' 2>/dev/null
 }
 
 install_runpodctl() {
     # Download and install via wget
-    wget -qO- cli.runpod.net | bash
+    wget -qO- cli.runpod.net | bash 2>/dev/null
 }
 
 install_additional() {
     uv pip install flatbuffers numpy packaging protobuf sympy coloredlogs onnx
     CUDA_VER=$(python -c "import torch; print(torch.version.cuda.replace('.', ''))" 2>/dev/null)
-    if [ "$CUDA_VER" = "128" ]; then
+    if [ "$CUDA_VER" = "130" ]; then
+        echo "."
+    elif [ "$CUDA_VER" = "128" ]; then
         uv pip install https://github.com/JamePeng/llama-cpp-python/releases/download/v0.3.34-cu128-Basic-linux-20260331/llama_cpp_python-0.3.34+cu128.basic-cp312-cp312-linux_x86_64.whl
         uv pip install flash_attn_3 --find-links https://windreamer.github.io/flash-attention3-wheels/cu128_torch291
         uv pip install flash-attn==2.8.3

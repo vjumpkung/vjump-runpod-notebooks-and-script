@@ -21,6 +21,8 @@
     "https://github.com/vjumpkung/comfyui-scail-2-loop-sampler.git",
     "https://github.com/kijai/ComfyUI-MemoryVisualization.git",
     "https://github.com/PlagueKind/ComfyUI-PlagueKind-Nodes.git",
-    "https://github.com/matlowai/ComfyUI-MAINodes.git"
+    "https://github.com/matlowai/ComfyUI-MAINodes.git",
+    "https://github.com/seitanism/ComfyUI-H3-Motion-Context-MultiRef.git",
+    "https://github.com/Smirnov75/ComfyUI-mxToolkit.git"
   ]
 }
