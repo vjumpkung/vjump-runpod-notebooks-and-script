@@ -1,0 +1,12 @@
+[
+  {
+    "name": "seedvr2_7b_int8_convrot.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/SeedVR2/resolve/main/diffusion_models/seedvr2_7b_int8_convrot.safetensors",
+    "type": "diffusion_models"
+  },
+  {
+    "name": "seedvr2_ema_vae_fp16.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/SeedVR2/resolve/main/vae/seedvr2_ema_vae_fp16.safetensors",
+    "type": "vae"
+  }
+]
