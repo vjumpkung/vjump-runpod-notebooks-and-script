@@ -1,0 +1,52 @@
+[
+    {
+        "name": "qwen_image_edit_2509_int8_convrot.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/marigold-v2-0/resolve/main/diffusion_models/qwen_image_edit_2509_int8_convrot.safetensors",
+        "type": "diffusion_models"
+    },
+    {
+        "name": "marigold_v2_albedo_conditioning.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/marigold-v2-0/resolve/main/embeddings/marigold_v2_albedo_conditioning.safetensors",
+        "type": "embeddings"
+    },
+    {
+        "name": "marigold_v2_depth_conditioning.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/marigold-v2-0/resolve/main/embeddings/marigold_v2_depth_conditioning.safetensors",
+        "type": "embeddings"
+    },
+    {
+        "name": "marigold_v2_normals_conditioning.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/marigold-v2-0/resolve/main/embeddings/marigold_v2_normals_conditioning.safetensors",
+        "type": "embeddings"
+    },
+    {
+        "name": "marigold_v2_albedo.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/marigold-v2-0/resolve/main/loras/marigold_v2_albedo.safetensors",
+        "type": "loras"
+    },
+    {
+        "name": "marigold_v2_depth_log_stage2.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/marigold-v2-0/resolve/main/loras/marigold_v2_depth_log_stage2.safetensors",
+        "type": "loras"
+    },
+    {
+        "name": "marigold_v2_normals.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/marigold-v2-0/resolve/main/loras/marigold_v2_normals.safetensors",
+        "type": "loras"
+    },
+    {
+        "name": "marigold_v2_albedo_vae.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/marigold-v2-0/resolve/main/vae/marigold_v2_albedo_vae.safetensors",
+        "type": "vae"
+    },
+    {
+        "name": "marigold_v2_depth_log_stage2_vae.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/marigold-v2-0/resolve/main/vae/marigold_v2_depth_log_stage2_vae.safetensors",
+        "type": "vae"
+    },
+    {
+        "name": "marigold_v2_normals_vae.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/marigold-v2-0/resolve/main/vae/marigold_v2_normals_vae.safetensors",
+        "type": "vae"
+    }
+]
