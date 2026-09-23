@@ -117,13 +117,20 @@ install_custom_nodes() {
 }
 
 start_ssh_server() {
-    bash -c 'apt update;DEBIAN_FRONTEND=noninteractive apt-get install openssh-server -y;mkdir -p ~/.ssh;cd $_;chmod 700 ~/.ssh;echo "$PUBLIC_KEY" >> authorized_keys;chmod 700 authorized_keys;service ssh start;' 2>/dev/null
+    bash -c 'set -e; apt-get update; DEBIAN_FRONTEND=noninteractive apt-get install openssh-server -y; mkdir -p ~/.ssh; cd $_; chmod 700 ~/.ssh; echo "$PUBLIC_KEY" >> authorized_keys; chmod 700 authorized_keys; service ssh start;' >/dev/null || {
+        printf 'Error: Failed to start SSH server.\n' >&2
+        return 1
+    }
 }
 
-install_runpodctl() {
+install_runpodctl() (
     # Download and install via wget
-    wget -qO- cli.runpod.net | bash 2>/dev/null
-}
+    set -o pipefail
+    wget -qO- cli.runpod.net | bash >/dev/null || {
+        printf 'Error: Failed to install runpodctl.\n' >&2
+        return 1
+    }
+)
 
 install_additional() {
     uv pip install flatbuffers numpy packaging protobuf sympy coloredlogs onnx
