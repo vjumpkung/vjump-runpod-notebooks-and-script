@@ -28,7 +28,9 @@ DEFAULT_COMFYUI_CUSTOM_NODES_LIST='{
     "https://github.com/kijai/ComfyUI-MemoryVisualization.git",
     "https://github.com/PlagueKind/ComfyUI-PlagueKind-Nodes.git",
     "https://github.com/matlowai/ComfyUI-MAINodes.git",
-    "https://github.com/seitanism/ComfyUI-H3-Motion-Context-MultiRef.git"
+    "https://github.com/ethanfel/ComfyUI-MiniMaxH3-Context-Loop.git",
+    "https://github.com/Smirnov75/ComfyUI-mxToolkit.git",
+    "https://github.com/LBH-123-AI/Comfyui_Minimax_h3_latent_Upscaler.git"
   ]
 }'
 export COMFYUI_CUSTOM_NODES_LIST="${COMFYUI_CUSTOM_NODES_LIST:-$DEFAULT_COMFYUI_CUSTOM_NODES_LIST}"
