@@ -1,0 +1,17 @@
+[
+  {
+    "name": "ming_image_0.1_design_int8_convrot.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Ming-Image/resolve/main/diffusion_models/ming_image_0.1_design_int8_convrot.safetensors",
+    "type": "diffusion_models"
+  },
+  {
+    "name": "ming_image_0.1_ling_mini_2.0_int8_convrot.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Ming-Image/resolve/main/text_encoders/ming_image_0.1_ling_mini_2.0_int8_convrot.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "ming_image_vae_bf16.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Ming-Image/resolve/main/vae/ming_image_vae_bf16.safetensors",
+    "type": "vae"
+  }
+]

@@ -118,21 +118,17 @@ install_custom_nodes() {
     return 1
 }
 
-start_ssh_server() {
-    bash -c 'set -e; apt-get update; DEBIAN_FRONTEND=noninteractive apt-get install openssh-server -y; mkdir -p ~/.ssh; cd $_; chmod 700 ~/.ssh; echo "$PUBLIC_KEY" >> authorized_keys; chmod 700 authorized_keys; service ssh start;' >/dev/null || {
-        printf 'Error: Failed to start SSH server.\n' >&2
-        return 1
-    }
-}
-
-install_runpodctl() (
+install_additional_program() {
     # Download and install via wget
     set -o pipefail
     wget -qO- cli.runpod.net | bash >/dev/null || {
         printf 'Error: Failed to install runpodctl.\n' >&2
-        return 1
     }
-)
+
+    bash -c 'set -e; apt-get update; DEBIAN_FRONTEND=noninteractive apt-get install openssh-server -y; mkdir -p ~/.ssh; cd $_; chmod 700 ~/.ssh; echo "$PUBLIC_KEY" >> authorized_keys; chmod 700 authorized_keys; service ssh start;' >/dev/null || {
+        printf 'Error: Failed to start SSH server.\n' >&2
+    }
+}
 
 install_additional() {
     uv pip install flatbuffers numpy packaging protobuf sympy coloredlogs onnx
@@ -155,8 +151,7 @@ install_additional() {
     python3 -c "import importlib.util; [print(f'{n}: ' + (getattr(importlib.import_module(m), '__version__', 'installed') if importlib.util.find_spec(m) else 'NOT installed')) for n, m in [('sageattention', 'sageattention'), ('flash-attn v2', 'flash_attn'), ('flash-attn v3', 'flash_attn_3'), ('llama-cpp-python', 'llama_cpp')]]"
 }
 
-start_ssh_server &
-install_runpodctl &
+install_additional_program &
 make_directory
 update_model_path
 update_comfyui
