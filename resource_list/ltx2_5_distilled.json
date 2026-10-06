@@ -1,7 +1,7 @@
 [
   {
-    "name": "ltx-2.5-22b-dev-transformer-comfy-int8-convrot.safetensors",
-    "url": "https://huggingface.co/Lightricks/LTX-2.5/resolve/main/diffusion_models/ltx-2.5-22b-dev-transformer-comfy-int8-convrot.safetensors",
+    "name": "ltx-2.5-22b-distilled-transformer-comfy-int8-convrot.safetensors",
+    "url": "https://huggingface.co/Lightricks/LTX-2.5/resolve/main/diffusion_models/ltx-2.5-22b-distilled-transformer-comfy-int8-convrot.safetensors",
     "type": "diffusion_models"
   },
   {
@@ -28,10 +28,5 @@
     "name": "ltx-2.5-video-vae-conv-bf16.safetensors",
     "url": "https://huggingface.co/Lightricks/LTX-2.5/resolve/main/vae/ltx-2.5-video-vae-conv-bf16.safetensors",
     "type": "vae"
-  },
-  {
-    "name": "ltx-2.5-22b-distilled-lora-450-bf16.safetensors",
-    "url": "https://huggingface.co/Lightricks/LTX-2.5/resolve/main/loras/ltx-2.5-22b-distilled-lora-450-bf16.safetensors",
-    "type": "loras"
   }
 ]
