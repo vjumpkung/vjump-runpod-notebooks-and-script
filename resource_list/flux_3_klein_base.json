@@ -1,0 +1,22 @@
+[
+  {
+    "name": "flux2-vae.safetensors",
+    "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/vae/flux2-vae.safetensors",
+    "type": "vae"
+  },
+  {
+    "name": "qwen3vl_4b_int8_convrot.safetensors",
+    "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/text_encoders/qwen3vl_4b_int8_convrot.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "qwen3.5_9b_flux3_prompt_upsampler_int8_convrot.safetensors",
+    "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/text_encoders/qwen3.5_9b_flux3_prompt_upsampler_int8_convrot.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "flux3_image_klein_int8_convrot.safetensors",
+    "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/diffusion_models/flux3_image_klein_int8_convrot.safetensors",
+    "type": "diffusion_models"
+  }
+]
