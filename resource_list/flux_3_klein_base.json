@@ -15,8 +15,8 @@
     "type": "text_encoders"
   },
   {
-    "name": "flux3_image_klein_int8_convrot.safetensors",
-    "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/diffusion_models/flux3_image_klein_int8_convrot.safetensors",
+    "name": "flux3-image-klein-base-int8-convrot.safetensors",
+    "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/diffusion_models/flux3-image-klein-base-int8-convrot.safetensors",
     "type": "diffusion_models"
   }
 ]
