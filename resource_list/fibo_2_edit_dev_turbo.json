@@ -1,0 +1,17 @@
+[
+  {
+    "name": "fibo2_edit_turbo_int8_convrot.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Fibo-2.0/resolve/main/diffusion_models/fibo2_edit_turbo_int8_convrot.safetensors",
+    "type": "diffusion_models"
+  },
+  {
+    "name": "qwen3vl_4b_int8_convrot.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Fibo-2.0/resolve/main/text_encoders/qwen3vl_4b_int8_convrot.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "flux2-vae.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Fibo-2.0/resolve/main/vae/flux2-vae.safetensors",
+    "type": "vae"
+  }
+]
