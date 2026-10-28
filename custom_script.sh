@@ -50,10 +50,10 @@ update_comfyui() {
     WORKSPACE="/notebooks/ComfyUI"
     echo "Updating ComfyUI" 
     cd $WORKSPACE
-    git fetch 2>/dev/null
-    git pull --ff-only  2>/dev/null
-    uv pip install -r requirements.txt 2>/dev/null 
-    cd $WORKSPACE/custom_nodes/ComfyUI-Manager && git fetch && git pull && uv pip install -r requirements.txt && cd $WORKSPACE 2>/dev/null
+    git fetch -q >/dev/null
+    git pull --ff-only -q >/dev/null
+    uv pip install -q -r requirements.txt >/dev/null
+    cd $WORKSPACE/custom_nodes/ComfyUI-Manager && git fetch -q >/dev/null && git pull -q >/dev/null && uv pip install -q -r requirements.txt >/dev/null && cd $WORKSPACE
     echo "Update ComfyUI Completed"
 }
 
