@@ -102,7 +102,60 @@ install_custom_nodes() {
         --header "Content-Type: application/json" \
         --data "$CUSTOM_NODES_JSON" \
         "$API_ENDPOINT")"; then
-        if ! printf '%s\n' "$RESPONSE" | python3 -m json.tool 2>/dev/null; then
+        if ! printf '%s\n' "$RESPONSE" | python3 -c '
+import json
+import sys
+
+from rich.console import Console
+from rich.table import Table
+from rich.text import Text
+
+response = json.load(sys.stdin)
+if (
+    not isinstance(response, dict)
+    or not isinstance(response["status"], str)
+    or not isinstance(response["message"], str)
+    or not isinstance(response["results"], list)
+):
+    sys.exit(1)
+for item in response["results"]:
+    if (
+        not isinstance(item, dict)
+        or not isinstance(item["url"], str)
+        or not isinstance(item["repository"], (str, type(None)))
+        or not isinstance(item["status"], str)
+        or not isinstance(item["dependency_method"], (str, type(None)))
+        or not isinstance(item["message"], str)
+    ):
+        sys.exit(1)
+
+colors = {
+    "completed": "green",
+    "installed": "green",
+    "already_installed": "cyan",
+    "partial": "yellow",
+    "failed": "red",
+}
+console = Console(force_terminal=True, color_system="standard")
+table = Table()
+for column in ("Repository", "Status", "Dependencies", "Message"):
+    table.add_column(column, overflow="fold")
+for item in response["results"]:
+    table.add_row(
+        Text(item["repository"] or item["url"]),
+        Text(item["status"], style=colors.get(item["status"], "")),
+        Text(item["dependency_method"] or "-"),
+        Text(item["message"]),
+    )
+summary = Text(
+    response["status"].upper() + ": " + response["message"],
+    style=("bold " + colors.get(response["status"], "")).strip(),
+)
+with console.capture() as capture:
+    console.print(table)
+    console.print(summary)
+sys.stdout.write(capture.get())
+' 2>/dev/null; then
             printf '%s\n' "$RESPONSE"
         fi
         echo "Custom node installation request completed."
