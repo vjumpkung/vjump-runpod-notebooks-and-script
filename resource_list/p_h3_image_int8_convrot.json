@@ -1,0 +1,22 @@
+[
+  {
+    "name": "p-h3-image_text_encoder_int8_convrot.safetensors",
+    "url": "https://huggingface.co/PrunaAI/P-H3-Image-Comfy/resolve/main/text_encoders/p-h3-image_text_encoder_int8_convrot.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "p-h3-image_prompt_upsampler_int8_convrot.safetensors",
+    "url": "https://huggingface.co/PrunaAI/P-H3-Image-Comfy/resolve/main/text_encoders/p-h3-image_prompt_upsampler_int8_convrot.safetensors",
+    "type": "text_encoders"
+  },
+  {
+    "name": "p-h3-image_int8_convrot.safetensors",
+    "url": "https://huggingface.co/PrunaAI/P-H3-Image-Comfy/resolve/main/diffusion_models/p-h3-image_int8_convrot.safetensors",
+    "type": "diffusion_models"
+  },
+  {
+    "name": "p-h3-image_vae_int8_convrot.safetensors",
+    "url": "https://huggingface.co/PrunaAI/P-H3-Image-Comfy/resolve/main/vae/p-h3-image_vae_int8_convrot.safetensors",
+    "type": "vae"
+  }
+]
