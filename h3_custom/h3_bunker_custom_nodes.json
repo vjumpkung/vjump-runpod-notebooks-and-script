@@ -1,0 +1,32 @@
+{
+    "urls": [
+        "https://github.com/kijai/ComfyUI-KJNodes.git",
+        "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git",
+        "https://github.com/rgthree/rgthree-comfy.git",
+        "https://github.com/crystian/ComfyUI-Crystools.git",
+        "https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git",
+        "https://github.com/WASasquatch/was-node-suite-comfyui.git",
+        "https://github.com/ClownsharkBatwing/RES4LYF.git",
+        "https://github.com/vjumpkung/comfyui-vjumpkung-runpod-template-resource-manager.git",
+        "https://github.com/kijai/ComfyUI-MemoryVisualization.git",
+        "https://github.com/PlagueKind/ComfyUI-PlagueKind-Nodes.git",
+        "https://github.com/matlowai/ComfyUI-MAINodes.git",
+        "https://github.com/Smirnov75/ComfyUI-mxToolkit.git",
+        "https://github.com/LBH-123-AI/Comfyui_Minimax_h3_latent_Upscaler.git",
+        "https://github.com/pixaroma/ComfyUI-Pixaroma.git",
+        "https://github.com/Luisacaotica/ComfyUI-MiniMaxH3Mod.git",
+        "https://github.com/GACLove/ComfyUI-VFI.git",
+        "https://github.com/ethanfel/ComfyUI-H3-Prompt-IDE.git",
+        "https://github.com/gseth/ControlAltAI-Nodes.git",
+        "https://github.com/chrisgoringe/cg-use-everywhere.git",
+        "https://github.com/yolain/ComfyUI-Easy-Use.git",
+        "https://github.com/Adudeguyman/ComfyUI-Fantastic-MiniMaxH3-PromptBuilder.git",
+        "https://github.com/darksidewalker/ComfyUI-DaSiWa-Nodes.git",
+        "https://github.com/hashu786/ComfyUI-Tessera.git",
+        "https://github.com/tazmannner/ComfyUI-H3-AnimeCadence.git",
+        "https://github.com/slmonker/selflift-Avatar.git",
+        "https://github.com/FloyoAI/ComfyUI-SoundFlow.git",
+        "https://github.com/kijai/ComfyUI-GIMM-VFI.git",
+        "https://github.com/aa335615543-ux/BUNNY_H3_Conditioning_Bridge.git"
+    ]
+}

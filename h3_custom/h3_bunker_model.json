@@ -1,0 +1,97 @@
+[
+    {
+        "name": "minimax_h3_audio_vae_fp32.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_audio_vae_fp32.safetensors",
+        "type": "vae"
+    },
+    {
+        "name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+        "type": "text_encoders"
+    },
+    {
+        "name": "minimax_h3_DMAD_4step_full_lora_avg_rank_39_bf16.safetensors",
+        "url": "https://huggingface.co/Kijai/MiniMax-H3-experimental/resolve/main/loras/minimax_h3_DMAD_4step_full_lora_avg_rank_39_bf16.safetensors",
+        "type": "loras"
+    },
+    {
+        "name": "minimax_h3_latent_upscaler_3d_conv_v1_fp16.safetensors",
+        "url": "https://huggingface.co/LBH-123-AI/Minimax_h3_latent_Upscaler/resolve/main/minimax_h3_latent_upscaler_3d_conv_v1/minimax_h3_latent_upscaler_3d_conv_v1_fp16.safetensors",
+        "type": "latent_upscale_models"
+    },
+    {
+        "name": "minimax_h3_video_vae_int8_convrot.safetensors",
+        "url": "https://huggingface.co/Kijai/MiniMax-H3-experimental/resolve/main/minimax_h3_video_vae_int8_convrot.safetensors",
+        "type": "vae"
+    },
+    {
+        "name": "Minimax-h3_Singularity_ref2va_v2_pruned_int8.safetensors",
+        "url": "https://huggingface.co/WarmBloodAban/Minimax-h3_Singularity/resolve/main/Minimax-h3_Singularity_ref2va_v2_pruned_int8.safetensors",
+        "type": "diffusion_models"
+    },
+    {
+        "name": "fasth3_omniref_8step_pruned_int8_convrot.safetensors",
+        "url": "https://huggingface.co/FastVideo/FastH3-Omni-Comfy/resolve/main/diffusion_models/fasth3_omniref_8step_pruned_int8_convrot.safetensors",
+        "type": "diffusion_models"
+    },
+    {
+        "name": "taeh3.safetensors",
+        "url": "https://huggingface.co/Kijai/MiniMax-H3-TAE/resolve/main/vae_approx/taeh3.safetensors",
+        "type": "vae_approx"
+    },
+    {
+        "name": "h3-realism-people-t2v-i2v-r2v.safetensors",
+        "url": "https://huggingface.co/fal/MiniMax-H3-Realism-People-LoRA/resolve/main/h3-realism-people-t2v-i2v-r2v.safetensors",
+        "type": "loras"
+    },
+    {
+        "name": "DasiwaMinimaxH3_dasiwaHybridV4Turbo_3281858.safetensors",
+        "url": "https://huggingface.co/vjump21848/model-collection/resolve/main/DasiwaMinimaxH3_dasiwaHybridV4Turbo_3281858.safetensors",
+        "type": "diffusion_models"
+    },
+    {
+        "name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+        "type": "diffusion_models"
+    },
+    {
+        "name": "Minimax-h3_Singularity_ref2va_Pruned_v1.3_int8.safetensors",
+        "url": "https://huggingface.co/WarmBloodAban/Minimax-h3_Singularity/resolve/main/Minimax-h3_Singularity_ref2va_Pruned_v1.3_int8.safetensors",
+        "type": "diffusion_models"
+    },
+    {
+        "name": "minimax_h3_lms_v1.0_r64.safetensors",
+        "url": "https://huggingface.co/Alissonerdx/Minimax-H3-ComfyUI/resolve/main/loras/minimax_h3_lms_v1.0_r64.safetensors",
+        "type": "loras"
+    },
+    {
+        "name": "qwen_image_2.1_int8_convrot.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors",
+        "type": "diffusion_models"
+    },
+    {
+        "name": "minimax_h3_ref2v_turbo_silver_dareties_comfy_pruned_v2.safetensors",
+        "url": "https://huggingface.co/silveroxides/MiniMax-H3_tests/resolve/main/silver_official_releases/minimax_h3_ref2v_turbo_silver_dareties_comfy_pruned_v2.safetensors",
+        "type": "loras"
+    },
+    {
+        "name": "qwen3vl_8b_int8_convrot.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors",
+        "type": "text_encoders"
+    },
+    {
+        "name": "qwen_image_2.1_vae_bf16.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/vae/qwen_image_2.1_vae_bf16.safetensors",
+        "type": "vae"
+    },
+    {
+        "name": "qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/loras/qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors",
+        "type": "loras"
+    },
+    {
+        "name": "minimax_h3_taomate_3step_lora_avg_rank_19_bf16.safetensors",
+        "url": "https://huggingface.co/Kijai/MiniMax-H3_comfy/resolve/main/loras/minimax_h3_taomate_3step_lora_avg_rank_19_bf16.safetensors",
+        "type": "loras"
+    }
+]
