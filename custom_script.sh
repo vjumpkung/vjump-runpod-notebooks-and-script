@@ -204,9 +204,30 @@ install_additional() {
     python3 -c "import importlib.util; [print(f'{n}: ' + (getattr(importlib.import_module(m), '__version__', 'installed') if importlib.util.find_spec(m) else 'NOT installed')) for n, m in [('sageattention', 'sageattention'), ('flash-attn v2', 'flash_attn'), ('flash-attn v3', 'flash_attn_3'), ('llama-cpp-python', 'llama_cpp')]]"
 }
 
+download_bunker_model() {
+    local NODE_DIR="/notebooks/ComfyUI/custom_nodes/BUNNY_H3_Conditioning_Bridge"
+    local MODEL_URL="https://huggingface.co/JOKER141/BUNNY_H3_Conditioning_Bridge/resolve/main/BUNNY_H3_ActionLogic_Bridge_V2.safetensors"
+
+    if [ "$BUNKER" != "1" ]; then
+        return 0
+    fi
+
+    if [ ! -d "$NODE_DIR" ]; then
+        echo "Skipping BUNNY_H3 model download: $NODE_DIR not found."
+        return 0
+    fi
+
+    mkdir -p "$NODE_DIR/models"
+    echo "Downloading BUNNY_H3_ActionLogic_Bridge_V2.safetensors..."
+    curl --silent --show-error --fail --location \
+        --output "$NODE_DIR/models/BUNNY_H3_ActionLogic_Bridge_V2.safetensors" \
+        "$MODEL_URL" || echo "Error: Failed to download BUNNY_H3_ActionLogic_Bridge_V2.safetensors."
+}
+
 install_additional_program &
 make_directory
 update_model_path
 update_comfyui
 install_additional
 install_custom_nodes
+download_bunker_model
