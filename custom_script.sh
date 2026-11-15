@@ -34,6 +34,9 @@ DEFAULT_COMFYUI_CUSTOM_NODES_LIST='{
   ]
 }'
 export COMFYUI_CUSTOM_NODES_LIST="${COMFYUI_CUSTOM_NODES_LIST:-$DEFAULT_COMFYUI_CUSTOM_NODES_LIST}"
+# Custom nodes are installed by a background job on the Resource Manager API.
+# Set CUSTOM_NODES_INSTALL_TIMEOUT (seconds, default 3600) to change how long
+# this script waits for that job to finish before giving up.
 # Override this when the Resource Manager API is hosted elsewhere.
 export RESOURCE_MANAGER_API_URL="${RESOURCE_MANAGER_API_URL:-http://localhost:8000}"
 
@@ -62,6 +65,7 @@ install_custom_nodes() {
     local CUSTOM_NODES_JSON="$COMFYUI_CUSTOM_NODES_LIST"
     local ATTEMPT
     local RESPONSE
+    local JOB_ID
 
     case "$CUSTOM_NODES_JSON" in
         http://*|https://*)
@@ -97,12 +101,101 @@ install_custom_nodes() {
     done
 
     echo "Installing custom nodes through $API_ENDPOINT..."
-    if RESPONSE="$(curl --silent --show-error --fail-with-body \
+    if ! RESPONSE="$(curl --silent --show-error --fail-with-body \
         --request POST \
         --header "Content-Type: application/json" \
         --data "$CUSTOM_NODES_JSON" \
         "$API_ENDPOINT")"; then
-        if ! printf '%s\n' "$RESPONSE" | python3 -c '
+        echo "Error: Custom node installation request failed."
+        if [ -n "$RESPONSE" ]; then
+            if ! printf '%s\n' "$RESPONSE" | python3 -m json.tool 2>/dev/null; then
+                printf '%s\n' "$RESPONSE"
+            fi
+        fi
+        return 1
+    fi
+
+    JOB_ID="$(printf '%s\n' "$RESPONSE" | python3 -c 'import json, sys; print(json.load(sys.stdin).get("job_id") or "")' 2>/dev/null)"
+
+    if [ -n "$JOB_ID" ]; then
+        echo "Custom node installation queued as job $JOB_ID. Waiting for it to finish..."
+        if ! RESPONSE="$(python3 -c '
+import json
+import sys
+import time
+import urllib.error
+import urllib.request
+
+url = sys.argv[1]
+deadline = time.monotonic() + float(sys.argv[2])
+final_item_statuses = ("installed", "already_installed", "failed")
+final_job_statuses = ("completed", "partial", "failed")
+reported = set()
+failures = 0
+last_error = ""
+
+while True:
+    job = None
+    try:
+        with urllib.request.urlopen(url, timeout=30) as response:
+            job = json.load(response)
+        if (
+            not isinstance(job, dict)
+            or not isinstance(job.get("status"), str)
+            or not isinstance(job.get("results"), list)
+        ):
+            raise ValueError("Unexpected job response.")
+    except urllib.error.HTTPError as error:
+        job = None
+        if error.code == 404:
+            sys.stderr.write("Error: the installation job was not found.\n")
+            sys.exit(1)
+        failures += 1
+        last_error = "HTTP {}".format(error.code)
+    except (OSError, ValueError) as error:
+        job = None
+        failures += 1
+        last_error = str(error)
+
+    if job is not None:
+        failures = 0
+        results = job["results"]
+        for position, item in enumerate(results):
+            if (
+                isinstance(item, dict)
+                and item.get("status") in final_item_statuses
+                and position not in reported
+            ):
+                reported.add(position)
+                sys.stderr.write(
+                    "[{}/{}] {}: {}\n".format(
+                        len(reported),
+                        len(results),
+                        item.get("repository") or item.get("url"),
+                        item["status"],
+                    )
+                )
+                sys.stderr.flush()
+        if job["status"] in final_job_statuses:
+            json.dump(job, sys.stdout)
+            sys.exit(0)
+
+    if failures >= 20:
+        sys.stderr.write(
+            "Error: lost contact with the API ({}).\n".format(last_error)
+        )
+        sys.exit(1)
+    if time.monotonic() >= deadline:
+        sys.stderr.write("Error: timed out waiting for the installation job.\n")
+        sys.exit(1)
+    time.sleep(3)
+' "${API_ENDPOINT}/${JOB_ID}" "${CUSTOM_NODES_INSTALL_TIMEOUT:-3600}")"; then
+            echo "Error: Custom node installation did not finish."
+            return 1
+        fi
+    fi
+
+    if ! printf '%s\n' "$RESPONSE" | python3 -c '
 import json
 import sys
 
@@ -130,6 +223,9 @@ for item in response["results"]:
         sys.exit(1)
 
 colors = {
+    "queued": "dim",
+    "installing": "yellow",
+    "running": "yellow",
     "completed": "green",
     "installed": "green",
     "already_installed": "cyan",
@@ -156,19 +252,10 @@ with console.capture() as capture:
     console.print(summary)
 sys.stdout.write(capture.get())
 ' 2>/dev/null; then
-            printf '%s\n' "$RESPONSE"
-        fi
-        echo "Custom node installation request completed."
-        return 0
+        printf '%s\n' "$RESPONSE"
     fi
-
-    echo "Error: Custom node installation request failed."
-    if [ -n "$RESPONSE" ]; then
-        if ! printf '%s\n' "$RESPONSE" | python3 -m json.tool 2>/dev/null; then
-            printf '%s\n' "$RESPONSE"
-        fi
-    fi
-    return 1
+    echo "Custom node installation finished."
+    return 0
 }
 
 install_additional_program() {
