@@ -1,0 +1,22 @@
+[
+    {
+        "name": "relayvsr_x2_lightx2v_int8_convrot.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/RelayVSR/resolve/main/diffusion_models/relayvsr_x2_lightx2v_int8_convrot.safetensors",
+        "type": "diffusion_models"
+    },
+    {
+        "name": "relayvsr_flash_vae_x2_fp32.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/RelayVSR/resolve/main/vae/relayvsr_flash_vae_x2_fp32.safetensors",
+        "type": "vae"
+    },
+    {
+        "name": "relayvsr_x4_int8_convrot.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/RelayVSR/resolve/main/diffusion_models/relayvsr_x4_int8_convrot.safetensors",
+        "type": "diffusion_models"
+    },
+    {
+        "name": "relayvsr_flash_vae_x4_fp32.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/RelayVSR/resolve/main/vae/relayvsr_flash_vae_x4_fp32.safetensors",
+        "type": "vae"
+    }
+]
