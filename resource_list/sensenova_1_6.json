@@ -1,0 +1,12 @@
+[
+  {
+    "name": "sensenova_u1.6_8b_mot_int8_convrot.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/SenseNova-U1/resolve/main/checkpoints/sensenova_u1.6_8b_mot_int8_convrot.safetensors",
+    "type": "checkpoints"
+  },
+  {
+    "name": "sensenova_u1.6_8b_mot_8step_lora_bf16.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/SenseNova-U1/resolve/main/loras/sensenova_u1.6_8b_mot_8step_lora_bf16.safetensors",
+    "type": "loras"
+  }
+]
