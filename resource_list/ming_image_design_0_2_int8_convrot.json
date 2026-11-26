@@ -5,8 +5,8 @@
     "type": "diffusion_models"
   },
   {
-    "name": "ming_image_0.1_ling_mini_2.0_int8_convrot.safetensors",
-    "url": "https://huggingface.co/Comfy-Org/Ming-Image/resolve/main/text_encoders/ming_image_0.1_ling_mini_2.0_int8_convrot.safetensors",
+    "name": "ming_image_0.2_ling_mini_2.0_int8_convrot.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/Ming-Image/resolve/main/text_encoders/ming_image_0.2_ling_mini_2.0_int8_convrot.safetensors",
     "type": "text_encoders"
   },
   {
